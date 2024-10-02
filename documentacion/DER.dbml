@@ -1,0 +1,55 @@
+
+Table remitos {
+  id int [pk, increment] // Clave primaria
+  fecha date
+}
+Table clientes {
+  id int [pk, increment] // Clave primaria
+  persona_id int [ref:>personas.id]
+}
+
+Table proveedores {
+  id int [pk, increment] // Clave primaria
+  persona_id int [ref:>personas.id]
+}
+
+Table inputs {
+  codigo int [pk, increment] // Clave primaria
+  descripcion varchar(255)
+  proveedor_id int [ref:>proveedores.id]
+  precioUnitario decimal(10,2)
+}
+
+table composicionProducto{
+   input_id int [ref:>inputs.codigo]
+   output_id int [ref:>outputs.codigo]
+}
+
+Table outputs {
+  codigo int [pk, increment] // Clave primaria
+  cliente_id int [ref: > clientes.id] // Relación con clientes
+  descripcion varchar(255)
+  precio decimal(10,2)
+}
+Table facturas {
+  id int [pk, increment] // Clave primaria
+  total decimal(10,2)
+  fecha date
+  remito_id int [ref:> remitos.id]
+
+}
+
+Table personas{
+  id int [pk]//cuit o cuil
+  tipo varchar(255)//cuil o cuit
+  nombre varchar(255)//nombre completo
+  direccion varchar(255)
+}
+
+Table telefono{
+  numero int  [pk]
+  persona_id int [ref: > personas.id]
+}
+
+
+
