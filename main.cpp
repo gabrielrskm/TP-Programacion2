@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Outputs.h"
 
 using namespace std;
 
