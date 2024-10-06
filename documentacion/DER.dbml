@@ -2,39 +2,51 @@
 Table remitos {
   id int [pk, increment] // Clave primaria
   fecha date
+  tipo varchar(255)//ingreso - egreso
 }
 Table clientes {
-  id int [pk, increment] // Clave primaria
   persona_id int [ref:>personas.id]
+  cliente_id int [ref:>outputs.codigo]// Clave primaria
 }
 
 Table proveedores {
-  id int [pk, increment] // Clave primaria
   persona_id int [ref:>personas.id]
+  insumo_id int [ref:> insumos.codigo]
 }
 
-Table inputs {
+Table insumos {
   codigo int [pk, increment] // Clave primaria
   descripcion varchar(255)
-  proveedor_id int [ref:>proveedores.id]
+  tipoMedicion varchar(255)
   precioUnitario decimal(10,2)
+  tipo varchar(255)//interno-externo
 }
 
-table composicionProducto{
-   input_id int [ref:>inputs.codigo]
-   output_id int [ref:>outputs.codigo]
+
+table composicionInsumo{
+  id_padre int [ref:> insumos.codigo]
+  id_hijo int [ref:> insumos.codigo]
+  cantidad_insumo int
 }
+
 
 Table outputs {
   codigo int [pk, increment] // Clave primaria
-  cliente_id int [ref: > clientes.id] // Relación con clientes
   descripcion varchar(255)
-  precio decimal(10,2)
+  tipoMedicion varchar(255)
+  precioUnitario decimal(10,2)
+}
+
+Table composicion_outputs{
+  output_id int [ref:> outputs.codigo]
+  insumo_id int [ref: > insumos.codigo]
+  cantidad_insumo int
 }
 Table facturas {
-  id int [pk, increment] // Clave primaria
+  tipo_numero int [pk]
   total decimal(10,2)
   fecha date
+  id_emisor int [ref:> personas.id]
   remito_id int [ref:> remitos.id]
 
 }
@@ -44,6 +56,8 @@ Table personas{
   tipo varchar(255)//cuil o cuit
   nombre varchar(255)//nombre completo
   direccion varchar(255)
+  edad int
+  fecha varchar(255)
 }
 
 Table telefono{
@@ -51,5 +65,35 @@ Table telefono{
   persona_id int [ref: > personas.id]
 }
 
+Table detalleRemito{
+  remito_id int [ref:> remitos.id]
+  output_id int [ref:> outputs.codigo]
+  insumo_id int [ref:> insumos.codigo]
+  cantidad int
+}
 
+Table almaceninsumos{
+  insumo_id int [ref:> insumos.codigo]
+  cantidad int
+}
 
+Table almacenOutputs{
+  insumo_id int [ref:> outputs.codigo]
+  cantidad int
+}
+
+Table ordenProduccion{
+  id int [pk,not null]
+  estado varchar(255)
+  descripcion varchar(255)
+  output_id int [not null, ref:> outputs.codigo]
+  cantidad int
+  fecha_inicio date
+  fecha_fin date
+}
+
+table detalleOrden{
+  orden_id int [ref:> ordenProduccion.id]
+  insumo_id int [ref:> insumos.codigo]
+  detalle varchar(255)
+}
