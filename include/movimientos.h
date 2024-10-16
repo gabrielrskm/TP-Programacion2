@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "fecha.h"
-#include "productos.h"
 
 class Movimientos{
   public:
@@ -22,7 +21,7 @@ class Movimientos{
 
 
   private:
-  int _nroMovimiento;
+   int _nroMovimiento;
    Fecha _fecha;
    char _motivo[50];
    char _tipoMovimiento;  //'r' remito, 's' scrap, 'd' devolucion

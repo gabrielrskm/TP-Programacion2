@@ -35,20 +35,33 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="include/archivo-cliente.h" />
+		<Unit filename="include/archivo-composicion-factura.h" />
+		<Unit filename="include/archivo-composicion-movimiento.h" />
+		<Unit filename="include/archivo-composicion-producto.h" />
+		<Unit filename="include/archivo-factura.h" />
+		<Unit filename="include/archivo-movimientos.h" />
+		<Unit filename="include/archivo-orden-compra.h" />
+		<Unit filename="include/archivo-orden-produccion.h" />
+		<Unit filename="include/archivo-orden-venta.h" />
+		<Unit filename="include/archivo-proveedor.h" />
+		<Unit filename="include/archivo-recursos.h" />
+		<Unit filename="include/archivo-usuario.h" />
 		<Unit filename="include/cliente.h" />
-		<Unit filename="include/compras.h" />
-		<Unit filename="include/devolucion.h" />
+		<Unit filename="include/composicion-factura.h" />
+		<Unit filename="include/composicion-movimiento.h" />
+		<Unit filename="include/composicion-producto.h" />
 		<Unit filename="include/factura.h" />
 		<Unit filename="include/fecha.h" />
-		<Unit filename="include/insumos.h" />
+		<Unit filename="include/movimientos.h" />
+		<Unit filename="include/orden-compra.h" />
+		<Unit filename="include/orden-produccion.h" />
+		<Unit filename="include/orden-venta.h" />
 		<Unit filename="include/orden.h" />
 		<Unit filename="include/persona.h" />
-		<Unit filename="include/productos.h" />
 		<Unit filename="include/proveedor.h" />
 		<Unit filename="include/recursos.h" />
-		<Unit filename="include/scrap.h" />
 		<Unit filename="include/usuario.h" />
-		<Unit filename="include/ventas.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

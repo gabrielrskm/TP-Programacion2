@@ -1,7 +1,5 @@
 #pragma once
 #include <iostream>
-#include "fecha.h"
-#include "productos.h"
 
 class ComposicionMovimientos{
   public:

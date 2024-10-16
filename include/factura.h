@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "fecha.h"
-#include "productos.h"
 
 class Factura{
   public:

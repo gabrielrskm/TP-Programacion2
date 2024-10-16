@@ -1,13 +1,12 @@
 #pragma once
 #include <iostream>
 #include "fecha.h"
-#include "productos.h"
 
 
-class ComposicionMovimientos{
+class ComposicionFactura{
   public:
-   ComposicionMovimientos();
-   ComposicionMovimientos(int cantidad, int nroFactura,char tipoFactura, std::string idRecurso);
+   ComposicionFactura();
+   ComposicionFactura(int cantidad, int nroFactura,char tipoFactura, std::string idRecurso);
    
    int getCantidad();
    void setCantidad(int q);
