@@ -5,7 +5,6 @@ class ComposicionProducto{
   public:
    ComposicionProducto();
    ComposicionProducto(std::string insumoId, std::string productoId, int cantidad);
-   
    int getCantidad();
    void setCantidad(int cantidad);
    std::string getIdProducto();

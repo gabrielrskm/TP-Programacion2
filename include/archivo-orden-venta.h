@@ -4,13 +4,14 @@
 
 class ArchivoOrdenVenta{
     private:
-        const char * _nombreArchivo  = "orden-venta.dat";
+        const char * _nombreArchivo  = "db/orden-venta.dat";
         
     public:
         ArchivoOrdenVenta();
+        bool Crear();
         bool Guardar(OrdenVenta ordenventa);
         bool Guardar(OrdenVenta ordenventa, int posicion);
-        int Buscar(std::string idCliente);
+        int Buscar(int idCliente);
         OrdenVenta Leer(int posicion);
         int CantidadRegistros();
         void Leer(int cantidadRegistros, OrdenVenta *vector);

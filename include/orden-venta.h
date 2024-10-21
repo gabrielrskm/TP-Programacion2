@@ -3,7 +3,7 @@
 #include "orden.h"
 
 
-class OrdenVenta:Orden{
+class OrdenVenta:public Orden{
   public:
    OrdenVenta();
    OrdenVenta(int idCliente);

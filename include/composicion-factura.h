@@ -11,7 +11,7 @@ class ComposicionFactura{
    int getCantidad();
    void setCantidad(int q);
    int getNroFactura();
-   void setNroFactura();
+   void setNroFactura(int nroFactura);
    char getTipoFactura();
    void setTipoFactura(char tipo);
    std::string getIdRecurso();

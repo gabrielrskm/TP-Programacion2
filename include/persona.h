@@ -21,7 +21,7 @@ class Persona{
    void setEmail(std::string email);
 
 
-  private:
+  protected:
    int _id;
    int _telefono;
    char tipoFJ; //fisica F , juridica J

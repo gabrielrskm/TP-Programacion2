@@ -12,7 +12,6 @@ class Factura{
    void setNroFactura(int nroFactura);
    float getMontoTotal();
    void setMontoTotal(float monto);
-   float getMontoTotal();
 
 
   private:

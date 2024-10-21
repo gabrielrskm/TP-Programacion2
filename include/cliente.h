@@ -1,16 +1,19 @@
 #pragma once
 #include <iostream>
+
 #include "persona.h"
 
 class Cliente : public Persona {
   public:
-   Cliente();
-   Cliente(bool prioridad, float totalVentas);
+   Cliente();  // Constructor por defecto
+
+   Cliente(bool prioridad, float totalVentas, int id, int telefono, char tipoFJ,
+            std::string nombre, std::string direccion, std::string email);
 
    bool getPrioridad();
-   void setPrioridad();
+   void setPrioridad(bool prioridad);
    float getTotalVentas();
-   void setTotalVentas();
+   void setTotalVentas(float totalVentas);
 
   private:
    bool _prioridad;

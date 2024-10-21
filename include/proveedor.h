@@ -5,12 +5,13 @@
 class Proveedor : public Persona {
   public:
    Proveedor();
-   Proveedor(char _condicionPago, float totalCompras);
+   Proveedor(char condicionPago, float totalCompras, int id, int telefono, char tipoFJ, std::string nombre,
+             std::string direccion, std::string email);
 
-   bool getCondicionPago();
-   void setCondicionPago();
+   char getCondicionPago();
+   void setCondicionPago(char condicionPago);
    float getTotalCompras();
-   void setTotalCompras();
+   void setTotalCompras(float totalCompras);
 
   private:
    char _condicionPago;

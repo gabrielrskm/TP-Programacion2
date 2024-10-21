@@ -4,10 +4,11 @@
 
 class ArchivoOrdenProduccion{
     private:
-        const char * _nombreArchivo  = "orden-produccion.dat";
+        const char * _nombreArchivo  = "db/orden-produccion.dat";
         
     public:
         ArchivoOrdenProduccion();
+        bool Crear();
         bool Guardar(OrdenProduccion ordenProduccion);
         bool Guardar(OrdenProduccion ordenProduccion, int posicion);
         int Buscar(std::string idProducto);

@@ -4,10 +4,11 @@
 
 class ArchivoMovimientos{
     private:
-        const char * _nombreArchivo  = "movimientos.dat";
+        const char * _nombreArchivo  = "db/movimientos.dat";
         
     public:
         ArchivoMovimientos();
+        bool Crear();
         bool Guardar(Movimientos movimientos);
         bool Guardar(Movimientos movimientos, int posicion);
         int Buscar(int nroMovimiento);

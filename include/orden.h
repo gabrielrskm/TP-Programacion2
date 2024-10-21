@@ -10,7 +10,7 @@ class Orden{
    
    
    int getId();
-   void setId();
+   void setId(int id);
    char getEstado();
    void setEstado(char estado);
    Fecha getFecha();

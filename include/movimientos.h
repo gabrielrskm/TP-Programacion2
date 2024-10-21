@@ -5,7 +5,7 @@
 class Movimientos{
   public:
    Movimientos();
-   Movimientos(Fecha fecha, char motivo,
+   Movimientos(Fecha fecha, std::string motivo,
                char tipo, std::string id);
    Fecha getFecha();
    void setFecha(Fecha f);
@@ -15,9 +15,10 @@ class Movimientos{
    void setTipoMovimiento(char tipo);
    bool getDestino();
    void setDestino(bool destino);
-   int getId();
+   std::string getId();
    void setId(std::string id);
    int getNroMovimiento();
+   void setNroMovimiento(int nroMovimiento);
 
 
   private:
@@ -25,6 +26,6 @@ class Movimientos{
    Fecha _fecha;
    char _motivo[50];
    char _tipoMovimiento;  //'r' remito, 's' scrap, 'd' devolucion
-   bool destino; // suma stock , resta stock,
+   bool _destino; // suma stock , resta stock,
    char _id[30]; // codigo unico 
 };

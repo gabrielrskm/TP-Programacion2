@@ -3,13 +3,12 @@
 #include "orden.h"
 
 
-class OrdenProduccion:Orden{
+class OrdenProduccion:public Orden{
   public:
    OrdenProduccion();
-   OrdenProduccion(std::string idProducto);
+   OrdenProduccion(int id, Fecha fecha, char estado);
    
-   
-   int getIdProducto();
+   std::string getIdProducto();
    void setIdProducto(std::string id);
 
 

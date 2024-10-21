@@ -1,13 +1,14 @@
 #pragma once
 #include <string>
-#include "composicion-movimiento.h"
+#include "composicion-movimientos.h"
 
 class ArchivoComposicionMovimientos{
     private:
-        const char * _nombreArchivo  = "composicion-movimiento.dat";
+        const char * _nombreArchivo  = "db/composicion-movimiento.dat";
         
     public:
         ArchivoComposicionMovimientos();
+        bool Crear();
         bool Guardar(ComposicionMovimientos composicion);
         bool Guardar(ComposicionMovimientos composicion, int posicion);
         int Buscar(int nromovimiento);

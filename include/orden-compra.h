@@ -3,14 +3,14 @@
 #include "orden.h"
 
 
-class OrdenCompra:Orden{
+class OrdenCompra: public Orden{
   public:
    OrdenCompra();
-   OrdenCompra(int idProveedor);
-   
-   
+   OrdenCompra(int id, Fecha fecha, char estado);
+
+
    int getIdProveedor();
-   void setIdProveedor();
+   void setIdProveedor(int id);
 
 
   private:

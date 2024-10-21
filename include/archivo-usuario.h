@@ -2,15 +2,16 @@
 #include <string>
 #include  "usuario.h"
 
-class ArchivoProveedor{
+class ArchivoUsuario{
     private:
-        const char * _nombreArchivo  = "usuario.dat";
+        const char * _nombreArchivo  = "db/usuario.dat";
         
     public:
-        ArchivoProveedor();
+        ArchivoUsuario();
+        bool Crear();
         bool Guardar(Usuario usuario);
         bool Guardar(Usuario usuario, int posicion);
-        int Buscar(std::string IdUsuario);
+        int Buscar(std::string nombreUsuario);
         Usuario Leer(int posicion);
         int CantidadRegistros();
         void Leer(int cantidadRegistros, Usuario *vector);
