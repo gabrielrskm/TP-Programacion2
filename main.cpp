@@ -43,6 +43,7 @@ void menuLog(Manager &manager, UiConsole &ui) {
 }
 
 void menuGestionUsuarios(Manager &manager, UiConsole &ui) {
+   
 }
 
 

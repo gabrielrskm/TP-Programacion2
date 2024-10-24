@@ -34,10 +34,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
 		<Unit filename="include/archivo-cliente.h" />
 		<Unit filename="include/archivo-composicion-factura.h" />
 		<Unit filename="include/archivo-composicion-movimiento.h" />
+		<Unit filename="include/archivo-composicion-orden.h" />
 		<Unit filename="include/archivo-composicion-producto.h" />
 		<Unit filename="include/archivo-factura.h" />
 		<Unit filename="include/archivo-movimientos.h" />
@@ -53,6 +53,7 @@
 		<Unit filename="include/composicion-producto.h" />
 		<Unit filename="include/factura.h" />
 		<Unit filename="include/fecha.h" />
+		<Unit filename="include/manager.h" />
 		<Unit filename="include/movimientos.h" />
 		<Unit filename="include/orden-compra.h" />
 		<Unit filename="include/orden-produccion.h" />
@@ -61,7 +62,39 @@
 		<Unit filename="include/persona.h" />
 		<Unit filename="include/proveedor.h" />
 		<Unit filename="include/recursos.h" />
+		<Unit filename="include/ui-console.h" />
 		<Unit filename="include/usuario.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/archivo-cliente.cpp" />
+		<Unit filename="src/archivo-composicion-factura.cpp" />
+		<Unit filename="src/archivo-composicion-movimientos.cpp" />
+		<Unit filename="src/archivo-composicion-orden.cpp" />
+		<Unit filename="src/archivo-composicion-producto.cpp" />
+		<Unit filename="src/archivo-factura.cpp" />
+		<Unit filename="src/archivo-movimientos.cpp" />
+		<Unit filename="src/archivo-orden-compra.cpp" />
+		<Unit filename="src/archivo-orden-produccion.cpp" />
+		<Unit filename="src/archivo-orden-venta.cpp" />
+		<Unit filename="src/archivo-proveedor.cpp" />
+		<Unit filename="src/archivo-recurso.cpp" />
+		<Unit filename="src/archivo-usuario.cpp" />
+		<Unit filename="src/cliente.cpp" />
+		<Unit filename="src/composicion-factura.cpp" />
+		<Unit filename="src/composicion-movimientos.cpp" />
+		<Unit filename="src/composicion-producto.cpp" />
+		<Unit filename="src/factura.cpp" />
+		<Unit filename="src/fecha.cpp" />
+		<Unit filename="src/manager.cpp" />
+		<Unit filename="src/movimientos.cpp" />
+		<Unit filename="src/orden-compra.cpp" />
+		<Unit filename="src/orden-produccion.cpp" />
+		<Unit filename="src/orden-venta.cpp" />
+		<Unit filename="src/orden.cpp" />
+		<Unit filename="src/persona.cpp" />
+		<Unit filename="src/proveedor.cpp" />
+		<Unit filename="src/recursos.cpp" />
+		<Unit filename="src/ui-console.cpp" />
+		<Unit filename="src/usuario.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
