@@ -1,4 +1,4 @@
-#include "archivo-recursos.h"
+#include "../include/archivo-recursos.h"
 
 #include <cstring>
 

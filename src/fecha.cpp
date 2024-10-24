@@ -1,4 +1,5 @@
-#include "fecha.h"
+#include "../include/fecha.h"
+#include <string>
 
 Fecha::Fecha() {
    _dia = 1;

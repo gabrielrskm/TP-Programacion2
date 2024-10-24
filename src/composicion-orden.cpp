@@ -1,4 +1,4 @@
-#include "composicion-orden.h"
+#include "../include/composicion-orden.h"
 #include <cstring>
 
 ComposicionOrden::ComposicionOrden() {
