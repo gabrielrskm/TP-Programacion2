@@ -1,4 +1,4 @@
-#include "archivo-proveedor.h"
+#include "../include/archivo-proveedor.h"
 
 ArchivoProveedor::ArchivoProveedor(){
 

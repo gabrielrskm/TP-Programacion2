@@ -1,4 +1,4 @@
-#include "orden-produccion.h"
+#include "../include/orden-produccion.h"
 #include <cstring>
 
 OrdenProduccion::OrdenProduccion() {

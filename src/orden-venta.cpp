@@ -1,4 +1,5 @@
-#include "orden-venta.h"
+#include "../include/orden-venta.h"
+
 OrdenVenta::OrdenVenta(){
    this->_id = 0;
    this->_fecha = Fecha();

@@ -1,3 +1,7 @@
 bin/
 obj/
 db/
+x64/
+Sistema .96d144b1/
+.vs/
+*.vcxproj.user

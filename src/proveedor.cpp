@@ -1,8 +1,8 @@
-#include "proveedor.h"
+#include "../include/proveedor.h"
 
 #include <cstring>
 
-#include "persona.h"
+#include "../include/persona.h"
 
 Proveedor::Proveedor(): Persona() {  // Llamar al constructor por defecto de Persona
        _condicionPago = 'C';  // Valor por defecto

@@ -1,4 +1,4 @@
-#include "archivo-usuario.h"
+#include "../include/archivo-usuario.h"
 
 ArchivoUsuario::ArchivoUsuario(){
 }
