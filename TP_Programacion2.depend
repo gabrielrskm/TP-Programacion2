@@ -9,9 +9,9 @@
 1727883635 d:\documentos\utn\tup\2-programacion 2\tp_programacion2\include\outputs.h
 	<iostream>
 
-1729548561 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\main.cpp
+1729808583 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\main.cpp
 	<iostream>
-	"manager.h"
+	"../include/manager.h"
 	"ui-console.h"
 
 1727883635 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\outputs.h
@@ -172,11 +172,11 @@
 1729447074 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\fecha.cpp
 	"fecha.h"
 
-1729480782 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\manager.cpp
+1729808565 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\manager.cpp
 	"manager.h"
 	<direct.h>
 
-1729478585 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\manager.h
+1729808557 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\manager.h
 	<iostream>
 	"fecha.h"
 	"persona.h"
@@ -262,4 +262,24 @@
 	"usuario.h"
 	<cstring>
 	"persona.h"
+
+1729467340 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-composicion-movimientos.cpp
+	"archivo-composicion-movimiento.h"
+	<cstring>
+
+1729467759 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-recurso.cpp
+	"archivo-recursos.h"
+	<cstring>
+
+1729366349 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-movimientos.cpp
+	"composicion-movimientos.h"
+	<cstring>
+
+1729373740 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-orden.cpp
+	"composicion-orden.h"
+	<cstring>
+
+1729801872 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\recursos.cpp
+	"recursos.h"
+	<cstring>
 

@@ -49,7 +49,6 @@
 		<Unit filename="include/archivo-usuario.h" />
 		<Unit filename="include/cliente.h" />
 		<Unit filename="include/composicion-factura.h" />
-		<Unit filename="include/composicion-movimiento.h" />
 		<Unit filename="include/composicion-producto.h" />
 		<Unit filename="include/factura.h" />
 		<Unit filename="include/fecha.h" />
@@ -81,6 +80,7 @@
 		<Unit filename="src/cliente.cpp" />
 		<Unit filename="src/composicion-factura.cpp" />
 		<Unit filename="src/composicion-movimientos.cpp" />
+		<Unit filename="src/composicion-orden.cpp" />
 		<Unit filename="src/composicion-producto.cpp" />
 		<Unit filename="src/factura.cpp" />
 		<Unit filename="src/fecha.cpp" />

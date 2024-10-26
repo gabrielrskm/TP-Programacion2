@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "manager.h"
+#include "../include/manager.h"
 #include "ui-console.h"
 
-using namespace std;
+
 
 bool login(Manager &manager, UiConsole &ui) {
    std::string user, pass;

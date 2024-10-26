@@ -43,3 +43,37 @@ bool Manager::login(std::string user, std::string pass) {
    }
    return true;
 }
+
+ /* bool Manager::darDeAltaProducto(std::string codigo,std::string descripcion,
+            std::string tipoMedicion, int futuro, bool origenInterno, ){
+    int res = this->archivoRecurso.Buscar(codigo);
+    if(res>0){
+       return false;
+    }
+    Recurso rs = Recurso(codigo, descripcion, tipoMedicion, 0, 0, origenInterno);
+    if(origenInterno){
+
+    } */
+
+
+
+
+/*
+   5-dar de alta producto
+
+   ingrese codigo
+
+
+
+
+   ingrese los codigos que componen al producto, toque enter para finalizar
+   codigo:camisa
+   no existe camisa
+   cogigo:camisa1
+   cantidad:5
+   codigo:
+
+
+
+
+*/
