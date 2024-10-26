@@ -1,4 +1,4 @@
-#include "archivo-composicion-producto.h"
+#include "../include/archivo-composicion-producto.h"
 #include <cstring>
 
 ArchivoComposicionProducto::ArchivoComposicionProducto() {}

@@ -1,4 +1,4 @@
-#include "archivo-composicion-movimiento.h"
+#include "../include/archivo-composicion-movimiento.h"
 
 #include <cstring>
 

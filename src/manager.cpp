@@ -1,4 +1,4 @@
-#include "manager.h"
+#include "../include/manager.h"
 #include <direct.h>
 
 Manager::Manager() {

@@ -1,4 +1,4 @@
-#include "recursos.h"
+#include "../include/recursos.h"
 #include <cstring>
 
 Recurso::Recurso(){

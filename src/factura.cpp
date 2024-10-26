@@ -1,6 +1,14 @@
-#include "factura.h"
+#include "../include/factura.h"
 
-Factura::Factura(){}
+Factura::Factura(){
+	Fecha fecha;
+
+	_fecha = fecha;
+	_tipoFactura = 'Z';
+	_nroFactura = 0;
+	_nroVenta = 0;
+	_montoTotal = 0.0f;
+}
 
 Factura::Factura(Fecha fecha, char tipo,int nroFactura, int nroVenta, float monto){
    _fecha = fecha;
