@@ -1,4 +1,4 @@
-#include "archivo-factura.h"
+#include "../include/archivo-factura.h"
 
 ArchivoFactura::ArchivoFactura(){
 

@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "manager.h"
-#include "ui-console.h"
+#include "include/manager.h"
+#include "include/ui-console.h"
 
 using namespace std;
 
@@ -50,6 +50,9 @@ void menuGestionUsuarios(Manager &manager, UiConsole &ui) {
 int main() {
    Manager manager;
    UiConsole ui;
+   //Configura la consola para poder utilizar caracteres UTF-8
+   ui.configurarConsola();
+
    std::string user;
    if (!login(manager, ui)) {
       return 0;

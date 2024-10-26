@@ -1,4 +1,4 @@
-#include "archivo-orden-produccion.h"
+#include "../include/archivo-orden-produccion.h"
 
 ArchivoOrdenProduccion::ArchivoOrdenProduccion(){
 

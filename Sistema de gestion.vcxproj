@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\archivo-cliente.cpp" />
+    <ClCompile Include="src\archivo-composicion-factura.cpp" />
+    <ClCompile Include="src\archivo-composicion-movimientos.cpp" />
+    <ClCompile Include="src\archivo-composicion-orden.cpp" />
+    <ClCompile Include="src\archivo-composicion-producto.cpp" />
+    <ClCompile Include="src\archivo-factura.cpp" />
+    <ClCompile Include="src\archivo-movimientos.cpp" />
+    <ClCompile Include="src\archivo-orden-compra.cpp" />
+    <ClCompile Include="src\archivo-orden-produccion.cpp" />
+    <ClCompile Include="src\archivo-orden-venta.cpp" />
+    <ClCompile Include="src\archivo-proveedor.cpp" />
+    <ClCompile Include="src\archivo-recurso.cpp" />
+    <ClCompile Include="src\archivo-usuario.cpp" />
+    <ClCompile Include="src\cliente.cpp" />
+    <ClCompile Include="src\composicion-factura.cpp" />
+    <ClCompile Include="src\composicion-movimientos.cpp" />
+    <ClCompile Include="src\composicion-orden.cpp" />
+    <ClCompile Include="src\composicion-producto.cpp" />
+    <ClCompile Include="src\factura.cpp" />
+    <ClCompile Include="src\fecha.cpp" />
+    <ClCompile Include="src\manager.cpp" />
+    <ClCompile Include="src\menu.cpp" />
+    <ClCompile Include="src\movimientos.cpp" />
+    <ClCompile Include="src\orden-compra.cpp" />
+    <ClCompile Include="src\orden-produccion.cpp" />
+    <ClCompile Include="src\orden-venta.cpp" />
+    <ClCompile Include="src\orden.cpp" />
+    <ClCompile Include="src\persona.cpp" />
+    <ClCompile Include="src\proveedor.cpp" />
+    <ClCompile Include="src\recurso.cpp" />
+    <ClCompile Include="src\ui-console.cpp" />
+    <ClCompile Include="src\usuario.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\archivo-cliente.h" />
+    <ClInclude Include="include\archivo-composicion-factura.h" />
+    <ClInclude Include="include\archivo-composicion-movimiento.h" />
+    <ClInclude Include="include\archivo-composicion-orden.h" />
+    <ClInclude Include="include\archivo-composicion-producto.h" />
+    <ClInclude Include="include\archivo-factura.h" />
+    <ClInclude Include="include\archivo-movimientos.h" />
+    <ClInclude Include="include\archivo-orden-compra.h" />
+    <ClInclude Include="include\archivo-orden-produccion.h" />
+    <ClInclude Include="include\archivo-orden-venta.h" />
+    <ClInclude Include="include\archivo-proveedor.h" />
+    <ClInclude Include="include\archivo-recursos.h" />
+    <ClInclude Include="include\archivo-usuario.h" />
+    <ClInclude Include="include\cliente.h" />
+    <ClInclude Include="include\composicion-factura.h" />
+    <ClInclude Include="include\composicion-movimientos.h" />
+    <ClInclude Include="include\composicion-orden.h" />
+    <ClInclude Include="include\composicion-producto.h" />
+    <ClInclude Include="include\factura.h" />
+    <ClInclude Include="include\fecha.h" />
+    <ClInclude Include="include\manager.h" />
+    <ClInclude Include="include\movimientos.h" />
+    <ClInclude Include="include\orden-compra.h" />
+    <ClInclude Include="include\orden-produccion.h" />
+    <ClInclude Include="include\orden-venta.h" />
+    <ClInclude Include="include\orden.h" />
+    <ClInclude Include="include\persona.h" />
+    <ClInclude Include="include\proveedor.h" />
+    <ClInclude Include="include\recursos.h" />
+    <ClInclude Include="include\ui-console.h" />
+    <ClInclude Include="include\usuario.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{96d144b1-2c47-4601-bb8e-184ebfc65626}</ProjectGuid>
+    <RootNamespace>Sistemadegestion</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

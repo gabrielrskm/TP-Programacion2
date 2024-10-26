@@ -1,8 +1,8 @@
-#include "usuario.h"
+#include "../include/usuario.h"
 
 #include <cstring>
 
-#include "persona.h"
+#include "../include/persona.h"
 
 Usuario::Usuario() {
 }

@@ -1,4 +1,4 @@
-#include "archivo-composicion-factura.h"
+#include "../include/archivo-composicion-factura.h"
 #include <cstring>
 
 ArchivoComposicionFactura::ArchivoComposicionFactura() {}

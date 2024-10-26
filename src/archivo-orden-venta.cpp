@@ -1,4 +1,4 @@
-#include "archivo-orden-venta.h"
+#include "../include/archivo-orden-venta.h"
 
 ArchivoOrdenVenta::ArchivoOrdenVenta(){
 

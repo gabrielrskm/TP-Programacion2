@@ -1,4 +1,4 @@
-#include "orden-compra.h"
+#include "../include/orden-compra.h"
 OrdenCompra::OrdenCompra(){
    this->_id = 0;
    this->_fecha = Fecha();

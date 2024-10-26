@@ -1,8 +1,8 @@
-#include "cliente.h"
+#include "../include/cliente.h"
 
 #include <cstring>
 
-#include "persona.h"
+#include "../include/persona.h"
 
 Cliente::Cliente() {
 }
