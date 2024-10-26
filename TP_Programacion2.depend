@@ -177,11 +177,11 @@
 	"../include/manager.h"
 	<direct.h>
 
-1729947767 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\manager.h
+1729948920 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\manager.h
 	<iostream>
 	"fecha.h"
 	"persona.h"
-	"recursos.h"
+	"recurso.h"
 	"cliente.h"
 	"proveedor.h"
 	"usuario.h"
@@ -220,9 +220,9 @@
 	<string>
 	"composicion-movimientos.h"
 
-1729479099 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-recursos.h
+1729948920 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-recursos.h
 	<string>
-	"recursos.h"
+	"recurso.h"
 
 1729107911 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\menu.cpp
 
@@ -286,4 +286,7 @@
 1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\recursos.cpp
 	"../include/recursos.h"
 	<cstring>
+
+1729094601 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\recurso.h
+	<iostream>
 

@@ -78,9 +78,6 @@
     <ClCompile Include="src\manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\movimientos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

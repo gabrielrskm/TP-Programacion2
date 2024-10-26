@@ -60,7 +60,7 @@
 		<Unit filename="include/orden.h" />
 		<Unit filename="include/persona.h" />
 		<Unit filename="include/proveedor.h" />
-		<Unit filename="include/recursos.h" />
+		<Unit filename="include/recurso.h" />
 		<Unit filename="include/ui-console.h" />
 		<Unit filename="include/usuario.h" />
 		<Unit filename="main.cpp" />
@@ -92,7 +92,7 @@
 		<Unit filename="src/orden.cpp" />
 		<Unit filename="src/persona.cpp" />
 		<Unit filename="src/proveedor.cpp" />
-		<Unit filename="src/recursos.cpp" />
+		<Unit filename="src/recurso.cpp" />
 		<Unit filename="src/ui-console.cpp" />
 		<Unit filename="src/usuario.cpp" />
 		<Extensions>

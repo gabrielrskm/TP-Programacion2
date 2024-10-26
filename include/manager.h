@@ -2,7 +2,7 @@
 #include <iostream>
 #include "fecha.h"
 #include "persona.h"
-#include "recursos.h"
+#include "recurso.h"
 #include "cliente.h"
 #include "proveedor.h"
 #include "usuario.h"

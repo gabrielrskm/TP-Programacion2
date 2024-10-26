@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include  "recursos.h"
+#include  "recurso.h"
 
 class ArchivoRecurso{
     private:
