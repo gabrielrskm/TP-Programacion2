@@ -9,10 +9,10 @@
 1727883635 d:\documentos\utn\tup\2-programacion 2\tp_programacion2\include\outputs.h
 	<iostream>
 
-1729808583 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\main.cpp
+1729947918 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\main.cpp
 	<iostream>
-	"../include/manager.h"
-	"ui-console.h"
+	"include/manager.h"
+	"include/ui-console.h"
 
 1727883635 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\outputs.h
 	<iostream>
@@ -20,8 +20,8 @@
 1727883610 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\outputs.cpp
 	"Outputs.h"
 
-1729466985 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-cliente.cpp
-	"archivo-cliente.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-cliente.cpp
+	"../include/archivo-cliente.h"
 
 1729479040 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-cliente.h
 	<string>
@@ -38,8 +38,8 @@
 1729060178 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\fecha.h
 	<iostream>
 
-1729467259 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-composicion-factura.cpp
-	"archivo-composicion-factura.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-composicion-factura.cpp
+	"../include/archivo-composicion-factura.h"
 	<cstring>
 
 1729479100 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-composicion-factura.h
@@ -50,8 +50,8 @@
 	<iostream>
 	"fecha.h"
 
-1729467390 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-composicion-orden.cpp
-	"archivo-composicion-orden.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-composicion-orden.cpp
+	"../include/archivo-composicion-orden.h"
 	<cstring>
 
 1729479100 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-composicion-orden.h
@@ -61,8 +61,8 @@
 1729373740 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\composicion-orden.h
 	<iostream>
 
-1729467429 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-composicion-producto.cpp
-	"archivo-composicion-producto.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-composicion-producto.cpp
+	"../include/archivo-composicion-producto.h"
 	<cstring>
 
 1729479099 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-composicion-producto.h
@@ -72,8 +72,8 @@
 1729449195 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\composicion-producto.h
 	<iostream>
 
-1729467504 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-factura.cpp
-	"archivo-factura.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-factura.cpp
+	"../include/archivo-factura.h"
 
 1729479099 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-factura.h
 	<string>
@@ -83,8 +83,8 @@
 	<iostream>
 	"fecha.h"
 
-1729467537 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-movimientos.cpp
-	"archivo-movimientos.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-movimientos.cpp
+	"../include/archivo-movimientos.h"
 
 1729479099 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-movimientos.h
 	<string>
@@ -94,8 +94,8 @@
 	<iostream>
 	"fecha.h"
 
-1729467599 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-orden-compra.cpp
-	"archivo-orden-compra.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-orden-compra.cpp
+	"../include/archivo-orden-compra.h"
 
 1729479099 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-orden-compra.h
 	<string>
@@ -109,8 +109,8 @@
 	<iostream>
 	"fecha.h"
 
-1729467642 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-orden-produccion.cpp
-	"archivo-orden-produccion.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-orden-produccion.cpp
+	"../include/archivo-orden-produccion.h"
 
 1729479099 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-orden-produccion.h
 	<string>
@@ -120,8 +120,8 @@
 	<iostream>
 	"orden.h"
 
-1729467677 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-orden-venta.cpp
-	"archivo-orden-venta.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-orden-venta.cpp
+	"../include/archivo-orden-venta.h"
 
 1729479099 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-orden-venta.h
 	<string>
@@ -131,8 +131,8 @@
 	<iostream>
 	"orden.h"
 
-1729467728 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-proveedor.cpp
-	"archivo-proveedor.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-proveedor.cpp
+	"../include/archivo-proveedor.h"
 
 1729479099 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-proveedor.h
 	<string>
@@ -142,8 +142,8 @@
 	<iostream>
 	"persona.h"
 
-1729467789 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-usuario.cpp
-	"archivo-usuario.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-usuario.cpp
+	"../include/archivo-usuario.h"
 
 1729479099 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\archivo-usuario.h
 	<string>
@@ -153,30 +153,31 @@
 	<iostream>
 	"persona.h"
 
-1729446955 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\cliente.cpp
-	"cliente.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\cliente.cpp
+	"../include/cliente.h"
 	<cstring>
-	"persona.h"
+	"../include/persona.h"
 
-1729464455 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-factura.cpp
-	"composicion-factura.h"
-	<cstring>
-
-1729449178 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-producto.cpp
-	"composicion-producto.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-factura.cpp
+	"../include/composicion-factura.h"
 	<cstring>
 
-1729464714 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\factura.cpp
-	"factura.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-producto.cpp
+	"../include/composicion-producto.h"
+	<cstring>
 
-1729447074 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\fecha.cpp
-	"fecha.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\factura.cpp
+	"../include/factura.h"
 
-1729808565 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\manager.cpp
-	"manager.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\fecha.cpp
+	"../include/fecha.h"
+	<string>
+
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\manager.cpp
+	"../include/manager.h"
 	<direct.h>
 
-1729808557 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\manager.h
+1729947767 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\manager.h
 	<iostream>
 	"fecha.h"
 	"persona.h"
@@ -225,61 +226,64 @@
 
 1729107911 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\menu.cpp
 
-1729366240 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\movimientos.cpp
-	"movimientos.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\movimientos.cpp
+	"../include/movimientos.h"
 	<cstring>
 
-1729437039 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\orden-compra.cpp
-	"orden-compra.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\orden-compra.cpp
+	"../include/orden-compra.h"
 
-1729435196 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\orden-produccion.cpp
-	"orden-produccion.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\orden-produccion.cpp
+	"../include/orden-produccion.h"
 	<cstring>
 
-1729447889 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\orden-venta.cpp
-	"orden-venta.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\orden-venta.cpp
+	"../include/orden-venta.h"
 
-1729448367 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\orden.cpp
-	"orden.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\orden.cpp
+	"../include/orden.h"
 
-1729354110 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\persona.cpp
-	"persona.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\persona.cpp
+	"../include/persona.h"
 	<cstring>
 
-1729447323 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\proveedor.cpp
-	"proveedor.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\proveedor.cpp
+	"../include/proveedor.h"
 	<cstring>
-	"persona.h"
+	"../include/persona.h"
 
-1729480684 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\ui-console.cpp
-	"ui-console.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\ui-console.cpp
+	"../include/ui-console.h"
+	<iostream>
+	<cstdlib>
+	<windows.h>
 
-1729480212 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\ui-console.h
+1729947781 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\ui-console.h
 	<iostream>
 	"manager.h"
 
-1729465410 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\usuario.cpp
-	"usuario.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\usuario.cpp
+	"../include/usuario.h"
 	<cstring>
-	"persona.h"
+	"../include/persona.h"
 
-1729467340 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-composicion-movimientos.cpp
-	"archivo-composicion-movimiento.h"
-	<cstring>
-
-1729467759 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-recurso.cpp
-	"archivo-recursos.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-composicion-movimientos.cpp
+	"../include/archivo-composicion-movimiento.h"
 	<cstring>
 
-1729366349 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-movimientos.cpp
-	"composicion-movimientos.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\archivo-recurso.cpp
+	"../include/archivo-recursos.h"
 	<cstring>
 
-1729373740 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-orden.cpp
-	"composicion-orden.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-movimientos.cpp
+	"../include/composicion-movimientos.h"
 	<cstring>
 
-1729801872 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\recursos.cpp
-	"recursos.h"
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\composicion-orden.cpp
+	"../include/composicion-orden.h"
+	<cstring>
+
+1729947781 source:d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\src\recursos.cpp
+	"../include/recursos.h"
 	<cstring>
 
