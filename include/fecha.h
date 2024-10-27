@@ -1,11 +1,14 @@
 #pragma once
 #include <iostream>
+#include <ctime>
 
 class Fecha {
   private:
    int _dia;
    int _mes;
    int _anio;
+   int _horas;
+   int _minutos;
    bool validarFecha(int d, int m, int a);
    void agregarDia();
    void restarDia();

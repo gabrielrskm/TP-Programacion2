@@ -26,7 +26,7 @@ bool login(Manager &manager, UiConsole &ui) {
 void menuInsumo(Manager &manager, UiConsole &ui) {
    int op;
    do {
-      op = ui.menuUsuarios();
+      op = ui.menuInsumos();
       switch (op) {
          case 1:
             break;
@@ -53,7 +53,7 @@ void menuInsumo(Manager &manager, UiConsole &ui) {
 void menuProductos(Manager &manager, UiConsole &ui) {
    int op;
    do {
-      op = ui.menuUsuarios();
+      op = ui.menuProductos();
       switch (op) {
          case 1:
             break;
@@ -80,7 +80,7 @@ void menuProductos(Manager &manager, UiConsole &ui) {
 void menuProveedores(Manager &manager, UiConsole &ui) {
    int op;
    do {
-      op = ui.menuUsuarios();
+      op = ui.menuProveedores();
       switch (op) {
          case 1:
             break;
@@ -109,7 +109,7 @@ void menuProveedores(Manager &manager, UiConsole &ui) {
 void menuClientes(Manager &manager, UiConsole &ui) {
    int op;
    do {
-      op = ui.menuUsuarios();
+      op = ui.menuClientes();
       switch (op) {
          case 1:
             break;
@@ -134,7 +134,7 @@ void menuClientes(Manager &manager, UiConsole &ui) {
 void menuProduccion(Manager &manager, UiConsole &ui) {
    int op;
    do {
-      op = ui.menuUsuarios();
+      op = ui.menuProduccion();
       switch (op) {
          case 1:
             break;
@@ -157,7 +157,7 @@ void menuProduccion(Manager &manager, UiConsole &ui) {
 void menuVentas(Manager &manager, UiConsole &ui) {
    int op;
    do {
-      op = ui.menuUsuarios();
+      op = ui.menuVentas();
       switch (op) {
          case 1:
             break;
@@ -184,27 +184,23 @@ void menuUsuarios(Manager &manager, UiConsole &ui) {
       ui.limpiarConsola();
       bool op = true;
       std::string nombreUsuario;
-      do
-      {
+      do {
          std::cout << "Ingrese el nombre del usuario: ";
          std::getline(std::cin, nombreUsuario);
-         if(manager.buscarUsuario(nombreUsuario) < 0){
+         if (manager.buscarUsuario(nombreUsuario) < 0 || nombreUsuario.length()>0) {
             Usuario us = ui.agregarUsuario(nombreUsuario);
             bool res = manager.agregarUsuario(us);
-            if(res)
-            {
+            if (res) {
                std::cout << "El usuario se agrego correctamente" << std::endl;
-            }
-            else {
+            } else {
                std::cout << "El usuario no se pudo agregar" << std::endl;
             }
             op = false;
-         }
-         else{
+         } else {
             std::cout << "El usuario ya existe" << std::endl;
             op = true;
          }
-      }while (op);
+      } while (op);
       ui.pausa();
       return;
    };
@@ -221,17 +217,11 @@ void menuUsuarios(Manager &manager, UiConsole &ui) {
    auto contraseniaRoot = [&]() -> void {
 
    };
-   auto roles = [&]() -> void {
-
-   };
-   auto bloquearDesbloquear = [&]() -> void {
-
-   };
 
    auto listarUsuarios = [&]() -> void {
       ui.limpiarConsola();
       Usuario *vector = manager.listaUsuarios();
-      if(vector == nullptr){
+      if (vector == nullptr) {
          std::cout << "Error al cargar" << std::endl;
          ui.pausa();
          return;
@@ -244,7 +234,6 @@ void menuUsuarios(Manager &manager, UiConsole &ui) {
       delete[] vector;
       ui.pausa();
       return;
-
    };
 
    int op;
@@ -264,12 +253,6 @@ void menuUsuarios(Manager &manager, UiConsole &ui) {
             contraseniaRoot();
             break;
          case 5:
-            roles();
-            break;
-         case 6:
-            bloquearDesbloquear();
-            break;
-         case 7:
             listarUsuarios();
             break;
          case 0:
@@ -285,7 +268,7 @@ void menuUsuarios(Manager &manager, UiConsole &ui) {
 void menuEstadisticas(Manager &manager, UiConsole &ui) {
    int op;
    do {
-      op = ui.menuUsuarios();
+      op = ui.menuEstadisticas();
       switch (op) {
          case 1:
             break;
@@ -310,7 +293,7 @@ void menuEstadisticas(Manager &manager, UiConsole &ui) {
 void menuSeguridad(Manager &manager, UiConsole &ui) {
    int op;
    do {
-      op = ui.menuUsuarios();
+      op = ui.menuSeguridad();
       switch (op) {
          case 1:
             break;

@@ -9,6 +9,7 @@ Persona::Persona() {
    strcpy(this->_direccion, " ");
    strcpy(this->_email, " ");
    this->_fechaIngreso = Fecha();
+   this->_activo = true;
 };
 
 Persona::Persona(int id, int telefono,

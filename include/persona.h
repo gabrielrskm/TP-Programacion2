@@ -28,5 +28,6 @@ class Persona{
    char _nombre[30];
    char _direccion[50];
    char _email[60];
+   bool _activo;
    Fecha _fechaIngreso;
 };

@@ -394,10 +394,7 @@ int UiConsole::menuUsuarios() {
    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Modificar usuario" << std::endl;
    std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Eliminar usuario" << std::endl;
    std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Modificar contraseña root" << std::endl;
-   std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Asignación de roles y privilegios"
-             << std::endl;
-   std::cout << RESET << ROJO << "6. " << RESET << SUBRAYADO << BOLD << "Bloquear/desbloquear usuario" << std::endl;
-   std::cout << RESET << ROJO << "7. " << RESET << SUBRAYADO << BOLD << "Lista de usuarios" << std::endl;
+   std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Lista de usuarios" << std::endl;
    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
    std::cout << "Opción elegida: ";
 
@@ -486,7 +483,7 @@ Usuario UiConsole::agregarUsuario(std::string nombreUsuario){
    std::cout << "Contraseña: ";
    std::string pass;
    std::getline(std::cin, pass);
-   std::cout << "Rol: ";
+   std::cout << "Rol (a: administrador u: usuario v: vendedor c: comprador ): ";
    std::string rol;
    std::getline(std::cin, rol);
    std::cout << "Telefono: ";
@@ -498,7 +495,7 @@ Usuario UiConsole::agregarUsuario(std::string nombreUsuario){
    std::cout << "Email: ";
    std::string email;
    std::getline(std::cin, email);
-   return Usuario(rol[0], pass, nombre, Fecha(), 0, std::stoi(telefono), 'u', nombre, direccion, email);
+   return Usuario(rol[0], pass, nombreUsuario, Fecha(), 0, std::stoi(telefono), 'u', nombre, direccion, email);
 
 }
 

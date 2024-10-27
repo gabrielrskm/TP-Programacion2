@@ -2,9 +2,13 @@
 #include <string>
 
 Fecha::Fecha() {
-   _dia = 1;
-   _mes = 1;
-   _anio = 2023;
+   std::time_t time = std::time(nullptr);
+    std::tm* hoy = std::localtime(&time);
+   _dia = hoy->tm_mday;
+   _mes = hoy->tm_mon+1;
+   _anio = hoy->tm_year+1900;
+   _minutos = hoy->tm_min;
+   _horas = hoy->tm_hour;
 };
 Fecha::Fecha(int d, int m, int a) {
    if (validarFecha(d, m, a)) {
@@ -16,6 +20,8 @@ Fecha::Fecha(int d, int m, int a) {
       _mes = 1;
       _anio = 2023;
    }
+   _minutos = 0;
+   _horas = 0;
 }
 
 void Fecha::setDia(int d) {

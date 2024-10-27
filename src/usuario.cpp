@@ -13,7 +13,7 @@ Usuario::Usuario(char tipo, std::string pass, std::string nombreUsuario, Fecha f
     : Persona(id, telefono, tipoFJ, nombre, direccion, email){
 
    this->_tipo = tipo;
-   strcpy(this->_nombreUsuario, nombre.c_str());
+   strcpy(this->_nombreUsuario, nombreUsuario.c_str());
    strcpy(this->_password, pass.c_str());
    this->_id = id;
    this->_telefono = telefono;
