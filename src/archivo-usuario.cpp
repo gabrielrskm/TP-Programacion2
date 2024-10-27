@@ -83,3 +83,31 @@ void ArchivoUsuario::Leer(int cantidadRegistros, Usuario *vector){
     fclose(pArchivo);
 }
 
+Usuario* ArchivoUsuario::LeerTodos(){
+    FILE *pArchivo = fopen(_nombreArchivo, "rb");
+    if(pArchivo == NULL){
+        return nullptr;
+    }
+    fseek(pArchivo, 0, SEEK_END);
+    int tamanoArchivo = ftell(pArchivo);
+    int cantidadRegistros = tamanoArchivo / sizeof(Usuario);
+    
+    if (tamanoArchivo % sizeof(Usuario) != 0) {
+        fclose(pArchivo);
+        cantidadRegistros = 0;
+        return nullptr;
+    }
+    Usuario *vector = new Usuario[cantidadRegistros];
+    if(vector == NULL){
+        fclose(pArchivo);
+        return nullptr;
+    }
+
+    fseek(pArchivo, 0, SEEK_SET);
+    for(int i = 0; i < cantidadRegistros; i++){
+        fread(&vector[i], sizeof(Usuario), 1, pArchivo);
+    }
+    fclose(pArchivo);
+    return vector;
+}
+

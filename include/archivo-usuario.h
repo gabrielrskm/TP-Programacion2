@@ -13,6 +13,7 @@ class ArchivoUsuario{
         bool Guardar(Usuario usuario, int posicion);
         int Buscar(std::string nombreUsuario);
         Usuario Leer(int posicion);
+        Usuario* LeerTodos();
         int CantidadRegistros();
         void Leer(int cantidadRegistros, Usuario *vector);
 };

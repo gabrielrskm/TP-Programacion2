@@ -41,39 +41,29 @@ bool Manager::login(std::string user, std::string pass) {
    if (pos == -1) {
       return false;
    }
+   if (this->archivoUsuario.Leer(pos).getPassword() != pass) {
+      return false;
+   }
+   this->_nombreUsuario = this->archivoUsuario.Leer(pos).getNombreUsuario();
+   this->_tipoUsuario = this->archivoUsuario.Leer(pos).getTipo();
    return true;
 }
 
- /* bool Manager::darDeAltaProducto(std::string codigo,std::string descripcion,
-            std::string tipoMedicion, int futuro, bool origenInterno, ){
-    int res = this->archivoRecurso.Buscar(codigo);
-    if(res>0){
-       return false;
-    }
-    Recurso rs = Recurso(codigo, descripcion, tipoMedicion, 0, 0, origenInterno);
-    if(origenInterno){
+std::string Manager::getNombreUsuario() {
+   return this->_nombreUsuario;
+}
+int Manager::buscarUsuario(std::string nombreUsuario){
+   return this->archivoUsuario.Buscar(nombreUsuario);
+}
 
-    } */
+bool Manager::agregarUsuario(Usuario usuario) {
+   return this->archivoUsuario.Guardar(usuario);
+}
 
+Usuario* Manager::listaUsuarios() {
+   return this->archivoUsuario.LeerTodos();
+}
 
-
-
-/*
-   5-dar de alta producto
-
-   ingrese codigo
-
-
-
-
-   ingrese los codigos que componen al producto, toque enter para finalizar
-   codigo:camisa
-   no existe camisa
-   cogigo:camisa1
-   cantidad:5
-   codigo:
-
-
-
-
-*/
+int Manager::cantidadUsuarios() {
+   return this->archivoUsuario.CantidadRegistros();
+}

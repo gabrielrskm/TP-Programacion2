@@ -38,10 +38,11 @@ class Manager {
   public:
    Manager();
    bool login(std::string user, std::string pass);
-   /* bool darDeAltaProducto(std::string codigo,std::string descripcion,
-            std::string tipoMedicion, int futuro, bool origenInterno); */
-   std::string getClientByName(std::string name);
-   std::string getRecursoById(std::string id);
+   bool agregarUsuario(Usuario usuario);
+   Usuario* listaUsuarios();
+   int cantidadUsuarios();
+   std::string getNombreUsuario();
+   int buscarUsuario(std::string nombreUsuario);
 
   private:
    ArchivoCliente archivoCliente;
@@ -58,4 +59,5 @@ class Manager {
    ArchivoRecurso archivoRecurso;
    ArchivoUsuario archivoUsuario;
    char _tipoUsuario;
+   std::string _nombreUsuario;
 };
