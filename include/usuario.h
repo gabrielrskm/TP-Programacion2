@@ -16,7 +16,7 @@ class Usuario : public Persona {
 
    std::string getNombreUsuario();
    void setNombreUsuario(std::string nombreUsuario);
-
+   static bool validarUsuarioYPass(std::string nombreUsuario, std::string pass);
 
   private:
    char _tipo; // a = administrador, v = vendedor, u = usuario, c = comprador

@@ -290,3 +290,285 @@
 1729094601 d:\documentos\utn\tup\2-programacion 2\ejercicios\tp_programacion2\include\recurso.h
 	<iostream>
 
+1729744841 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-cliente.cpp
+	"../include/archivo-cliente.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-cliente.h
+	<string>
+	"cliente.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\cliente.h
+	<iostream>
+	"persona.h"
+
+1730043485 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\persona.h
+	<iostream>
+	"fecha.h"
+
+1730043485 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\fecha.h
+	<iostream>
+	<ctime>
+
+1729744883 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-composicion-factura.cpp
+	"../include/archivo-composicion-factura.h"
+	<cstring>
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-composicion-factura.h
+	<string>
+	"composicion-factura.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\composicion-factura.h
+	<iostream>
+	"fecha.h"
+
+1729744944 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-composicion-movimientos.cpp
+	"../include/archivo-composicion-movimiento.h"
+	<cstring>
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-composicion-movimiento.h
+	<string>
+	"composicion-movimientos.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\composicion-movimientos.h
+	<iostream>
+
+1729744907 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-composicion-orden.cpp
+	"../include/archivo-composicion-orden.h"
+	<cstring>
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-composicion-orden.h
+	<string>
+	"composicion-orden.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\composicion-orden.h
+	<iostream>
+
+1729744961 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-composicion-producto.cpp
+	"../include/archivo-composicion-producto.h"
+	<cstring>
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-composicion-producto.h
+	<string>
+	"composicion-producto.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\composicion-producto.h
+	<iostream>
+
+1729744977 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-factura.cpp
+	"../include/archivo-factura.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-factura.h
+	<string>
+	"factura.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\factura.h
+	<iostream>
+	"fecha.h"
+
+1729744990 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-movimientos.cpp
+	"../include/archivo-movimientos.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-movimientos.h
+	<string>
+	"movimientos.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\movimientos.h
+	<iostream>
+	"fecha.h"
+
+1729745011 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-orden-compra.cpp
+	"../include/archivo-orden-compra.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-orden-compra.h
+	<string>
+	"orden-compra.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\orden-compra.h
+	<iostream>
+	"orden.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\orden.h
+	<iostream>
+	"fecha.h"
+
+1729745025 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-orden-produccion.cpp
+	"../include/archivo-orden-produccion.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-orden-produccion.h
+	<string>
+	"orden-produccion.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\orden-produccion.h
+	<iostream>
+	"orden.h"
+
+1729745052 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-orden-venta.cpp
+	"../include/archivo-orden-venta.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-orden-venta.h
+	<string>
+	"orden-venta.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\orden-venta.h
+	<iostream>
+	"orden.h"
+
+1729745066 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-proveedor.cpp
+	"../include/archivo-proveedor.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-proveedor.h
+	<string>
+	"proveedor.h"
+
+1729742808 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\proveedor.h
+	<iostream>
+	"persona.h"
+
+1729745086 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-recurso.cpp
+	"../include/archivo-recursos.h"
+	<cstring>
+
+1729959231 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-recursos.h
+	<string>
+	"recurso.h"
+
+1729959231 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\recurso.h
+	<iostream>
+
+1729745136 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\composicion-factura.cpp
+	"../include/composicion-factura.h"
+	<cstring>
+
+1729745147 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\composicion-movimientos.cpp
+	"../include/composicion-movimientos.h"
+	<cstring>
+
+1729745159 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\composicion-orden.cpp
+	"../include/composicion-orden.h"
+	<cstring>
+
+1729745168 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\composicion-producto.cpp
+	"../include/composicion-producto.h"
+	<cstring>
+
+1729749726 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\factura.cpp
+	"../include/factura.h"
+
+1729745224 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\movimientos.cpp
+	"../include/movimientos.h"
+	<cstring>
+
+1729745243 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\orden-compra.cpp
+	"../include/orden-compra.h"
+
+1729745252 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\orden-produccion.cpp
+	"../include/orden-produccion.h"
+	<cstring>
+
+1729745265 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\orden-venta.cpp
+	"../include/orden-venta.h"
+
+1729745234 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\orden.cpp
+	"../include/orden.h"
+
+1729745816 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\proveedor.cpp
+	"../include/proveedor.h"
+	<cstring>
+	"../include/persona.h"
+
+1729959231 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\recurso.cpp
+	"../include/recurso.h"
+	<cstring>
+
+1730043103 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\archivo-usuario.cpp
+	"../include/archivo-usuario.h"
+
+1730043103 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\archivo-usuario.h
+	<string>
+	"usuario.h"
+
+1730397410 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\usuario.h
+	<iostream>
+	"persona.h"
+
+1730356414 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\main.cpp
+	<iostream>
+	"include/manager.h"
+	"include/ui-console.h"
+	"include/menu.h"
+
+1730397289 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\manager.h
+	<iostream>
+	"fecha.h"
+	"persona.h"
+	"recurso.h"
+	"cliente.h"
+	"proveedor.h"
+	"usuario.h"
+	"orden.h"
+	"orden-compra.h"
+	"orden-produccion.h"
+	"orden-venta.h"
+	"movimientos.h"
+	"factura.h"
+	"composicion-movimientos.h"
+	"composicion-orden.h"
+	"composicion-producto.h"
+	"composicion-factura.h"
+	"archivo-cliente.h"
+	"archivo-composicion-factura.h"
+	"archivo-composicion-movimiento.h"
+	"archivo-composicion-orden.h"
+	"archivo-composicion-producto.h"
+	"archivo-factura.h"
+	"archivo-movimientos.h"
+	"archivo-orden-compra.h"
+	"archivo-orden-produccion.h"
+	"archivo-orden-venta.h"
+	"archivo-proveedor.h"
+	"archivo-recursos.h"
+	"archivo-usuario.h"
+	"manager.h"
+
+1730355051 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\ui-console.h
+	<iostream>
+	"manager.h"
+
+1730353726 c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\include\menu.h
+	"manager.h"
+	"ui-console.h"
+
+1730354009 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\cliente.cpp
+	"../include/cliente.h"
+	<cstring>
+	"../include/persona.h"
+
+1730354007 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\fecha.cpp
+	"../include/fecha.h"
+	<string>
+
+1730397239 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\manager.cpp
+	"../include/manager.h"
+	<direct.h>
+
+1730356267 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\ui-console.cpp
+	"../include/ui-console.h"
+	<cstdlib>
+	<iostream>
+	<windows.h>
+
+1730397469 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\usuario.cpp
+	"../include/usuario.h"
+	<cstring>
+	"../include/persona.h"
+
+1730354048 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\persona.cpp
+	"../include/persona.h"
+	<cstring>
+
+1730353899 source:c:\users\mader.desktop-6hn686u\onedrive\documents\utn\programacion\dos\tp-sistemagestion\tp-programacion2\src\menu.cpp
+	"../include/menu.h"
+	"../include/ui-console.h"
+	"../include/manager.h"
+	<string>
+

@@ -53,6 +53,7 @@
 		<Unit filename="include/factura.h" />
 		<Unit filename="include/fecha.h" />
 		<Unit filename="include/manager.h" />
+		<Unit filename="include/menu.h" />
 		<Unit filename="include/movimientos.h" />
 		<Unit filename="include/orden-compra.h" />
 		<Unit filename="include/orden-produccion.h" />
@@ -85,6 +86,7 @@
 		<Unit filename="src/factura.cpp" />
 		<Unit filename="src/fecha.cpp" />
 		<Unit filename="src/manager.cpp" />
+		<Unit filename="src/menu.cpp" />
 		<Unit filename="src/movimientos.cpp" />
 		<Unit filename="src/orden-compra.cpp" />
 		<Unit filename="src/orden-produccion.cpp" />

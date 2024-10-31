@@ -48,3 +48,10 @@ std::string Usuario::getNombreUsuario() {
 void Usuario::setNombreUsuario(std::string nombreUsuario) {
    strcpy(this->_nombreUsuario, nombreUsuario.c_str());
 }
+
+bool Usuario::validarUsuarioYPass(std::string nombreUsuario, std::string pass){
+        if (nombreUsuario.size() < 1 || nombreUsuario.size() > 20) return false;
+        if (pass.size() < 1 || pass.size() > 20) return false;
+        return true;
+    
+    }

@@ -43,6 +43,7 @@ class Manager {
    int cantidadUsuarios();
    std::string getNombreUsuario();
    int buscarUsuario(std::string nombreUsuario);
+ 
 
   private:
    ArchivoCliente archivoCliente;

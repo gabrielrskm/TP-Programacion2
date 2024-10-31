@@ -23,15 +23,15 @@ Cliente::Cliente(bool prioridad, float totalVentas, int id, int telefono, char t
 
 void Cliente::setPrioridad(bool prioridad) {
    this->_prioridad = prioridad;
-};
+}
 
-bool Cliente::getPrioridad() { 
+bool Cliente::getPrioridad() {
    return this->_prioridad;
-};
+}
 
 void Cliente::setTotalVentas(float totalVentas) {
    this->_totalVentas = totalVentas;
-};
+}
 
 float Cliente::getTotalVentas() {
    return this->_totalVentas;
