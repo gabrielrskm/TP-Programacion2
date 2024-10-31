@@ -41,6 +41,7 @@
     <ClCompile Include="src\factura.cpp" />
     <ClCompile Include="src\fecha.cpp" />
     <ClCompile Include="src\manager.cpp" />
+    <ClCompile Include="src\menu.cpp" />
     <ClCompile Include="src\movimientos.cpp" />
     <ClCompile Include="src\orden-compra.cpp" />
     <ClCompile Include="src\orden-produccion.cpp" />
@@ -74,6 +75,7 @@
     <ClInclude Include="include\factura.h" />
     <ClInclude Include="include\fecha.h" />
     <ClInclude Include="include\manager.h" />
+    <ClInclude Include="include\menu.h" />
     <ClInclude Include="include\movimientos.h" />
     <ClInclude Include="include\orden-compra.h" />
     <ClInclude Include="include\orden-produccion.h" />

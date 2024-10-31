@@ -1,6 +1,6 @@
 #include "../include/ui-console.h"
 
-#include <cstdlib>  // Para system
+#include <cstdlib> 
 #include <iostream>
 
 #ifdef _WIN32
@@ -29,7 +29,7 @@ void UiConsole::pausa() {
 #ifdef _WIN32
    system("pause");
 #else
-   std::cout << "Toque enter para continuar" << std::endl;
+   std::cout << "Presione Enter para continuar" << std::endl;
    std::string op;
    std::getline(std::cin, op);
 #endif
@@ -40,6 +40,14 @@ void UiConsole::opcionIncorrecta() {
    this->pausa();
 }
 
+
+const char* LOG_IN = R"(
+╔══════════════════════════════════════════╗
+║                                          ║ 
+║                 LOG IN                   ║ 
+║                                          ║ 
+╚══════════════════════════════════════════╝
+)";
 
 const char* MENU_PRINCIPAL = R"(
 ╔══════════════════════════════════════════╗
@@ -120,25 +128,28 @@ UiConsole::UiConsole() {
 void UiConsole::setUsuario(std::string usuario) {
    this->_nombreUsuario = usuario;
 }
-bool UiConsole::login(std::string& user, std::string& pass) {
 
+void UiConsole::mostrarMenuLogin(std::string& user, std::string& pass, int intentos) {
+    
+    if (intentos == 4) {
+    std::cout << LOG_IN << std::endl; 
+   }
+
+    if (intentos < 4) {
+        std::cout << BOLD << ROJO << "Usuario o contraseña incorrectos" << RESET << std::endl;
+        std::cout << "Intentos restantes: " << BOLD << ROJO << intentos << RESET << std::endl << std::endl;
+    } 
+  
    std::cout << "Ingrese su usuario: ";
-   std::getline(std::cin, user);
-   if (user.size() <= 0 || user.size() > 20) {
-      return false;
-   }
+   std::getline(std::cin, user);  
    std::cout << "Ingrese su contrasena: ";
-   std::getline(std::cin, pass);
-   if (pass.size() <= 0 || pass.size() > 20) {
-      return false;
-   }
+   std::getline(std::cin, pass); 
    std::cout << std::endl;
-   return true;
 }
 
-int UiConsole::menuPrincipal() {
+int UiConsole::mostrarMenuPrincipal() {
    limpiarConsola();
-   std::cout << "Usuario: " << _nombreUsuario;
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_PRINCIPAL << std::endl;
 
 
@@ -182,9 +193,9 @@ int UiConsole::menuPrincipal() {
    }
 }
 
-int UiConsole::menuInsumos() {
+int UiConsole::mostrarMenuInsumos() {
    limpiarConsola();
-   std::cout << "Usuario: " << _nombreUsuario;
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_INSUMOS << std::endl;
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Dar de alta insumo" << std::endl;
    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Dar de baja insumo" << std::endl;
@@ -216,9 +227,9 @@ int UiConsole::menuInsumos() {
    }
 }
 
-int UiConsole::menuProductos() {
-   std::cout << "Usuario: " << _nombreUsuario;
+int UiConsole::mostrarMenuProductos() {
    limpiarConsola();
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_PRODUCTOS << std::endl;
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Dar de alta producto" << std::endl;
@@ -251,9 +262,9 @@ int UiConsole::menuProductos() {
    }
 }
 
-int UiConsole::menuProveedores() {
+int UiConsole::mostrarMenuProveedores() {
    limpiarConsola();
-   std::cout << "Usuario: " << _nombreUsuario;
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_PROVEEDORES << std::endl;
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Agregar proveedor" << std::endl;
@@ -289,9 +300,9 @@ int UiConsole::menuProveedores() {
    }
 }
 
-int UiConsole::menuClientes() {
+int UiConsole::mostrarMenuClientes() {
    limpiarConsola();
-   std::cout << "Usuario: " << _nombreUsuario;
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_CLIENTES << std::endl;
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Agregar cliente" << std::endl;
@@ -322,9 +333,9 @@ int UiConsole::menuClientes() {
    }
 }
 
-int UiConsole::menuProduccion() {
+int UiConsole::mostrarMenuProduccion() {
    limpiarConsola();
-   std::cout << "Usuario: " << _nombreUsuario;
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_PRODUCCION << std::endl;
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Generar orden de producción" << std::endl;
@@ -352,9 +363,9 @@ int UiConsole::menuProduccion() {
    }
 }
 
-int UiConsole::menuVentas() {
+int UiConsole::mostrarMenuVentas() {
    limpiarConsola();
-   std::cout << "Usuario: " << _nombreUsuario;
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_VENTAS_FACTURACION << std::endl;
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Agregar factura" << std::endl;
@@ -385,9 +396,9 @@ int UiConsole::menuVentas() {
    }
 }
 
-int UiConsole::menuUsuarios() {
-   limpiarConsola();
-   std::cout << "Usuario: " << _nombreUsuario;
+int UiConsole::mostrarMenuUsuarios() {
+   this->limpiarConsola();
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_GESTION_USUARIOS << std::endl;
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Agregar usuario" << std::endl;
@@ -421,9 +432,9 @@ int UiConsole::menuUsuarios() {
    }
 }
 
-int UiConsole::menuEstadisticas() {
+int UiConsole::mostrarMenuEstadisticas() {
    limpiarConsola();
-   std::cout << "Usuario: " << _nombreUsuario;
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_ESTATISTICAS << std::endl;
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Generar reporte de inventario" << std::endl;
@@ -453,9 +464,9 @@ int UiConsole::menuEstadisticas() {
    }
 }
 
-int UiConsole::menuSeguridad() {
+int UiConsole::mostrarMenuSeguridad() {
    limpiarConsola();
-   std::cout << "Usuario: " << _nombreUsuario;
+   std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
    std::cout << MENU_SEGURIDAD << std::endl;
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Backup de datos" << std::endl;

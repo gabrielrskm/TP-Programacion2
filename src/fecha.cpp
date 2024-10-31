@@ -9,7 +9,7 @@ Fecha::Fecha() {
    _anio = hoy->tm_year+1900;
    _minutos = hoy->tm_min;
    _horas = hoy->tm_hour;
-};
+}
 Fecha::Fecha(int d, int m, int a) {
    if (validarFecha(d, m, a)) {
       _dia = d;

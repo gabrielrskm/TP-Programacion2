@@ -49,6 +49,7 @@ bool Manager::login(std::string user, std::string pass) {
    return true;
 }
 
+
 std::string Manager::getNombreUsuario() {
    return this->_nombreUsuario;
 }

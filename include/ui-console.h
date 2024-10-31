@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-
 #include "manager.h"
 
 class UiConsole {
@@ -15,17 +14,17 @@ class UiConsole {
 
    UiConsole();
    void setUsuario(std::string usuario);
-   int menuPrincipal();
-   int menuInsumos();
-   int menuProductos();
-   int menuProveedores();
-   int menuClientes();
-   int menuProduccion();
-   int menuVentas();
-   int menuUsuarios();
-   int menuEstadisticas();
-   int menuSeguridad();
-   bool login(std::string& user, std::string& pass);
+   int mostrarMenuPrincipal();
+   int mostrarMenuInsumos();
+   int mostrarMenuProductos();
+   int mostrarMenuProveedores();
+   int mostrarMenuClientes();
+   int mostrarMenuProduccion();
+   int mostrarMenuVentas();
+   int mostrarMenuUsuarios();
+   int mostrarMenuEstadisticas();
+   int mostrarMenuSeguridad();
+   void mostrarMenuLogin(std::string& user, std::string& pass, int intentos);
    void configurarConsola();
    void limpiarConsola();
    void opcionIncorrecta();
