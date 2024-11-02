@@ -199,8 +199,8 @@ int UiConsole::mostrarMenuInsumos() {
    std::cout << MENU_INSUMOS << std::endl;
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Dar de alta insumo" << std::endl;
    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Dar de baja insumo" << std::endl;
-   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de insumo" << std::endl;
-   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Consultar stock de insumo" << std::endl;
+   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Modificar Insumo" << std::endl;
+   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Stock de insumo" << std::endl;
    std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Listar insumos" << std::endl;
    std::cout << RESET << ROJO << "6. " << RESET << SUBRAYADO << BOLD << "Buscar insumo" << std::endl;
    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
@@ -550,19 +550,47 @@ Recurso UiConsole::agregarInsumo(std::string codigo) {
 
 void UiConsole::mostrarInsumos(Recurso* insumos, int cantidad) {
    std::cout << std::left;
-   std::cout <<std::setw(23)<< "║codigo";
-   std::cout <<std::setw(23)<< "║descripcion";
-   std::cout <<std::setw(23)<< "║tipo de medicion";
-   std::cout <<std::setw(23)<< "║cantidad" << std::endl;
+   std::cout << std::setw(23) << "║ codigo";
+   std::cout << std::setw(23) << "║ descripcion";
+   std::cout << std::setw(23) << "║ tipo de medicion";
+   std::cout << std::setw(23) << "║ cantidad" << std::endl;
    std::cout << "════════════════════════════════════════════════════════════════════════════════";
    std::cout << std::endl;
 
    for (int i = 0; i < cantidad; i++) {
       if (!insumos[i].getEstaBorrado()) {
-         std::cout << std::setw(23) << "║"+insumos[i].getCodigo();
-         std::cout << std::setw(23) << "║"+insumos[i].getDescripcion();
-         std::cout << std::setw(23) << "║"+insumos[i].getTipoMedicion();
-         std::cout << std::setw(23) << "║"+insumos[i].getStock() << std::endl;
+         std::cout << std::setw(23) << "║ " + insumos[i].getCodigo();
+         std::cout << std::setw(23) << "║ " + insumos[i].getDescripcion();
+         std::cout << std::setw(23) << "║ " + insumos[i].getTipoMedicion();
+         std::cout << std::setw(23) << "║ " +std::to_string(insumos[i].getStock());
+         std::cout << std::endl << std::endl;
       }
    }
+}
+
+int UiConsole::stockInsumo() {
+   std::cout << "desea modificar stock? s/n" << std::endl;
+   std::string resp;
+   std::getline(std::cin, resp);
+   if (resp != "s" && resp != "S") {
+      return -1;
+   }
+   std::cout << "Ingrese el nuevo stock : " << std::endl;
+   std::string stock;
+   std::getline(std::cin, stock);
+   // the next code is from GeeksforGeeks
+   // https://www.geeksforgeeks.org/convert-string-to-int-in-cpp/
+   const char* str = stock.c_str();
+   char* endptr;
+   long int value = strtol(str, &endptr, 10);
+   if (endptr == str) {
+      std::cout << "no se encontraron numeros" << std::endl;
+      return -1;
+   } else if (*endptr != '\0') {
+      std::cout << "formato numerico no valido" << std::endl;
+      return -1;
+   } else {
+      return value;
+   }
+   return -1;
 }

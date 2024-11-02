@@ -126,21 +126,17 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      if (manager.buscarInsumo(codigoInsumo) < 0) {
-         std::cout << "El insumo ya existe" << std::endl;
+      int pos = manager.buscarInsumo(codigoInsumo);
+      if (pos < 0) {
+         std::cout << "El insumo no existe" << std::endl;
          ui.pausa();
          return;
       }
-      Recurso insumo = ui.agregarInsumo(codigoInsumo);
-      if (insumo.getCodigo() == "") {
-         ui.pausa();
-         return;
-      }
-      if (manager.agregarInsumo(insumo) >= 0) {
-         std::cout << "Insumo dado de alta correctamente" << std::endl;
+      if (manager.borrarInsumo(pos)) {
+         std::cout << "Insumo se borro correctamente" << std::endl;
 
       } else {
-         std::cout << "El insumo no se pudo dar de alta" << std::endl;
+         std::cout << "No se pudo borrar el insumo" << std::endl;
       }
       ui.pausa();
       return;
@@ -164,7 +160,97 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
       ui.pausa();
       return;
    };
-
+   auto modificarInsumo = [&]() -> void {
+      ui.limpiarConsola();
+      std::string codigo = ui.pedirInsumo();
+      if (codigo == "") {
+         std::cout << "codigo incorrecto" << std::endl;
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarInsumo(codigo);
+      if (pos < 0) {
+         std::cout << "El insumo no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      Recurso* insumo = new Recurso(manager.getInsumo(pos));
+      if (insumo == nullptr) {
+         std::cout << "no hay memoria disponible" << std::endl;
+         ui.pausa();
+         return;
+      }
+      std::cout << "Valor actual del insumo : " << std::endl;
+      ui.mostrarInsumos(insumo, 1);
+      delete insumo;
+      std::cout << "Valor nuevo del insumo : " << std::endl;
+      Recurso insumoModificado = ui.agregarInsumo(codigo);
+      if (manager.modificarInsumo(insumoModificado, pos)) {
+         std::cout << "Insumo modificado correctamente" << std::endl;
+      } else {
+         std::cout << "No se pudo modificar el insumo" << std::endl;
+      }
+      ui.pausa();
+      return;
+   };
+   auto buscarInsumo = [&]() -> void {
+      ui.limpiarConsola();
+      std::string codigoInsumo = ui.pedirInsumo();
+      if (codigoInsumo == "") {
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarInsumo(codigoInsumo);
+      if (pos < 0) {
+         std::cout << "El insumo no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      Recurso* insumo = new Recurso(manager.getInsumo(pos));
+      if (insumo == nullptr) {
+         std::cout << "no hay memoria disponible" << std::endl;
+         ui.pausa();
+         return;
+      }
+      ui.mostrarInsumos(insumo, 1);
+      delete insumo;
+      ui.pausa();
+      return;
+   };
+   auto stock = [&]() -> void {
+      ui.limpiarConsola();
+      std::string codigoInsumo = ui.pedirInsumo();
+      if (codigoInsumo == "") {
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarInsumo(codigoInsumo);
+      if (pos < 0) {
+         std::cout << "El insumo no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      Recurso* insumo = new Recurso(manager.getInsumo(pos));
+      if (insumo == nullptr) {
+         std::cout << "no hay memoria disponible" << std::endl;
+         ui.pausa();
+         return;
+      }
+      ui.mostrarInsumos(insumo, 1);
+      delete insumo;
+      int stock = ui.stockInsumo();
+      if(stock<0){
+         ui.pausa();
+         return;
+      }
+      if (manager.modificarStockInsumo(stock, pos)) {
+         std::cout << "Stock modificado correctamente" << std::endl;
+      } else {
+         std::cout << "No se pudo modificar el stock" << std::endl;
+      }
+      ui.pausa();
+      return;
+   };
    int op;
    do {
       op = ui.mostrarMenuInsumos();
@@ -175,14 +261,17 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          case 2:
             borraInsumo();
             break;
-         case 3:
+         case 3:  //
+            modificarInsumo();
             break;
          case 4:
+            stock();
             break;
          case 5:
             listaInsumos();
             break;
          case 6:
+            buscarInsumo();
             break;
          case 0:
             break;

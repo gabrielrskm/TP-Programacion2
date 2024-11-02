@@ -75,7 +75,8 @@ int Manager::agregarInsumo(Recurso recurso) {
 
    return this->archivoRecurso.Guardar(recurso);
 }
-bool Manager::borrarInsumo(std::string codigo, int pos) {
+
+bool Manager::borrarInsumo(int pos) {
 
    Recurso rs = this->archivoRecurso.Leer(pos);
    rs.setEstaBorrado(true);
@@ -106,4 +107,14 @@ Recurso* Manager::listaInsumos(int cant) {
       return nullptr;
    }
    return vector;
+}
+
+Recurso Manager::getInsumo(int pos) {
+   return this->archivoRecurso.Leer(pos);
+}
+
+bool Manager::modificarStockInsumo(int stock, int pos) {
+   Recurso recurso = this->archivoRecurso.Leer(pos);
+   recurso.setStock(stock);
+   return this->archivoRecurso.Guardar(recurso, pos);
 }

@@ -48,6 +48,7 @@ class UiConsole {
    std::string pedirInsumo();
    Recurso agregarInsumo(std::string codigo);
    void mostrarInsumos(Recurso* insumos,int cantidad);
+   int stockInsumo();
 
   private:
    std::string _nombreUsuario;

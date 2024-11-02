@@ -47,11 +47,13 @@ class Manager {
    //funcionalidades insumos
    int buscarInsumo(std::string codigo);
    int agregarInsumo(Recurso insumo);
-   bool borrarInsumo(std::string codigo,int pos);
+   bool borrarInsumo(int pos);
    bool actualizarStock(Recurso insumo, int pos);
    Recurso* listaInsumos(int cantidad);
+   Recurso getInsumo(int pos);
    bool estaBorrado(int pos);
    bool modificarInsumo(Recurso insumo, int pos);
+   bool modificarStockInsumo(int stock, int pos);
    int cantidadInsumos();
  
 
