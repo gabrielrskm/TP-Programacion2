@@ -43,6 +43,16 @@ class Manager {
    int cantidadUsuarios();
    std::string getNombreUsuario();
    int buscarUsuario(std::string nombreUsuario);
+
+   //funcionalidades insumos
+   int buscarInsumo(std::string codigo);
+   int agregarInsumo(Recurso insumo);
+   bool borrarInsumo(std::string codigo,int pos);
+   bool actualizarStock(Recurso insumo, int pos);
+   Recurso* listaInsumos(int pos);
+   Recurso buscarInsumos();
+   bool estaBorrado(int pos);
+   bool modificarInsumo(Recurso insumo, int pos);
  
 
   private:

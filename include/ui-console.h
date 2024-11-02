@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+
 #include "manager.h"
 
 class UiConsole {
@@ -30,7 +31,7 @@ class UiConsole {
    void opcionIncorrecta();
    void pausa();
 
-   //funcionalidades del menu usuarios
+   // funcionalidades del menu usuarios
    Usuario agregarUsuario(std::string nombreUsuario);
    void modificarUsuario();
    void eliminarUsuario();
@@ -41,6 +42,10 @@ class UiConsole {
    void mostrarRoles();
    void mostrarRoles(std::string& nombreUsuario);
    void tipoUsuario(std::string tipoUsuario);
+   
+   //funcionalidades insumo
+   std::string pedirInsumo();
+   Recurso agregarInsumo(std::string codigo);
 
   private:
    std::string _nombreUsuario;

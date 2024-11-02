@@ -1,11 +1,11 @@
 #pragma once
 #include <iostream>
 
-class Recurso{
+class Recurso {
   public:
    Recurso();
-   Recurso(std::string codigo,std::string descripcion,
-            std::string tipoMedicion, int stock, int futuro, bool origenInterno);
+   Recurso(std::string codigo, std::string descripcion, std::string tipoMedicion, int stock, int futuro,
+           bool origenInterno);
    std::string getCodigo();
    void setCodigo(std::string codigo);
    std::string getDescripcion();
@@ -19,6 +19,9 @@ class Recurso{
    bool getOrigen();
    void setOrigen(bool origen);
 
+   //funcionalidase insumo  
+   bool getEstaBorrado();
+   void setEstaBorrado(bool borrado);
 
 
   private:
@@ -28,4 +31,5 @@ class Recurso{
    int _stock;
    int _futuro;
    bool _origenInterno;
+   bool _estaBorrado;
 };

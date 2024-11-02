@@ -524,3 +524,30 @@ void UiConsole::tipoUsuario(std::string tipoUsuario){
       std::cout << "comprador" << std::endl;
    }
 }
+
+//funcionalidades insumo
+
+std::string UiConsole::pedirInsumo(){
+   std::cout << "Codigo: ";
+   std::string codigo;
+   std::getline(std::cin, codigo);
+   if(codigo.length()>20 || codigo.length()==0){
+      std::cout << "El codigo debe tener entre 1 y 20 letras alfanumericas" << std::endl;
+      return "";
+   }
+   return codigo;
+}
+
+Recurso UiConsole::agregarInsumo(std::string codigo){
+   std::cout << "Nombre: ";
+   std::string nombre;
+   std::getline(std::cin, nombre);
+   std::cout << "Descripcion: ";
+   std::string descripcion;
+   std::getline(std::cin, descripcion);
+   std::cout << "Tipo de medicion : ";
+   std::string tipoMedicion;
+   std::getline(std::cin, tipoMedicion);
+   Recurso insumo(codigo, descripcion, tipoMedicion, 0, 0,false);
+   return insumo;
+}

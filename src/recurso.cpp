@@ -67,3 +67,13 @@ bool Recurso::getOrigen(){
 void Recurso::setOrigen(bool origen){
    this->_origenInterno = origen;
 }
+
+//funcionalidades insumo
+
+bool Recurso::getEstaBorrado(){
+   return this->_estaBorrado;
+}
+
+void Recurso::setEstaBorrado(bool borrado){
+   this->_estaBorrado = borrado;
+}

@@ -68,3 +68,27 @@ Usuario* Manager::listaUsuarios() {
 int Manager::cantidadUsuarios() {
    return this->archivoUsuario.CantidadRegistros();
 }
+
+//funcionalidades insumos
+   int Manager::agregarInsumo(Recurso recurso) {
+
+   return this->archivoRecurso.Guardar(recurso);
+}
+bool Manager::borrarInsumo(std::string codigo,int pos) {
+   
+   Recurso rs = this->archivoRecurso.Leer(pos);
+   rs.setEstaBorrado(true);
+   return this->archivoRecurso.Guardar(rs,pos);
+}
+int Manager::buscarInsumo(std::string codigo) {
+   if(codigo.length()>20 || codigo.length()==0){
+      return -2;
+   }
+   return this->archivoRecurso.Buscar(codigo);
+}
+bool Manager::estaBorrado(int pos){
+   return this->archivoRecurso.Leer(pos).getEstaBorrado();
+}
+bool Manager::modificarInsumo(Recurso insumo, int pos) {
+   return this->archivoRecurso.Guardar(insumo,pos);
+}
