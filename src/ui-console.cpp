@@ -1,6 +1,6 @@
 #include "../include/ui-console.h"
 
-#include <cstdlib> 
+#include <cstdlib>
 #include <iostream>
 
 #ifdef _WIN32
@@ -130,20 +130,20 @@ void UiConsole::setUsuario(std::string usuario) {
 }
 
 void UiConsole::mostrarMenuLogin(std::string& user, std::string& pass, int intentos) {
-    
-    if (intentos == 4) {
-    std::cout << LOG_IN << std::endl; 
+
+   if (intentos == 4) {
+      std::cout << LOG_IN << std::endl;
    }
 
-    if (intentos < 4) {
-        std::cout << BOLD << ROJO << "Usuario o contraseña incorrectos" << RESET << std::endl;
-        std::cout << "Intentos restantes: " << BOLD << ROJO << intentos << RESET << std::endl << std::endl;
-    } 
-  
+   if (intentos < 4) {
+      std::cout << BOLD << ROJO << "Usuario o contraseña incorrectos" << RESET << std::endl;
+      std::cout << "Intentos restantes: " << BOLD << ROJO << intentos << RESET << std::endl << std::endl;
+   }
+
    std::cout << "Ingrese su usuario: ";
-   std::getline(std::cin, user);  
+   std::getline(std::cin, user);
    std::cout << "Ingrese su contrasena: ";
-   std::getline(std::cin, pass); 
+   std::getline(std::cin, pass);
    std::cout << std::endl;
 }
 
@@ -487,7 +487,7 @@ int UiConsole::mostrarMenuSeguridad() {
    }
 }
 
-Usuario UiConsole::agregarUsuario(std::string nombreUsuario){
+Usuario UiConsole::agregarUsuario(std::string nombreUsuario) {
    std::cout << "Nombre: ";
    std::string nombre;
    std::getline(std::cin, nombre);
@@ -507,38 +507,34 @@ Usuario UiConsole::agregarUsuario(std::string nombreUsuario){
    std::string email;
    std::getline(std::cin, email);
    return Usuario(rol[0], pass, nombreUsuario, Fecha(), 0, std::stoi(telefono), 'u', nombre, direccion, email);
-
 }
 
-void UiConsole::tipoUsuario(std::string tipoUsuario){
-   if(tipoUsuario == "a" || tipoUsuario == "A"){
+void UiConsole::tipoUsuario(std::string tipoUsuario) {
+   if (tipoUsuario == "a" || tipoUsuario == "A") {
       std::cout << "administrador" << std::endl;
-   }
-   else if(tipoUsuario == "u" || tipoUsuario == "U"){
+   } else if (tipoUsuario == "u" || tipoUsuario == "U") {
       std::cout << "usuario" << std::endl;
-   }
-   else if(tipoUsuario == "v" || tipoUsuario == "V"){
+   } else if (tipoUsuario == "v" || tipoUsuario == "V") {
       std::cout << "vendedor" << std::endl;
-   }
-   else if(tipoUsuario == "c" || tipoUsuario == "C"){
+   } else if (tipoUsuario == "c" || tipoUsuario == "C") {
       std::cout << "comprador" << std::endl;
    }
 }
 
-//funcionalidades insumo
+// funcionalidades insumo
 
-std::string UiConsole::pedirInsumo(){
+std::string UiConsole::pedirInsumo() {
    std::cout << "Codigo: ";
    std::string codigo;
    std::getline(std::cin, codigo);
-   if(codigo.length()>20 || codigo.length()==0){
+   if (codigo.length() > 20 || codigo.length() == 0) {
       std::cout << "El codigo debe tener entre 1 y 20 letras alfanumericas" << std::endl;
       return "";
    }
    return codigo;
 }
 
-Recurso UiConsole::agregarInsumo(std::string codigo){
+Recurso UiConsole::agregarInsumo(std::string codigo) {
    std::cout << "Nombre: ";
    std::string nombre;
    std::getline(std::cin, nombre);
@@ -548,6 +544,25 @@ Recurso UiConsole::agregarInsumo(std::string codigo){
    std::cout << "Tipo de medicion : ";
    std::string tipoMedicion;
    std::getline(std::cin, tipoMedicion);
-   Recurso insumo(codigo, descripcion, tipoMedicion, 0, 0,false);
+   Recurso insumo(codigo, descripcion, tipoMedicion, 0, 0, false);
    return insumo;
+}
+
+void UiConsole::mostrarInsumos(Recurso* insumos, int cantidad) {
+   std::cout << std::left;
+   std::cout <<std::setw(23)<< "║codigo";
+   std::cout <<std::setw(23)<< "║descripcion";
+   std::cout <<std::setw(23)<< "║tipo de medicion";
+   std::cout <<std::setw(23)<< "║cantidad" << std::endl;
+   std::cout << "════════════════════════════════════════════════════════════════════════════════";
+   std::cout << std::endl;
+
+   for (int i = 0; i < cantidad; i++) {
+      if (!insumos[i].getEstaBorrado()) {
+         std::cout << std::setw(23) << "║"+insumos[i].getCodigo();
+         std::cout << std::setw(23) << "║"+insumos[i].getDescripcion();
+         std::cout << std::setw(23) << "║"+insumos[i].getTipoMedicion();
+         std::cout << std::setw(23) << "║"+insumos[i].getStock() << std::endl;
+      }
+   }
 }

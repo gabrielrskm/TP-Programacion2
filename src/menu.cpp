@@ -100,7 +100,7 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      if (manager.buscarInsumo(codigoInsumo) > 0) {
+      if (manager.buscarInsumo(codigoInsumo) >= 0) {
          std::cout << "El insumo ya existe" << std::endl;
          ui.pausa();
          return;
@@ -145,6 +145,25 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
       ui.pausa();
       return;
    };
+   auto listaInsumos = [&]() -> void {
+      ui.limpiarConsola();
+      int cantidad = manager.cantidadInsumos();
+      if (cantidad == 0) {
+         std::cout << "No hay insumos" << std::endl;
+         ui.pausa();
+         return;
+      }
+      Recurso* insumos = manager.listaInsumos(cantidad);
+      if (insumos == nullptr) {
+         std::cout << "No hay insumos" << std::endl;
+         ui.pausa();
+         return;
+      }
+      ui.mostrarInsumos(insumos, cantidad);
+      delete[] insumos;
+      ui.pausa();
+      return;
+   };
 
    int op;
    do {
@@ -154,12 +173,14 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
             agregarInsumo();
             break;
          case 2:
+            borraInsumo();
             break;
          case 3:
             break;
          case 4:
             break;
          case 5:
+            listaInsumos();
             break;
          case 6:
             break;

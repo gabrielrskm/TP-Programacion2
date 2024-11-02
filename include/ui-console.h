@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <iomanip>
 
 #include "manager.h"
 
@@ -46,6 +47,7 @@ class UiConsole {
    //funcionalidades insumo
    std::string pedirInsumo();
    Recurso agregarInsumo(std::string codigo);
+   void mostrarInsumos(Recurso* insumos,int cantidad);
 
   private:
    std::string _nombreUsuario;

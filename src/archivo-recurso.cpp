@@ -40,10 +40,9 @@ int ArchivoRecurso::Buscar(std::string IdRecurso){
         return -1;
     }
     Recurso recurso;
-    std::string id = recurso.getCodigo();
     int i = 0;
     while(fread(&recurso, sizeof(Recurso), 1, pArchivo)){
-        if(id == IdRecurso){
+        if(recurso.getCodigo() == IdRecurso){
             fclose(pArchivo);
             return i;
         }

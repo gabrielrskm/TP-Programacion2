@@ -15,7 +15,7 @@ Recurso::Recurso(std::string codigo, std::string descripcion,
    strcpy(this->_codigo,codigo.c_str());
    strcpy(this->_descripcion,descripcion.c_str());
    strcpy(this->_tipoMedicion,tipoMedicion.c_str());
-   this->_stock = stock;
+   this->_stock = 0;
    this->_futuro = futuro;
    this->_origenInterno = origenInterno;
 }

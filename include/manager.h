@@ -49,10 +49,10 @@ class Manager {
    int agregarInsumo(Recurso insumo);
    bool borrarInsumo(std::string codigo,int pos);
    bool actualizarStock(Recurso insumo, int pos);
-   Recurso* listaInsumos(int pos);
-   Recurso buscarInsumos();
+   Recurso* listaInsumos(int cantidad);
    bool estaBorrado(int pos);
    bool modificarInsumo(Recurso insumo, int pos);
+   int cantidadInsumos();
  
 
   private:
