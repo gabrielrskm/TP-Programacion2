@@ -72,7 +72,7 @@ int Manager::cantidadUsuarios() {
 
 // funcionalidades insumos
 int Manager::agregarInsumo(Recurso recurso) {
-
+   recurso.setOrigen(false);
    return this->archivoRecurso.Guardar(recurso);
 }
 
@@ -86,7 +86,11 @@ int Manager::buscarInsumo(std::string codigo) {
    if (codigo.length() > 20 || codigo.length() == 0) {
       return -2;
    }
-   return this->archivoRecurso.Buscar(codigo);
+   int pos = this->archivoRecurso.Buscar(codigo);
+   if(this->archivoRecurso.Leer(pos).getOrigen()){
+      return -1;
+   }
+   return pos;
 }
 bool Manager::estaBorrado(int pos) {
    return this->archivoRecurso.Leer(pos).getEstaBorrado();

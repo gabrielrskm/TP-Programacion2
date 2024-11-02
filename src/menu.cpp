@@ -66,6 +66,7 @@ bool Menu::menuLogin(Manager& manager, UiConsole& ui) {
 }
 
 void Menu::menuProductos(Manager& manager, UiConsole& ui) {
+   
    int op;
    do {
       op = ui.mostrarMenuProductos();
