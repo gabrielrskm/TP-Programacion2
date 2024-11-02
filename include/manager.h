@@ -38,11 +38,16 @@ class Manager {
   public:
    Manager();
    bool login(std::string user, std::string pass);
+
+   //funcionalidades usuarios
    bool agregarUsuario(Usuario usuario);
    Usuario* listaUsuarios();
    int cantidadUsuarios();
    std::string getNombreUsuario();
    int buscarUsuario(std::string nombreUsuario);
+   bool esAdmin();
+   bool esComprador();
+   bool esVendedor();
 
    //funcionalidades insumos
    int buscarInsumo(std::string codigo);

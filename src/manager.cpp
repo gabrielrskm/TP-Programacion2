@@ -70,6 +70,27 @@ int Manager::cantidadUsuarios() {
    return this->archivoUsuario.CantidadRegistros();
 }
 
+bool Manager::esAdmin() {
+   if(this->_tipoUsuario == 'A' || this->_tipoUsuario == 'a'){
+      return true;
+   }
+   return false;
+}
+
+bool Manager::esComprador() {
+   if(this->_tipoUsuario == 'C' || this->_tipoUsuario == 'c'){
+      return true;
+   }
+   return false;
+}
+
+bool Manager::esVendedor() {
+   if(this->_tipoUsuario == 'V' || this->_tipoUsuario == 'v'){
+      return true;
+   }
+   return false;
+}
+
 // funcionalidades insumos
 int Manager::agregarInsumo(Recurso recurso) {
    recurso.setOrigen(false);

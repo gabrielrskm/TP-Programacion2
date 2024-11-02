@@ -66,12 +66,43 @@ bool Menu::menuLogin(Manager& manager, UiConsole& ui) {
 }
 
 void Menu::menuProductos(Manager& manager, UiConsole& ui) {
-   
+   auto agregarProducto = [&]() -> void {
+      ui.limpiarConsola();
+      if(!manager.esAdmin()){
+         std::cout << "No tiene permisos para dar de alta un nuevo producto" << std::endl;
+         ui.pausa();
+         return;
+      }
+      std::string codigoInsumo = ui.pedirInsumo();
+      if (codigoInsumo == "") {
+         ui.pausa();
+         return;
+      }
+      if (manager.buscarInsumo(codigoInsumo) >= 0) {
+         std::cout << "El Producto ya existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      Recurso insumo = ui.agregarInsumo(codigoInsumo);
+      if (insumo.getCodigo() == "") {
+         ui.pausa();
+         return;
+      }
+      if (manager.agregarInsumo(insumo) >= 0) {
+         std::cout << "Producto dado de alta correctamente" << std::endl;
+
+      } else {
+         std::cout << "El producto no se pudo dar de alta" << std::endl;
+      }
+      ui.pausa();
+      return;
+   };
    int op;
    do {
       op = ui.mostrarMenuProductos();
       switch (op) {
          case 1:
+            agregarProducto();
             break;
          case 2:
             break;
@@ -95,6 +126,11 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
 
 void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
    auto agregarInsumo = [&]() -> void {
+      if(!manager.esAdmin()){
+         std::cout << "No tiene permisos para dar de alta un nuevo insumo" << std::endl;
+         ui.pausa();
+         return;
+      }
       ui.limpiarConsola();
       std::string codigoInsumo = ui.pedirInsumo();
       if (codigoInsumo == "") {
@@ -122,6 +158,11 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
    };
    auto borraInsumo = [&]() -> void {
       ui.limpiarConsola();
+      if(!manager.esAdmin()){
+         std::cout << "No tiene permisos para borrar insumos" << std::endl;
+         ui.pausa();
+         return;
+      }
       std::string codigoInsumo = ui.pedirInsumo();
       if (codigoInsumo == "") {
          ui.pausa();
@@ -163,6 +204,11 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
    };
    auto modificarInsumo = [&]() -> void {
       ui.limpiarConsola();
+      if(!manager.esAdmin()){
+         std::cout << "No tiene permisos para modificar insumos" << std::endl;
+         ui.pausa();
+         return;
+      }
       std::string codigo = ui.pedirInsumo();
       if (codigo == "") {
          std::cout << "codigo incorrecto" << std::endl;
@@ -241,6 +287,10 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
       delete insumo;
       int stock = ui.stockInsumo();
       if(stock<0){
+         ui.pausa();
+         return;
+      }
+      if(!manager.esAdmin()){
          ui.pausa();
          return;
       }
