@@ -71,21 +71,21 @@ int Manager::cantidadUsuarios() {
 }
 
 bool Manager::esAdmin() {
-   if(this->_tipoUsuario == 'A' || this->_tipoUsuario == 'a'){
+   if (this->_tipoUsuario == 'A' || this->_tipoUsuario == 'a') {
       return true;
    }
    return false;
 }
 
 bool Manager::esComprador() {
-   if(this->_tipoUsuario == 'C' || this->_tipoUsuario == 'c'){
+   if (this->_tipoUsuario == 'C' || this->_tipoUsuario == 'c') {
       return true;
    }
    return false;
 }
 
 bool Manager::esVendedor() {
-   if(this->_tipoUsuario == 'V' || this->_tipoUsuario == 'v'){
+   if (this->_tipoUsuario == 'V' || this->_tipoUsuario == 'v') {
       return true;
    }
    return false;
@@ -108,8 +108,8 @@ int Manager::buscarInsumo(std::string codigo) {
       return -2;
    }
    int pos = this->archivoRecurso.Buscar(codigo);
-   if(this->archivoRecurso.Leer(pos).getOrigen()){
-      return -1;
+   if (this->archivoRecurso.Leer(pos).getOrigen()) {
+      return -3;//codigo que existe pero es otra categoria
    }
    return pos;
 }
@@ -142,4 +142,22 @@ bool Manager::modificarStockInsumo(int stock, int pos) {
    Recurso recurso = this->archivoRecurso.Leer(pos);
    recurso.setStock(stock);
    return this->archivoRecurso.Guardar(recurso, pos);
+}
+
+// funcionalidades productos
+
+int Manager::buscarProducto(std::string codigo) {
+   if (codigo.length() > 20 || codigo.length() == 0) {
+      return -2;
+   }
+   int pos = this->archivoRecurso.Buscar(codigo);
+   if (!this->archivoRecurso.Leer(pos).getOrigen()) {
+      return -3;//codigo que existe pero es otra categoria
+   }
+   return -1;
+}
+
+int Manager::agregarProducto(Recurso producto) {
+   producto.setOrigen(true);
+   return this->archivoRecurso.Guardar(producto);
 }

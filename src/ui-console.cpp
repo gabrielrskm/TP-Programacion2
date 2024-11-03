@@ -535,14 +535,12 @@ std::string UiConsole::pedirInsumo() {
 }
 
 Recurso UiConsole::agregarInsumo(std::string codigo) {
+   std::string nombre, tipoMedicion, descripcion = "";
    std::cout << "Nombre: ";
-   std::string nombre;
    std::getline(std::cin, nombre);
    std::cout << "Descripcion: ";
-   std::string descripcion;
    std::getline(std::cin, descripcion);
    std::cout << "Tipo de medicion : ";
-   std::string tipoMedicion;
    std::getline(std::cin, tipoMedicion);
    Recurso insumo(codigo, descripcion, tipoMedicion, 0, 0, false);
    return insumo;
@@ -563,9 +561,10 @@ void UiConsole::mostrarInsumos(Recurso* insumos, int cantidad) {
          std::cout << std::setw(23) << "║ " + insumos[i].getDescripcion();
          std::cout << std::setw(23) << "║ " + insumos[i].getTipoMedicion();
          std::cout << std::setw(23) << "║ " +std::to_string(insumos[i].getStock());
-         std::cout << std::endl << std::endl;
+         std::cout << std::endl;
       }
    }
+   std::cout << std::endl;
 }
 
 int UiConsole::stockInsumo() {

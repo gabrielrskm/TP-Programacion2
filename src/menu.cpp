@@ -78,17 +78,21 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      if (manager.buscarInsumo(codigoInsumo) >= 0) {
+      int pos = manager.buscarInsumo(codigoInsumo);
+      if (pos >= 0) {
          std::cout << "El Producto ya existe" << std::endl;
          ui.pausa();
          return;
+      }
+      else if(pos == -3){
+         std::cout << "El codigo se esta usando como insumo" << std::endl;
       }
       Recurso insumo = ui.agregarInsumo(codigoInsumo);
       if (insumo.getCodigo() == "") {
          ui.pausa();
          return;
       }
-      if (manager.agregarInsumo(insumo) >= 0) {
+      if (manager.agregarProducto(insumo) >= 0) {
          std::cout << "Producto dado de alta correctamente" << std::endl;
 
       } else {
@@ -137,10 +141,14 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      if (manager.buscarInsumo(codigoInsumo) >= 0) {
+      int pos = manager.buscarInsumo(codigoInsumo);
+      if (pos >= 0) {
          std::cout << "El insumo ya existe" << std::endl;
          ui.pausa();
          return;
+      }
+      else if(pos == -3){
+         std::cout << "El codigo se esta usando como producto" << std::endl;
       }
       Recurso insumo = ui.agregarInsumo(codigoInsumo);
       if (insumo.getCodigo() == "") {

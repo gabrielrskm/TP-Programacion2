@@ -60,6 +60,10 @@ class Manager {
    bool modificarInsumo(Recurso insumo, int pos);
    bool modificarStockInsumo(int stock, int pos);
    int cantidadInsumos();
+
+   //funcionalidades productos
+   int buscarProducto(std::string codigo);
+   int agregarProducto(Recurso producto);
  
 
   private:
