@@ -234,10 +234,11 @@ int UiConsole::mostrarMenuProductos() {
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Dar de alta producto" << std::endl;
    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Dar de baja producto" << std::endl;
-   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de producto" << std::endl;
-   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Consultar stock de producto" << std::endl;
+   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Modificar Producto" << std::endl;
+   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de producto" << std::endl;
    std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Listar productos" << std::endl;
    std::cout << RESET << ROJO << "6. " << RESET << SUBRAYADO << BOLD << "Buscar producto" << std::endl;
+   std::cout << RESET << ROJO << "7. " << RESET << SUBRAYADO << BOLD << "Composicion de producto" << std::endl;
    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
    std::cout << "Opción elegida: ";
 
@@ -523,7 +524,7 @@ void UiConsole::tipoUsuario(std::string tipoUsuario) {
 
 // funcionalidades insumo
 
-std::string UiConsole::pedirInsumo() {
+std::string UiConsole::pedirCodigo() {
    std::cout << "Codigo: ";
    std::string codigo;
    std::getline(std::cin, codigo);
@@ -546,7 +547,7 @@ Recurso UiConsole::agregarInsumo(std::string codigo) {
    return insumo;
 }
 
-void UiConsole::mostrarInsumos(Recurso* insumos, int cantidad) {
+void UiConsole::mostrarRecursos(Recurso* recursos, int cantidad) {
    std::cout << std::left;
    std::cout << std::setw(23) << "║ codigo";
    std::cout << std::setw(23) << "║ descripcion";
@@ -556,25 +557,25 @@ void UiConsole::mostrarInsumos(Recurso* insumos, int cantidad) {
    std::cout << std::endl;
 
    for (int i = 0; i < cantidad; i++) {
-      if (!insumos[i].getEstaBorrado()) {
-         std::cout << std::setw(23) << "║ " + insumos[i].getCodigo();
-         std::cout << std::setw(23) << "║ " + insumos[i].getDescripcion();
-         std::cout << std::setw(23) << "║ " + insumos[i].getTipoMedicion();
-         std::cout << std::setw(23) << "║ " +std::to_string(insumos[i].getStock());
+      if (!recursos[i].getEstaBorrado()) {
+         std::cout << std::setw(23) << "║ " + recursos[i].getCodigo();
+         std::cout << std::setw(23) << "║ " + recursos[i].getDescripcion();
+         std::cout << std::setw(23) << "║ " + recursos[i].getTipoMedicion();
+         std::cout << std::setw(23) << "║ " +std::to_string(recursos[i].getStock());
          std::cout << std::endl;
       }
    }
    std::cout << std::endl;
 }
 
-int UiConsole::stockInsumo() {
-   std::cout << "desea modificar stock? s/n" << std::endl;
+int UiConsole::stockRecurso() {
+   std::cout << "desea modificar stock? s/n :";
    std::string resp;
    std::getline(std::cin, resp);
    if (resp != "s" && resp != "S") {
       return -1;
    }
-   std::cout << "Ingrese el nuevo stock : " << std::endl;
+   std::cout << "Ingrese el nuevo stock : ";
    std::string stock;
    std::getline(std::cin, stock);
    // the next code is from GeeksforGeeks

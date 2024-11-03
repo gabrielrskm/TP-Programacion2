@@ -45,10 +45,10 @@ class UiConsole {
    void tipoUsuario(std::string tipoUsuario);
    
    //funcionalidades insumo
-   std::string pedirInsumo();
+   std::string pedirCodigo();
    Recurso agregarInsumo(std::string codigo);
-   void mostrarInsumos(Recurso* insumos,int cantidad);
-   int stockInsumo();
+   void mostrarRecursos(Recurso* insumos,int cantidad);
+   int stockRecurso();
 
   private:
    std::string _nombreUsuario;

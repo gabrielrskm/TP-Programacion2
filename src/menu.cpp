@@ -68,12 +68,12 @@ bool Menu::menuLogin(Manager& manager, UiConsole& ui) {
 void Menu::menuProductos(Manager& manager, UiConsole& ui) {
    auto agregarProducto = [&]() -> void {
       ui.limpiarConsola();
-      if(!manager.esAdmin()){
+      if (!manager.esAdmin()) {
          std::cout << "No tiene permisos para dar de alta un nuevo producto" << std::endl;
          ui.pausa();
          return;
       }
-      std::string codigoInsumo = ui.pedirInsumo();
+      std::string codigoInsumo = ui.pedirCodigo();
       if (codigoInsumo == "") {
          ui.pausa();
          return;
@@ -84,8 +84,10 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      else if(pos == -3){
+      if (pos == -3) {
          std::cout << "El codigo se esta usando como insumo" << std::endl;
+         ui.pausa();
+         return;
       }
       Recurso insumo = ui.agregarInsumo(codigoInsumo);
       if (insumo.getCodigo() == "") {
@@ -101,6 +103,151 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
       ui.pausa();
       return;
    };
+   auto borrarProducto = [&]() -> void {
+      ui.limpiarConsola();
+      if (!manager.esAdmin()) {
+         std::cout << "No tiene permisos para borrar productos" << std::endl;
+         ui.pausa();
+         return;
+      }
+      std::string codigoProducto = ui.pedirCodigo();
+      if (codigoProducto == "") {
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarProducto(codigoProducto);
+      if (pos < 0) {
+         std::cout << "El insumo no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      if (manager.borrarProducto(pos)) {
+         std::cout << "El recurso se borro correctamente" << std::endl;
+
+      } else {
+         std::cout << "No se pudo borrar el recurso" << std::endl;
+      }
+      ui.pausa();
+      return;
+   };
+   auto modificarProducto = [&]() -> void {
+      ui.limpiarConsola();
+      if (!manager.esAdmin()) {
+         std::cout << "No tiene permisos para modificar productos" << std::endl;
+         ui.pausa();
+         return;
+      }
+      std::string codigo = ui.pedirCodigo();
+      if (codigo == "") {
+         std::cout << "codigo incorrecto" << std::endl;
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarProducto(codigo);
+      if (pos < 0) {
+         std::cout << "El Producto no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      Recurso* producto = new Recurso(manager.getRecurso(pos));
+      if (producto == nullptr) {
+         std::cout << "no hay memoria disponible" << std::endl;
+         ui.pausa();
+         return;
+      }
+      std::cout << "Valor actual del producto : " << std::endl;
+      ui.mostrarRecursos(producto, 1);
+      delete producto;
+      std::cout << "Valor nuevo del producto : " << std::endl;
+      Recurso insumoModificado = ui.agregarInsumo(codigo);
+      if (manager.modificarInsumo(insumoModificado, pos)) {
+         std::cout << "Producto modificado correctamente" << std::endl;
+      } else {
+         std::cout << "No se pudo modificar el Producto" << std::endl;
+      }
+      ui.pausa();
+      return;
+
+   };
+   auto stockProducto = [&]() -> void {
+      ui.limpiarConsola();
+      std::string codigoProducto = ui.pedirCodigo();
+      if (codigoProducto == "") {
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarProducto(codigoProducto);
+      if (pos < 0) {
+         std::cout << "El producto no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      Recurso* producto = new Recurso(manager.getRecurso(pos));
+      if (producto == nullptr) {
+         std::cout << "no hay memoria disponible" << std::endl;
+         ui.pausa();
+         return;
+      }
+      ui.mostrarRecursos(producto, 1);
+      delete producto;
+      int stock = ui.stockRecurso();
+      if (stock < 0) {
+         ui.pausa();
+         return;
+      }
+      if (!manager.esAdmin()) {
+         ui.pausa();
+         return;
+      }
+      if (manager.modificarStockInsumo(stock, pos)) {
+         std::cout << "Stock modificado correctamente" << std::endl;
+      } else {
+         std::cout << "No se pudo modificar el stock" << std::endl;
+      }
+      ui.pausa();
+      return;
+   };
+   auto listaProductos = [&]() -> void {
+      ui.limpiarConsola();
+      int cantidad = 0;
+      Recurso* productos = nullptr;
+      if(!manager.listaRecursos(0,0,true,false,productos,cantidad)){
+         std::cout << "No hay Productos" << std::endl;
+         ui.pausa();
+         return;
+      }
+      ui.mostrarRecursos(productos, cantidad);
+      delete[] productos;
+      ui.pausa();
+      return;
+   };
+   auto buscarProducto = [&]() -> void {
+      ui.limpiarConsola();
+      std::string codigoProducto = ui.pedirCodigo();
+      if (codigoProducto == "") {
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarProducto(codigoProducto);
+      if (pos < 0) {
+         std::cout << "El producto no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      Recurso* producto = new Recurso(manager.getRecurso(pos));
+      if (producto == nullptr) {
+         std::cout << "no hay memoria disponible" << std::endl;
+         ui.pausa();
+         return;
+      }
+      ui.mostrarRecursos(producto, 1);
+      delete producto;
+      ui.pausa();
+      return;
+   };
+   auto composicion = [&]() -> void {
+
+   };
    int op;
    do {
       op = ui.mostrarMenuProductos();
@@ -109,14 +256,19 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
             agregarProducto();
             break;
          case 2:
+            borrarProducto();
             break;
          case 3:
+            modificarProducto();
             break;
          case 4:
+            stockProducto();
             break;
          case 5:
+            listaProductos();
             break;
          case 6:
+            buscarProducto();
             break;
          case 0:
             break;
@@ -130,13 +282,13 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
 
 void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
    auto agregarInsumo = [&]() -> void {
-      if(!manager.esAdmin()){
+      if (!manager.esAdmin()) {
          std::cout << "No tiene permisos para dar de alta un nuevo insumo" << std::endl;
          ui.pausa();
          return;
       }
       ui.limpiarConsola();
-      std::string codigoInsumo = ui.pedirInsumo();
+      std::string codigoInsumo = ui.pedirCodigo();
       if (codigoInsumo == "") {
          ui.pausa();
          return;
@@ -147,8 +299,10 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      else if(pos == -3){
+      if (pos == -3) {
          std::cout << "El codigo se esta usando como producto" << std::endl;
+         ui.pausa();
+         return;
       }
       Recurso insumo = ui.agregarInsumo(codigoInsumo);
       if (insumo.getCodigo() == "") {
@@ -166,12 +320,12 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
    };
    auto borraInsumo = [&]() -> void {
       ui.limpiarConsola();
-      if(!manager.esAdmin()){
+      if (!manager.esAdmin()) {
          std::cout << "No tiene permisos para borrar insumos" << std::endl;
          ui.pausa();
          return;
       }
-      std::string codigoInsumo = ui.pedirInsumo();
+      std::string codigoInsumo = ui.pedirCodigo();
       if (codigoInsumo == "") {
          ui.pausa();
          return;
@@ -193,31 +347,26 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
    };
    auto listaInsumos = [&]() -> void {
       ui.limpiarConsola();
-      int cantidad = manager.cantidadInsumos();
-      if (cantidad == 0) {
-         std::cout << "No hay insumos" << std::endl;
+      int cantidad = 0;
+      Recurso* productos = nullptr;
+      if(!manager.listaRecursos(0,0,false,false,productos,cantidad)){
+         std::cout << "No hay Productos" << std::endl;
          ui.pausa();
          return;
       }
-      Recurso* insumos = manager.listaInsumos(cantidad);
-      if (insumos == nullptr) {
-         std::cout << "No hay insumos" << std::endl;
-         ui.pausa();
-         return;
-      }
-      ui.mostrarInsumos(insumos, cantidad);
-      delete[] insumos;
+      ui.mostrarRecursos(productos, cantidad);
+      delete[] productos;
       ui.pausa();
       return;
    };
    auto modificarInsumo = [&]() -> void {
       ui.limpiarConsola();
-      if(!manager.esAdmin()){
+      if (!manager.esAdmin()) {
          std::cout << "No tiene permisos para modificar insumos" << std::endl;
          ui.pausa();
          return;
       }
-      std::string codigo = ui.pedirInsumo();
+      std::string codigo = ui.pedirCodigo();
       if (codigo == "") {
          std::cout << "codigo incorrecto" << std::endl;
          ui.pausa();
@@ -229,14 +378,14 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      Recurso* insumo = new Recurso(manager.getInsumo(pos));
+      Recurso* insumo = new Recurso(manager.getRecurso(pos));
       if (insumo == nullptr) {
          std::cout << "no hay memoria disponible" << std::endl;
          ui.pausa();
          return;
       }
       std::cout << "Valor actual del insumo : " << std::endl;
-      ui.mostrarInsumos(insumo, 1);
+      ui.mostrarRecursos(insumo, 1);
       delete insumo;
       std::cout << "Valor nuevo del insumo : " << std::endl;
       Recurso insumoModificado = ui.agregarInsumo(codigo);
@@ -250,7 +399,7 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
    };
    auto buscarInsumo = [&]() -> void {
       ui.limpiarConsola();
-      std::string codigoInsumo = ui.pedirInsumo();
+      std::string codigoInsumo = ui.pedirCodigo();
       if (codigoInsumo == "") {
          ui.pausa();
          return;
@@ -261,20 +410,20 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      Recurso* insumo = new Recurso(manager.getInsumo(pos));
+      Recurso* insumo = new Recurso(manager.getRecurso(pos));
       if (insumo == nullptr) {
          std::cout << "no hay memoria disponible" << std::endl;
          ui.pausa();
          return;
       }
-      ui.mostrarInsumos(insumo, 1);
+      ui.mostrarRecursos(insumo, 1);
       delete insumo;
       ui.pausa();
       return;
    };
    auto stock = [&]() -> void {
       ui.limpiarConsola();
-      std::string codigoInsumo = ui.pedirInsumo();
+      std::string codigoInsumo = ui.pedirCodigo();
       if (codigoInsumo == "") {
          ui.pausa();
          return;
@@ -285,20 +434,20 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      Recurso* insumo = new Recurso(manager.getInsumo(pos));
+      Recurso* insumo = new Recurso(manager.getRecurso(pos));
       if (insumo == nullptr) {
          std::cout << "no hay memoria disponible" << std::endl;
          ui.pausa();
          return;
       }
-      ui.mostrarInsumos(insumo, 1);
+      ui.mostrarRecursos(insumo, 1);
       delete insumo;
-      int stock = ui.stockInsumo();
-      if(stock<0){
+      int stock = ui.stockRecurso();
+      if (stock < 0) {
          ui.pausa();
          return;
       }
-      if(!manager.esAdmin()){
+      if (!manager.esAdmin()) {
          ui.pausa();
          return;
       }

@@ -119,22 +119,98 @@ bool Manager::estaBorrado(int pos) {
 bool Manager::modificarInsumo(Recurso insumo, int pos) {
    return this->archivoRecurso.Guardar(insumo, pos);
 }
-int Manager::cantidadInsumos() {
-   return this->archivoRecurso.CantidadRegistros();
-}
-Recurso* Manager::listaInsumos(int cant) {
-   if (cant == 0) {
-      return nullptr;
+
+bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recurso* vector, int &vectorSize) {
+   
+   int cantRegistros = this->archivoRecurso.CantidadRegistros();
+   if(cantRegistros == 0){
+      return false;
    }
-   Recurso* vector = new Recurso[cant];
-   this->archivoRecurso.Leer(cant, vector);
-   if (vector == nullptr) {
-      return nullptr;
+   if(cant == 0){
+      cant = cantRegistros;
    }
-   return vector;
+   Recurso* vectorTemp = new Recurso[cantRegistros];
+   this->archivoRecurso.Leer(cant, vectorTemp);
+   if (vectorTemp == nullptr) {
+      return false;
+   }
+   int counter = 0;
+   if(interno && !borrado){
+      for (int i = 0; i<cantRegistros; i++){
+         if(vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+            counter++;
+         }
+      }
+      vector = new Recurso[counter];
+      if(vector == nullptr){
+         vectorSize = 0;
+         return false;
+      }
+      vectorSize = counter;
+      for(int i = 0; i < vectorSize; i++){
+         if(vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+            vector[i] = vectorTemp[i];
+         }
+      }
+   } 
+   else if (interno && borrado) {
+      for (int i = 0; i<cantRegistros; i++){
+         if(vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
+            counter++;
+         }
+      }
+      vector = new Recurso[counter];
+      if(vector == nullptr){
+         vectorSize = 0;
+         return false;
+      }
+      vectorSize = counter;
+      for(int i = 0; i < vectorSize; i++){
+         if(vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
+            vector[i] = vectorTemp[i];
+         }
+      }
+   }
+   else if(!interno && !borrado){
+      for (int i = 0; i<cantRegistros; i++){
+         if(!vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+            counter++;
+         }
+      }
+      vector = new Recurso[counter];
+      if(vector == nullptr){
+         vectorSize = 0;
+         return false;
+      }
+      vectorSize = counter;
+      for(int i = 0; i < vectorSize; i++){
+         if(!vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+            vector[i] = vectorTemp[i];
+         }
+      }
+   }
+   else if(!interno && borrado){
+      for (int i = 0; i<cantRegistros; i++){
+         if(vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+            counter++;
+         }
+      }
+      vector = new Recurso[counter];
+      if(vector == nullptr){
+         vectorSize = 0;
+         return false;
+      }
+      vectorSize = counter;
+      for(int i = 0; i < vectorSize; i++){
+         if(!vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
+            vector[i] = vectorTemp[i];
+         }
+      }
+   }
+   return true;
 }
 
-Recurso Manager::getInsumo(int pos) {
+Recurso Manager::getRecurso(int pos) {
    return this->archivoRecurso.Leer(pos);
 }
 
@@ -160,4 +236,11 @@ int Manager::buscarProducto(std::string codigo) {
 int Manager::agregarProducto(Recurso producto) {
    producto.setOrigen(true);
    return this->archivoRecurso.Guardar(producto);
+}
+
+bool Manager::borrarProducto(int pos) {
+   return this->borrarInsumo(pos);
+}
+bool Manager::modificarStockRecurso(int stock, int pos) {
+   return this->modificarStockInsumo(stock, pos);
 }

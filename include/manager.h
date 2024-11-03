@@ -34,6 +34,7 @@
 
 
 class Manager {
+   
 
   public:
    Manager();
@@ -53,17 +54,18 @@ class Manager {
    int buscarInsumo(std::string codigo);
    int agregarInsumo(Recurso insumo);
    bool borrarInsumo(int pos);
-   bool actualizarStock(Recurso insumo, int pos);
-   Recurso* listaInsumos(int cantidad);
-   Recurso getInsumo(int pos);
    bool estaBorrado(int pos);
    bool modificarInsumo(Recurso insumo, int pos);
    bool modificarStockInsumo(int stock, int pos);
-   int cantidadInsumos();
 
+   Recurso getRecurso(int pos);
+   bool listaRecursos(int pos,int cantidad,bool interno,bool borrado,Recurso* vector,int& vectorSize);
    //funcionalidades productos
    int buscarProducto(std::string codigo);
    int agregarProducto(Recurso producto);
+   bool borrarProducto(int pos);
+   bool modificarStockRecurso(int stock, int pos);
+   
  
 
   private:
