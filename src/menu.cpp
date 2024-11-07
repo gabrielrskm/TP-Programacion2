@@ -167,7 +167,6 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
       }
       ui.pausa();
       return;
-
    };
    auto stockProducto = [&]() -> void {
       ui.limpiarConsola();
@@ -211,7 +210,7 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
       ui.limpiarConsola();
       int cantidad = 0;
       Recurso* productos = nullptr;
-      if(!manager.listaRecursos(0,0,true,false,productos,cantidad)){
+      if (!manager.listaRecursos(0, 0, true, false, productos, cantidad)) {
          std::cout << "No hay Productos" << std::endl;
          ui.pausa();
          return;
@@ -265,14 +264,14 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
          return;
       }
       int cantidadInsumos = 0;
-      Recurso *insumos = nullptr;
-      if(manager.getComposicionProducto(pos, insumos,cantidadInsumos,producto->getCodigo())){
+      Recurso* insumos = nullptr;
+      if (manager.getComposicionProducto(pos, insumos, cantidadInsumos, producto->getCodigo())) {
          std::cout << "No hay composicion" << std::endl;
          delete producto;
          ui.pausa();
          return;
       }
-      ui.mostrarComposicion(insumos,cantidadInsumos,producto);
+      ui.mostrarComposicion(insumos, cantidadInsumos, producto);
       delete[] insumos;
       delete producto;
       ui.pausa();
@@ -284,13 +283,95 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      int pos = manager.buscarProducto(codigoProducto);
-      if (pos < 0) {
+      int posProducto = manager.buscarProducto(codigoProducto);
+      if (posProducto < 0) {
          std::cout << "El Producto no existe" << std::endl;
          ui.pausa();
          return;
       }
-      //ui.editarComposicion(manager.getRecurso(pos));
+      bool result = true;
+      std::string codigoInsumo;
+      while (result) {
+         ui.limpiarConsola();
+         std::cout << "Composicion del Producto" << std::endl;
+         std::string codigoProducto = ui.pedirCodigo();
+         if (codigoProducto == "") {
+            std::cout << "desea continuar con otro insumo?" << std::endl;
+            std::string op;
+            std::getline(std::cin, op);
+            if (op == "n" || op == "N") {
+               result = false;
+            }
+            else if (op == "s" || op == "S") {
+               result = true;
+            }
+            else{
+               std::cout << "opcion incorrecta" << std::endl;
+               ui.pausa();
+               return;
+            }
+         }
+         int posInsumo = manager.buscarInsumo(codigoInsumo);
+         if(posInsumo < 0){
+            std::cout << "El insumo no existe" << std::endl;
+            std::cout << "desea continuar con otro insumo?" << std::endl;
+            std::string op;
+            std::getline(std::cin, op);
+            if (op == "n" || op == "N") {
+               result = false;
+            }
+            else if (op == "s" || op == "S") {
+               result = true;
+            }
+            else{
+               std::cout << "opcion incorrecta" << std::endl;
+               ui.pausa();
+               return;
+            }
+         }
+         else{
+            std::string codInsumo = manager.getRecurso(posProducto).getCodigo();
+            std::string codProducto = manager.getRecurso(posInsumo).getCodigo();
+            int cantidad;
+            std::cout << "Ingrese la cantidad: ";
+            std::cin >> cantidad;//no me acuerdo donde deje la funcion de validar cantidad :v
+            if(manager.setComposicionProducto(codInsumo,codProducto,cantidad)){
+               std::cout << "Insumo agregado correctamente" << std::endl;
+               std::cout << "desea continuar con otro insumo?" << std::endl;
+               std::string op;
+               std::getline(std::cin, op);
+               if (op == "n" || op == "N") {
+                  result = false;
+               }
+               else if (op == "s" || op == "S") {
+                  result = true;
+               }
+               else{
+                  std::cout << "opcion incorrecta" << std::endl;
+                  ui.pausa();
+                  return;
+               }
+            }
+            else{
+               std::cout << "No se pudo agregar el insumo" << std::endl;
+               std::cout << "desea continuar con otro insumo?" << std::endl;
+               std::string op;
+               std::getline(std::cin, op);
+               if (op == "n" || op == "N") {
+                  result = false;
+               }
+               else if (op == "s" || op == "S") {
+                  result = true;
+               }
+               else{
+                  std::cout << "opcion incorrecta" << std::endl;
+                  ui.pausa();
+                  return;
+               }
+            }
+         }
+      }
+
       ui.pausa();
       return;
    };
@@ -356,7 +437,7 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      if(pos == -4) {
+      if (pos == -4) {
          std::cout << "El codigo del insumo esta borrado" << std::endl;
          ui.pausa();
          return;
@@ -406,7 +487,7 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
       ui.limpiarConsola();
       int cantidad = 0;
       Recurso* productos = nullptr;
-      if(!manager.listaRecursos(0,0,false,false,productos,cantidad)){
+      if (!manager.listaRecursos(0, 0, false, false, productos, cantidad)) {
          std::cout << "No hay Productos" << std::endl;
          ui.pausa();
          return;
@@ -430,7 +511,7 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          return;
       }
       int pos = manager.buscarInsumo(codigo);
-      if(pos == -4) {
+      if (pos == -4) {
          std::cout << "El codigo del insumo esta borrado" << std::endl;
          ui.pausa();
          return;

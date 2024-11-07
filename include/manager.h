@@ -66,8 +66,8 @@ class Manager {
    bool borrarProducto(int pos);
    bool modificarStockRecurso(int stock, int pos);
    bool getComposicionProducto(int pos,Recurso*& vector,int& composicionSize,std::string codigo);
-   
- 
+   bool setComposicionProducto(std::string idProducto, std::string idInsumo, int cantidad);
+
 
   private:
    ArchivoCliente archivoCliente;

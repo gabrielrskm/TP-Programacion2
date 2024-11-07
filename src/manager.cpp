@@ -309,3 +309,7 @@ bool Manager::getComposicionProducto(int pos,Recurso*& vector,int& composicionSi
    delete[] allComposicion;
    return true;
 }
+bool Manager::setComposicionProducto(std::string idProducto, std::string idInsumo, int cantidad) {
+   ComposicionProducto composicion(idInsumo,idProducto,cantidad);
+   return this->archivoComposicionProducto.Guardar(composicion);
+}
