@@ -15,4 +15,5 @@ public:
     ComposicionProducto Leer(int posicion);
     int CantidadRegistros();
     void Leer(int cantidadRegistros, ComposicionProducto* vector);
+    void LeerTodo(ComposicionProducto* vector, int& vectorSize);
 };

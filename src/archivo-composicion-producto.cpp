@@ -85,3 +85,16 @@ void ArchivoComposicionProducto::Leer(int cantidadRegistros, ComposicionProducto
     }
     fclose(pArchivo);
 }
+
+void ArchivoComposicionProducto::LeerTodo(ComposicionProducto *vector, int &vectorSize){
+    FILE *pArchivo = fopen(_nombreArchivo, "rb");
+    if(pArchivo == NULL){
+        return;
+    }
+    fseek(pArchivo, 0, SEEK_END);
+    int cantidadRegistros = ftell(pArchivo) / sizeof(ComposicionProducto);
+    for(int i = 0; i < cantidadRegistros; i++){
+        fread(&vector[i], sizeof(ComposicionProducto), 1, pArchivo);
+    }
+    fclose(pArchivo);
+}

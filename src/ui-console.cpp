@@ -238,7 +238,8 @@ int UiConsole::mostrarMenuProductos() {
    std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de producto" << std::endl;
    std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Listar productos" << std::endl;
    std::cout << RESET << ROJO << "6. " << RESET << SUBRAYADO << BOLD << "Buscar producto" << std::endl;
-   std::cout << RESET << ROJO << "7. " << RESET << SUBRAYADO << BOLD << "Composicion de producto" << std::endl;
+   std::cout << RESET << ROJO << "7. " << RESET << SUBRAYADO << BOLD << "ver Composicion de producto" << std::endl;
+   std::cout << RESET << ROJO << "8. " << RESET << SUBRAYADO << BOLD << "editar Composicion de Producto" << std::endl;
    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
    std::cout << "Opción elegida: ";
 
@@ -536,9 +537,7 @@ std::string UiConsole::pedirCodigo() {
 }
 
 Recurso UiConsole::agregarInsumo(std::string codigo) {
-   std::string nombre, tipoMedicion, descripcion = "";
-   std::cout << "Nombre: ";
-   std::getline(std::cin, nombre);
+   std::string tipoMedicion, descripcion = "";
    std::cout << "Descripcion: ";
    std::getline(std::cin, descripcion);
    std::cout << "Tipo de medicion : ";
@@ -593,4 +592,20 @@ int UiConsole::stockRecurso() {
       return value;
    }
    return -1;
+}
+
+bool UiConsole::mostrarComposicion(ComposicionProducto* composicion,int cantidad,Recurso*& producto) {
+   std::cout << std::left;
+   std::cout << std::setw(23) << "║ codigo";
+   std::cout << std::setw(23) << "║ descripcion";
+   std::cout << std::setw(23) << "║ tipo de medicion";
+   std::cout << std::setw(23) << "║ cantidad" << std::endl;
+   std::cout << "════════════════════════════════════════════════════════════════════════════════";
+   std::cout << std::endl;
+
+   for (int i = 0; i < cantidad; i++) {
+      std::cout << std::setw(23) << "║ " + composicion[i].getIdInsumo();
+   }
+   std::cout << std::endl;
+   return true;
 }

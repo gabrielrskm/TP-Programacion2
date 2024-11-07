@@ -245,7 +245,7 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
       ui.pausa();
       return;
    };
-   auto composicion = [&]() -> void {
+   auto verComposicion = [&]() -> void {
       ui.limpiarConsola();
       std::string codigoProducto = ui.pedirCodigo();
       if (codigoProducto == "") {
@@ -264,9 +264,35 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      ui.mostrarRecursos(producto, 1);
+      int composicionSize = 0;
+      ComposicionProducto *composicion = nullptr;
+      if(manager.getComposicionProducto(pos, composicion,composicionSize,producto->getCodigo())){
+         std::cout << "No hay composicion" << std::endl;
+         delete producto;
+         ui.pausa();
+         return;
+      }
+      //ui.mostrarComposicion(producto);
+      delete[] composicion;
       delete producto;
       ui.pausa();
+   };
+   auto editarCoposicion = [&]() -> void {
+      ui.limpiarConsola();
+      std::string codigoProducto = ui.pedirCodigo();
+      if (codigoProducto == "") {
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarProducto(codigoProducto);
+      if (pos < 0) {
+         std::cout << "El Producto no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      //ui.editarComposicion(manager.getRecurso(pos));
+      ui.pausa();
+      return;
    };
    int op;
    do {
@@ -289,6 +315,12 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
             break;
          case 6:
             buscarProducto();
+            break;
+         case 7:
+            verComposicion();
+            break;
+         case 8:
+            editarCoposicion();
             break;
          case 0:
             break;
@@ -321,6 +353,11 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
       }
       if (pos == -3) {
          std::cout << "El codigo se esta usando como producto" << std::endl;
+         ui.pausa();
+         return;
+      }
+      if(pos == -4) {
+         std::cout << "El codigo del insumo esta borrado" << std::endl;
          ui.pausa();
          return;
       }
@@ -393,6 +430,11 @@ void Menu::menuInsumo(Manager& manager, UiConsole& ui) {
          return;
       }
       int pos = manager.buscarInsumo(codigo);
+      if(pos == -4) {
+         std::cout << "El codigo del insumo esta borrado" << std::endl;
+         ui.pausa();
+         return;
+      }
       if (pos < 0) {
          std::cout << "El insumo no existe" << std::endl;
          ui.pausa();

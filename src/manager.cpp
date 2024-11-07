@@ -111,6 +111,9 @@ int Manager::buscarInsumo(std::string codigo) {
    if (this->archivoRecurso.Leer(pos).getOrigen()) {
       return -3;//codigo que existe pero es otra categoria
    }
+   if(this->archivoRecurso.Leer(pos).getEstaBorrado()){
+      return -4;//el recurso esta borrado
+   }
    return pos;
 }
 bool Manager::estaBorrado(int pos) {
@@ -257,4 +260,29 @@ bool Manager::borrarProducto(int pos) {
 }
 bool Manager::modificarStockRecurso(int stock, int pos) {
    return this->modificarStockInsumo(stock, pos);
+}
+
+bool Manager::getComposicionProducto(int pos,ComposicionProducto*& vector,int& composicionSize,std::string codigo) {
+   ComposicionProducto* allComposicion = nullptr;
+   int totalSize = 0;
+   this->archivoComposicionProducto.LeerTodo(allComposicion,totalSize);
+   if(totalSize == 0 || allComposicion == nullptr){
+      return false;
+   }
+   int counter = 0;
+   for(int i = 0; i < totalSize; i++){
+      if(allComposicion[i].getIdProducto()== codigo){
+         counter++;
+      }
+   }
+   vector = new ComposicionProducto[counter];
+   composicionSize = counter;
+   counter = 0;
+   for(int i = 0; i < totalSize; i++){
+      if(allComposicion[i].getIdProducto()== codigo){
+         vector[counter] = allComposicion[i];
+      }
+   }
+   delete[] allComposicion;
+   return true;
 }
