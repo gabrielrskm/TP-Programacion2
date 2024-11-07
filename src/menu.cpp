@@ -246,7 +246,27 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
       return;
    };
    auto composicion = [&]() -> void {
-
+      ui.limpiarConsola();
+      std::string codigoProducto = ui.pedirCodigo();
+      if (codigoProducto == "") {
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarProducto(codigoProducto);
+      if (pos < 0) {
+         std::cout << "El producto no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      Recurso* producto = new Recurso(manager.getRecurso(pos));
+      if (producto == nullptr) {
+         std::cout << "no hay memoria disponible" << std::endl;
+         ui.pausa();
+         return;
+      }
+      ui.mostrarRecursos(producto, 1);
+      delete producto;
+      ui.pausa();
    };
    int op;
    do {

@@ -120,7 +120,7 @@ bool Manager::modificarInsumo(Recurso insumo, int pos) {
    return this->archivoRecurso.Guardar(insumo, pos);
 }
 
-bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recurso* vector, int &vectorSize) {
+bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recurso*& vector, int &vectorSize) {
    
    int cantRegistros = this->archivoRecurso.CantidadRegistros();
    if(cantRegistros == 0){
@@ -135,7 +135,7 @@ bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recur
       return false;
    }
    int counter = 0;
-   if(interno && !borrado){
+   if(interno && !borrado){//producto no borrado
       for (int i = 0; i<cantRegistros; i++){
          if(vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
             counter++;
@@ -144,16 +144,19 @@ bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recur
       vector = new Recurso[counter];
       if(vector == nullptr){
          vectorSize = 0;
+         delete[] vectorTemp;
          return false;
       }
       vectorSize = counter;
-      for(int i = 0; i < vectorSize; i++){
+      counter = 0;
+      for(int i = 0; i < cantRegistros; i++){
          if(vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
-            vector[i] = vectorTemp[i];
+            vector[counter] = vectorTemp[i];
+            counter++;
          }
       }
    } 
-   else if (interno && borrado) {
+   else if (interno && borrado) {//producto borrado
       for (int i = 0; i<cantRegistros; i++){
          if(vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
             counter++;
@@ -162,16 +165,19 @@ bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recur
       vector = new Recurso[counter];
       if(vector == nullptr){
          vectorSize = 0;
+         delete[] vectorTemp;
          return false;
       }
       vectorSize = counter;
-      for(int i = 0; i < vectorSize; i++){
+      counter = 0;
+      for(int i = 0; i < cantRegistros; i++){
          if(vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
-            vector[i] = vectorTemp[i];
+            vector[counter] = vectorTemp[i];
+            counter++;
          }
       }
    }
-   else if(!interno && !borrado){
+   else if(!interno && !borrado){//insumo no borrado
       for (int i = 0; i<cantRegistros; i++){
          if(!vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
             counter++;
@@ -180,33 +186,40 @@ bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recur
       vector = new Recurso[counter];
       if(vector == nullptr){
          vectorSize = 0;
+         delete[] vectorTemp;
          return false;
       }
       vectorSize = counter;
-      for(int i = 0; i < vectorSize; i++){
+      counter = 0;
+      for(int i = 0; i < cantRegistros; i++){
          if(!vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
-            vector[i] = vectorTemp[i];
-         }
-      }
-   }
-   else if(!interno && borrado){
-      for (int i = 0; i<cantRegistros; i++){
-         if(vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+            vector[counter] = vectorTemp[i];
             counter++;
          }
       }
-      vector = new Recurso[counter];
-      if(vector == nullptr){
-         vectorSize = 0;
-         return false;
-      }
-      vectorSize = counter;
-      for(int i = 0; i < vectorSize; i++){
+   }
+   else if(!interno && borrado){//insumo borrado
+      for (int i = 0; i<cantRegistros; i++){
          if(!vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
-            vector[i] = vectorTemp[i];
+            counter++;
+         }
+      }
+      vector = new Recurso[counter];
+      if(vector == nullptr){
+         vectorSize = 0;
+         delete[] vectorTemp;
+         return false;
+      }
+      vectorSize = counter;
+      counter = 0;
+      for(int i = 0; i < cantRegistros; i++){
+         if(!vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
+            vector[counter] = vectorTemp[i];
+            counter++;
          }
       }
    }
+   delete[] vectorTemp;
    return true;
 }
 
@@ -230,11 +243,12 @@ int Manager::buscarProducto(std::string codigo) {
    if (!this->archivoRecurso.Leer(pos).getOrigen()) {
       return -3;//codigo que existe pero es otra categoria
    }
-   return -1;
+   return pos;
 }
 
 int Manager::agregarProducto(Recurso producto) {
    producto.setOrigen(true);
+   std::cout << producto.getOrigen() << std::endl;
    return this->archivoRecurso.Guardar(producto);
 }
 
