@@ -299,9 +299,9 @@ bool Manager::getComposicionProducto(int pos,Recurso*& vector,int& composicionSi
    }
    composicionSize = counter;
    counter = 0;
-   int pos = 0;
+   int posTemp = 0;
    for(int i = 0; i < composicionSize; i++){
-      pos = this->buscarInsumo(codigos[i]);
+      posTemp = this->buscarInsumo(codigos[i]);
       vector[i] = this->getRecurso(pos);
       vector[i].setStock(allComposicion[pos].getCantidad());
    }
