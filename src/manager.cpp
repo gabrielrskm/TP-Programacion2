@@ -262,7 +262,7 @@ bool Manager::modificarStockRecurso(int stock, int pos) {
    return this->modificarStockInsumo(stock, pos);
 }
 
-bool Manager::getComposicionProducto(int pos,ComposicionProducto*& vector,int& composicionSize,std::string codigo) {
+bool Manager::getComposicionProducto(int pos,Recurso*& vector,int& composicionSize,std::string codigo) {
    ComposicionProducto* allComposicion = nullptr;
    int totalSize = 0;
    this->archivoComposicionProducto.LeerTodo(allComposicion,totalSize);
@@ -275,14 +275,37 @@ bool Manager::getComposicionProducto(int pos,ComposicionProducto*& vector,int& c
          counter++;
       }
    }
-   vector = new ComposicionProducto[counter];
+   std::string* codigos = new std::string[counter];
+   if(codigos == nullptr){
+      composicionSize = 0;
+      delete[] allComposicion;
+      return false;
+   }
    composicionSize = counter;
    counter = 0;
    for(int i = 0; i < totalSize; i++){
       if(allComposicion[i].getIdProducto()== codigo){
-         vector[counter] = allComposicion[i];
+         codigos[counter] = allComposicion[i].getIdInsumo();
+         counter++;
       }
    }
+
+   vector = new Recurso[counter];
+   if(vector == nullptr){
+      composicionSize = 0;
+      delete[] allComposicion;
+      delete[] codigos;
+      return false;
+   }
+   composicionSize = counter;
+   counter = 0;
+   int pos = 0;
+   for(int i = 0; i < composicionSize; i++){
+      pos = this->buscarInsumo(codigos[i]);
+      vector[i] = this->getRecurso(pos);
+      vector[i].setStock(allComposicion[pos].getCantidad());
+   }
+   delete[] codigos;
    delete[] allComposicion;
    return true;
 }

@@ -594,17 +594,37 @@ int UiConsole::stockRecurso() {
    return -1;
 }
 
-bool UiConsole::mostrarComposicion(ComposicionProducto* composicion,int cantidad,Recurso*& producto) {
+bool UiConsole::mostrarComposicion(Recurso* insumos,int cantidad,Recurso*& producto) {
    std::cout << std::left;
+   std::cout << "Producto " << std::endl;
    std::cout << std::setw(23) << "║ codigo";
    std::cout << std::setw(23) << "║ descripcion";
    std::cout << std::setw(23) << "║ tipo de medicion";
-   std::cout << std::setw(23) << "║ cantidad" << std::endl;
    std::cout << "════════════════════════════════════════════════════════════════════════════════";
    std::cout << std::endl;
 
+   std::cout << std::setw(23) << "║ " + producto->getCodigo();
+   std::cout << std::setw(23) << "║ " + producto->getDescripcion();
+   std::cout << std::setw(23) << "║ " + producto->getTipoMedicion();
+   std::cout << std::endl;
+
+   std::cout << std::left;
+   std::cout << "Producto " << std::endl;
+   std::cout << std::setw(23) << "║ codigo";
+   std::cout << std::setw(23) << "║ descripcion";
+   std::cout << std::setw(23) << "║ tipo de medicion";
+   std::cout << std::setw(23) << "║ cantidad necesaria" << std::endl;
+   std::cout << "════════════════════════════════════════════════════════════════════════════════";
+
+   std::cout << std::endl;
+   std::cout << "Composicion" << std::endl;
+
    for (int i = 0; i < cantidad; i++) {
-      std::cout << std::setw(23) << "║ " + composicion[i].getIdInsumo();
+      std::cout << std::setw(23) << "║ " + insumos[i].getCodigo();
+      std::cout << std::setw(23) << "║ " + insumos[i].getDescripcion();
+      std::cout << std::setw(23) << "║ " + insumos[i].getTipoMedicion();
+      std::cout << std::setw(23) << "║ " + std::to_string(insumos[i].getStock()) << std::endl;
+      std::cout << std::endl;
    }
    std::cout << std::endl;
    return true;

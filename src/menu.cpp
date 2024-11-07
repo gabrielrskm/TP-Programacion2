@@ -264,16 +264,16 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
          ui.pausa();
          return;
       }
-      int composicionSize = 0;
-      ComposicionProducto *composicion = nullptr;
-      if(manager.getComposicionProducto(pos, composicion,composicionSize,producto->getCodigo())){
+      int cantidadInsumos = 0;
+      Recurso *insumos = nullptr;
+      if(manager.getComposicionProducto(pos, insumos,cantidadInsumos,producto->getCodigo())){
          std::cout << "No hay composicion" << std::endl;
          delete producto;
          ui.pausa();
          return;
       }
-      //ui.mostrarComposicion(producto);
-      delete[] composicion;
+      ui.mostrarComposicion(insumos,cantidadInsumos,producto);
+      delete[] insumos;
       delete producto;
       ui.pausa();
    };

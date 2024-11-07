@@ -65,7 +65,7 @@ class Manager {
    int agregarProducto(Recurso producto);
    bool borrarProducto(int pos);
    bool modificarStockRecurso(int stock, int pos);
-   bool getComposicionProducto(int pos,ComposicionProducto*& vector,int& vectorSize,std::string codigo);
+   bool getComposicionProducto(int pos,Recurso*& vector,int& composicionSize,std::string codigo);
    
  
 

@@ -49,7 +49,7 @@ class UiConsole {
    Recurso agregarInsumo(std::string codigo);
    void mostrarRecursos(Recurso* insumos,int cantidad);
    int stockRecurso();
-   bool mostrarComposicion(ComposicionProducto* composicion,int cantidad,Recurso*& producto);
+   bool mostrarComposicion(Recurso* insumos,int cantidad,Recurso*& producto);
 
 
   private:
