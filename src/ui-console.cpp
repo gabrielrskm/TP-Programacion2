@@ -259,6 +259,10 @@ int UiConsole::mostrarMenuProductos() {
       return 5;
    } else if (op == "6") {
       return 6;
+   } else if (op == "7") {
+      return 7;
+   } else if (op == "8") {
+      return 8;
    } else {
       return -1;
    }
@@ -560,7 +564,7 @@ void UiConsole::mostrarRecursos(Recurso* recursos, int cantidad) {
          std::cout << std::setw(23) << "║ " + recursos[i].getCodigo();
          std::cout << std::setw(23) << "║ " + recursos[i].getDescripcion();
          std::cout << std::setw(23) << "║ " + recursos[i].getTipoMedicion();
-         std::cout << std::setw(23) << "║ " +std::to_string(recursos[i].getStock());
+         std::cout << std::setw(23) << "║ " + std::to_string(recursos[i].getStock());
          std::cout << std::endl;
       }
    }
@@ -594,7 +598,7 @@ int UiConsole::stockRecurso() {
    return -1;
 }
 
-bool UiConsole::mostrarComposicion(Recurso* insumos,int cantidad,Recurso*& producto) {
+bool UiConsole::mostrarComposicion(Recurso* insumos, int cantidad, Recurso*& producto) {
    std::cout << std::left;
    std::cout << "Producto " << std::endl;
    std::cout << std::setw(23) << "║ codigo";

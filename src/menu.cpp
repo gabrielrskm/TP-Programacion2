@@ -159,8 +159,9 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
       ui.mostrarRecursos(producto, 1);
       delete producto;
       std::cout << "Valor nuevo del producto : " << std::endl;
-      Recurso insumoModificado = ui.agregarInsumo(codigo);
-      if (manager.modificarInsumo(insumoModificado, pos)) {
+      Recurso productoModificado = ui.agregarInsumo(codigo);
+      productoModificado.setOrigen(true);
+      if (manager.modificarInsumo(productoModificado, pos)) {
          std::cout << "Producto modificado correctamente" << std::endl;
       } else {
          std::cout << "No se pudo modificar el Producto" << std::endl;
