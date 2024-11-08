@@ -70,3 +70,7 @@ std::string Persona::getEmail() {
 void Persona::setEmail(std::string email) {
    strcpy(this->_email, email.c_str());
 }
+
+int Persona::getTelefono() {
+    return this->_telefono; 
+}

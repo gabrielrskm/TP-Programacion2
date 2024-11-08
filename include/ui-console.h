@@ -4,13 +4,13 @@
 
 class UiConsole {
   public:
-   const char* RESET = "\033[0m";
-   const char* ROJO = "\033[31m";
-   const char* VERDE = "\033[32m";
-   const char* AZUL = "\033[34m";
-   const char* AMARILLO = "\033[33m";
-   const char* BOLD = "\033[1m";
-   const char* SUBRAYADO = "\033[4m";
+   static const char* RESET ;
+   static const char* ROJO ;
+   static const char* VERDE;
+   static const char* AZUL;
+   static const char* AMARILLO;
+   static const char* BOLD;
+   static const char* SUBRAYADO;
 
    UiConsole();
    void setUsuario(std::string usuario);
@@ -31,8 +31,8 @@ class UiConsole {
    void pausa();
 
    //funcionalidades del menu usuarios
-   Usuario agregarUsuario(std::string nombreUsuario);
-   void modificarUsuario();
+   Usuario agregarUsuario(std::string nombreUsuario, Manager& manager);
+   int mostrarMenuModificacionUsuario();   
    void eliminarUsuario();
    void contraseniaRoot();
    void roles();
@@ -40,7 +40,7 @@ class UiConsole {
    void mostrarUsuarios();
    void mostrarRoles();
    void mostrarRoles(std::string& nombreUsuario);
-   void tipoUsuario(std::string tipoUsuario);
+   void listarUsuario(std::string nombreUsuario,char tipoUsuario, std::string email, int telefono);
 
   private:
    std::string _nombreUsuario;

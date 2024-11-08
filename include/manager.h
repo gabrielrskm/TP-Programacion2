@@ -35,30 +35,41 @@
 
 class Manager {
 
-  public:
-   Manager();
-   bool login(std::string user, std::string pass);
-   bool agregarUsuario(Usuario usuario);
-   Usuario* listaUsuarios();
-   int cantidadUsuarios();
-   std::string getNombreUsuario();
-   int buscarUsuario(std::string nombreUsuario);
- 
+public:
+	Manager();
+	bool login(std::string user, std::string pass);
+	bool agregarUsuario(Usuario usuario);
+	Usuario* listaUsuarios();
+	int cantidadUsuarios();
+	std::string getNombreUsuario();
+	int buscarUsuario(std::string nombreUsuario, bool buscarEnCache);
+	Usuario leerUsuario(int posicion);
+	bool reescribirUsuario(Usuario usuario, int posicion); 
+	int buscarEmail(std::string email, bool buscarEnCache);
+	int buscarTelefono(std::string telefono, bool buscarEnCache);
+	bool getPrivilegios();
+	void actualizarCacheUsuarios();
+	int buscar(std::string busqueda, int tipoDeBusqueda);
+	Usuario* getCacheListadoUsuarios(); 
+	~Manager();
 
-  private:
-   ArchivoCliente archivoCliente;
-   ArchivoComposicionFactura archivoComposicionFactura;
-   ArchivoComposicionMovimientos archivoComposicionMovimientos;
-   ArchivoComposicionOrden archivoComposicionOrden;
-   ArchivoComposicionProducto archivoComposicionProducto;
-   ArchivoFactura archivoFactura;
-   ArchivoMovimientos archivoMovimientos;
-   ArchivoOrdenCompra archivoOrdenCompra;
-   ArchivoOrdenProduccion archivoOrdenProduccion;
-   ArchivoOrdenVenta archivoOrdenVenta;
-   ArchivoProveedor archivoProveedor;
-   ArchivoRecurso archivoRecurso;
-   ArchivoUsuario archivoUsuario;
-   char _tipoUsuario;
-   std::string _nombreUsuario;
+private:
+	ArchivoCliente archivoCliente;
+	ArchivoComposicionFactura archivoComposicionFactura;
+	ArchivoComposicionMovimientos archivoComposicionMovimientos;
+	ArchivoComposicionOrden archivoComposicionOrden;
+	ArchivoComposicionProducto archivoComposicionProducto;
+	ArchivoFactura archivoFactura;
+	ArchivoMovimientos archivoMovimientos;
+	ArchivoOrdenCompra archivoOrdenCompra;
+	ArchivoOrdenProduccion archivoOrdenProduccion;
+	ArchivoOrdenVenta archivoOrdenVenta;
+	ArchivoProveedor archivoProveedor;
+	ArchivoRecurso archivoRecurso;
+	ArchivoUsuario archivoUsuario;
+	char _rolUsuario;
+	bool _tienePrivilegios;
+	std::string _nombreUsuario;
+	Usuario* _cacheListadoUsuarios;
+	Usuario _usuarioLoggeado; 
 };
