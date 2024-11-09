@@ -1,18 +1,16 @@
 #include "../include/usuario.h"
-
-#include <cstring>
-
 #include "../include/persona.h"
+#include <cstring>
 
 Usuario::Usuario() {
 }
 
 
-Usuario::Usuario(char tipo, std::string pass, std::string nombreUsuario, Fecha fecha, int id, int telefono, char tipoFJ,
+Usuario::Usuario(char rol, std::string pass, std::string nombreUsuario, Fecha fecha, int id, int telefono, char tipoFJ,
                  std::string nombre, std::string direccion, std::string email)
     : Persona(id, telefono, tipoFJ, nombre, direccion, email){
 
-   this->_tipo = tipo;
+   this->setRol(rol);
    strcpy(this->_nombreUsuario, nombreUsuario.c_str());
    strcpy(this->_password, pass.c_str());
    this->_id = id;
@@ -22,6 +20,7 @@ Usuario::Usuario(char tipo, std::string pass, std::string nombreUsuario, Fecha f
    strcpy(this->_direccion, direccion.c_str());
    strcpy(this->_email, email.c_str());
    this->_fechaIngreso = Fecha();
+   this->setEstadoUsuario(true); 
 }
 
 void Usuario::setPassword(std::string password) {
@@ -32,12 +31,12 @@ std::string Usuario::getPassword() {
    return std::string(this->_password);
 }
 
-char Usuario::getTipo() {
-   return this->_tipo;
+char Usuario::getRol() {
+   return this->_rol;
 }
 
-void Usuario::setTipo(char tipo) {
-   this->_tipo = tipo;
+void Usuario::setRol(char rol) {
+   this->_rol = rol;
 }
 
 std::string Usuario::getNombreUsuario() {
@@ -50,8 +49,25 @@ void Usuario::setNombreUsuario(std::string nombreUsuario) {
 }
 
 bool Usuario::validarUsuarioYPass(std::string nombreUsuario, std::string pass){
-        if (nombreUsuario.size() < 1 || nombreUsuario.size() > 20) return false;
-        if (pass.size() < 1 || pass.size() > 20) return false;
+        if (nombreUsuario.size() < 3 || nombreUsuario.size() > 19) return false;
+        if (pass.size() < 4 || pass.size() > 19) return false;
         return true;
     
     }
+
+bool Usuario::validarRol(std::string rol) {    
+    if (rol == "a" || rol == "A") return true;
+    else if (rol == "u" || rol == "U") return true;
+    else if (rol == "v" || rol == "V") return true;
+    else if (rol == "c" || rol == "C") return true;
+    else return false; 
+
+}
+
+bool Usuario::getEstadoUsuario() {
+    return this->_usuarioActivo; 
+}
+
+void Usuario::setEstadoUsuario(bool estado) {
+    this->_usuarioActivo = estado; 
+}

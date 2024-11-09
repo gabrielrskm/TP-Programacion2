@@ -12,6 +12,7 @@ class Persona{
    char getTipoFJ();
    void setTipoFJ(char tipoFJ);
    int getId();
+   int getTelefono(); 
    void setId(int id);
    std::string getNombre();
    void setNombre(std::string nombre);

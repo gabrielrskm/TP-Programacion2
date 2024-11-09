@@ -34,23 +34,30 @@
 
 
 class Manager {
-   
 
   public:
-   Manager();
+  //Funcionalidades Usuario
    bool login(std::string user, std::string pass);
-
-   //funcionalidades usuarios
-   bool agregarUsuario(Usuario usuario);
-   Usuario* listaUsuarios();
-   int cantidadUsuarios();
-   std::string getNombreUsuario();
-   int buscarUsuario(std::string nombreUsuario);
-   bool esAdmin();
+	bool agregarUsuario(Usuario usuario);
+	Usuario* listaUsuarios();
+	int cantidadUsuarios();
+	std::string getNombreUsuario();
+  int buscarUsuario(std::string nombreUsuario);
+	int buscarUsuario(std::string nombreUsuario, bool buscarEnCache);
+	Usuario leerUsuario(int posicion);
+	bool reescribirUsuario(Usuario usuario, int posicion); 
+	int buscarEmail(std::string email, bool buscarEnCache);
+	int buscarTelefono(std::string telefono, bool buscarEnCache);
+	bool getPrivilegios();
+	void actualizarCacheUsuarios();
+	int buscar(std::string busqueda, int tipoDeBusqueda);
+	Usuario* getCacheListadoUsuarios(); 
+  bool esAdmin();
    bool esComprador();
    bool esVendedor();
+	~Manager();
 
-   //funcionalidades insumos
+  //funcionalidades insumos
    int buscarInsumo(std::string codigo);
    int agregarInsumo(Recurso insumo);
    bool borrarInsumo(int pos);
@@ -67,22 +74,25 @@ class Manager {
    bool modificarStockRecurso(int stock, int pos);
    bool getComposicionProducto(int pos,Recurso*& vector,int& composicionSize,std::string codigo);
    bool setComposicionProducto(std::string idProducto, std::string idInsumo, int cantidad);
+ 
 
-
-  private:
-   ArchivoCliente archivoCliente;
-   ArchivoComposicionFactura archivoComposicionFactura;
-   ArchivoComposicionMovimientos archivoComposicionMovimientos;
-   ArchivoComposicionOrden archivoComposicionOrden;
-   ArchivoComposicionProducto archivoComposicionProducto;
-   ArchivoFactura archivoFactura;
-   ArchivoMovimientos archivoMovimientos;
-   ArchivoOrdenCompra archivoOrdenCompra;
-   ArchivoOrdenProduccion archivoOrdenProduccion;
-   ArchivoOrdenVenta archivoOrdenVenta;
-   ArchivoProveedor archivoProveedor;
-   ArchivoRecurso archivoRecurso;
-   ArchivoUsuario archivoUsuario;
-   char _tipoUsuario;
-   std::string _nombreUsuario;
+private:
+	ArchivoCliente archivoCliente;
+	ArchivoComposicionFactura archivoComposicionFactura;
+	ArchivoComposicionMovimientos archivoComposicionMovimientos;
+	ArchivoComposicionOrden archivoComposicionOrden;
+	ArchivoComposicionProducto archivoComposicionProducto;
+	ArchivoFactura archivoFactura;
+	ArchivoMovimientos archivoMovimientos;
+	ArchivoOrdenCompra archivoOrdenCompra;
+	ArchivoOrdenProduccion archivoOrdenProduccion;
+	ArchivoOrdenVenta archivoOrdenVenta;
+	ArchivoProveedor archivoProveedor;
+	ArchivoRecurso archivoRecurso;
+	ArchivoUsuario archivoUsuario;
+	char _rolUsuario;
+	bool _tienePrivilegios;
+	std::string _nombreUsuario;
+	Usuario* _cacheListadoUsuarios;
+	Usuario _usuarioLoggeado; 
 };

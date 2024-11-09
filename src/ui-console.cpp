@@ -1,7 +1,9 @@
-#include "../include/ui-console.h"
-
-#include <cstdlib>
+#include <cstdlib> 
 #include <iostream>
+#include <iomanip>
+#include "../include/ui-console.h"
+#include "../include/manager.h"
+
 
 #ifdef _WIN32
 #include <windows.h>
@@ -14,6 +16,15 @@ void UiConsole::configurarConsola() {
 
 #endif
 }
+
+
+const char* UiConsole::RESET = "\033[0m";
+const char* UiConsole::ROJO = "\033[31m";
+const char* UiConsole::VERDE = "\033[32m";
+const char* UiConsole::AZUL = "\033[34m";
+const char* UiConsole::AMARILLO = "\033[33m";
+const char* UiConsole::BOLD = "\033[1m";
+const char* UiConsole::SUBRAYADO = "\033[4m";
 
 
 void UiConsole::limpiarConsola() {
@@ -36,7 +47,7 @@ void UiConsole::pausa() {
 }
 
 void UiConsole::opcionIncorrecta() {
-   std::cout << "Opción incorrecta." << std::endl;
+   std::cout << "Opción incorrecta. Elija nuevamente una opción." << std::endl;
    this->pausa();
 }
 
@@ -107,6 +118,15 @@ const char* MENU_GESTION_USUARIOS = R"(
 ║                                          ║
 ╚══════════════════════════════════════════╝
 )";
+
+const char* MENU_AGREGAR_USUARIO = R"(
+╔══════════════════════════════════════════╗
+║                                          ║
+║            AGREGAR USUARIO               ║
+║                                          ║
+╚══════════════════════════════════════════╝
+)";
+
 const char* MENU_ESTATISTICAS = R"(
 ╔══════════════════════════════════════════╗
 ║                                          ║
@@ -123,6 +143,14 @@ const char* MENU_SEGURIDAD = R"(
 ╚══════════════════════════════════════════╝
 )";
 
+const char* MODIFICAR_USUARIO = R"(
+╔══════════════════════════════════════════╗
+║                                          ║
+║           MODIFICAR USUARIO              ║
+║                                          ║
+╚══════════════════════════════════════════╝
+)";
+
 UiConsole::UiConsole() {
 }
 void UiConsole::setUsuario(std::string usuario) {
@@ -130,20 +158,20 @@ void UiConsole::setUsuario(std::string usuario) {
 }
 
 void UiConsole::mostrarMenuLogin(std::string& user, std::string& pass, int intentos) {
-
-   if (intentos == 4) {
-      std::cout << LOG_IN << std::endl;
+    
+    if (intentos == 5) {
+    std::cout << LOG_IN << std::endl; 
    }
 
-   if (intentos < 4) {
-      std::cout << BOLD << ROJO << "Usuario o contraseña incorrectos" << RESET << std::endl;
-      std::cout << "Intentos restantes: " << BOLD << ROJO << intentos << RESET << std::endl << std::endl;
-   }
-
+    if (intentos < 5) {
+        std::cout << BOLD << ROJO << "Usuario o contraseña incorrectos" << RESET << std::endl;
+        std::cout << "Intentos restantes: " << BOLD << ROJO << intentos << RESET << std::endl << std::endl;
+    } 
+  
    std::cout << "Ingrese su usuario: ";
-   std::getline(std::cin, user);
+   std::getline(std::cin, user);  
    std::cout << "Ingrese su contrasena: ";
-   std::getline(std::cin, pass);
+   std::getline(std::cin, pass); 
    std::cout << std::endl;
 }
 
@@ -199,8 +227,8 @@ int UiConsole::mostrarMenuInsumos() {
    std::cout << MENU_INSUMOS << std::endl;
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Dar de alta insumo" << std::endl;
    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Dar de baja insumo" << std::endl;
-   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Modificar Insumo" << std::endl;
-   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Stock de insumo" << std::endl;
+   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de insumo" << std::endl;
+   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Consultar stock de insumo" << std::endl;
    std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Listar insumos" << std::endl;
    std::cout << RESET << ROJO << "6. " << RESET << SUBRAYADO << BOLD << "Buscar insumo" << std::endl;
    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
@@ -234,12 +262,10 @@ int UiConsole::mostrarMenuProductos() {
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Dar de alta producto" << std::endl;
    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Dar de baja producto" << std::endl;
-   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Modificar Producto" << std::endl;
-   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de producto" << std::endl;
+   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de producto" << std::endl;
+   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Consultar stock de producto" << std::endl;
    std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Listar productos" << std::endl;
    std::cout << RESET << ROJO << "6. " << RESET << SUBRAYADO << BOLD << "Buscar producto" << std::endl;
-   std::cout << RESET << ROJO << "7. " << RESET << SUBRAYADO << BOLD << "ver Composicion de producto" << std::endl;
-   std::cout << RESET << ROJO << "8. " << RESET << SUBRAYADO << BOLD << "editar Composicion de Producto" << std::endl;
    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
    std::cout << "Opción elegida: ";
 
@@ -259,10 +285,6 @@ int UiConsole::mostrarMenuProductos() {
       return 5;
    } else if (op == "6") {
       return 6;
-   } else if (op == "7") {
-      return 7;
-   } else if (op == "8") {
-      return 8;
    } else {
       return -1;
    }
@@ -429,11 +451,7 @@ int UiConsole::mostrarMenuUsuarios() {
       return 4;
    } else if (op == "5") {
       return 5;
-   } else if (op == "6") {
-      return 6;
-   } else if (op == "7") {
-      return 7;
-   } else {
+   }else {
       return -1;
    }
 }
@@ -493,39 +511,137 @@ int UiConsole::mostrarMenuSeguridad() {
    }
 }
 
-Usuario UiConsole::agregarUsuario(std::string nombreUsuario) {
-   std::cout << "Nombre: ";
+Usuario UiConsole::agregarUsuario(std::string nombreUsuario, Manager& manager){
    std::string nombre;
+   std::string pass;
+   std::string rol;  
+   std::string telefono;
+   std::string direccion; 
+   std::string email;
+
+   std::cout << "Nombre completo: ";
    std::getline(std::cin, nombre);
    std::cout << "Contraseña: ";
-   std::string pass;
    std::getline(std::cin, pass);
-   std::cout << "Rol (a: administrador u: usuario v: vendedor c: comprador ): ";
-   std::string rol;
+   std::cout << BOLD << R"(
+ Roles
+ a: administrador
+ u: usuario
+ v: vendedor
+ c: comprador: )" << RESET << std::endl << std::endl; 
+
+   std::cout << "Ingrese el rol: "; 
    std::getline(std::cin, rol);
+   bool rolValido = Usuario::validarRol(rol); 
+   //Validación del rol:
+   while (!rolValido) {
+       std::cout << ROJO << "El rol ingresado no es correcto, ingreselo nuevamente." << RESET << std::endl; 
+       std::cout << "Ingrese el rol: "; 
+       std::getline(std::cin, rol);
+       rolValido = Usuario::validarRol(rol);
+   }
+
    std::cout << "Telefono: ";
-   std::string telefono;
    std::getline(std::cin, telefono);
+   bool esNumero = false;
+
+   while (!esNumero) {
+   try {
+       int num = std::stoi(telefono); 
+       esNumero = true; 
+   }catch(const std::invalid_argument error) {
+       std::cout << ROJO << "El valor ingresado no es un número. Ingreselo nuevamente." << RESET << std::endl; 
+   std::cout << "Telefono: ";
+   std::getline(std::cin, telefono);
+   }
+   }
+
+   int telefonoExiste = manager.buscarTelefono(telefono, true);
+   //Validacion del telefono:
+   while (telefonoExiste >= 0) {
+    std::cout << ROJO << "El telefono ingresado " <<VERDE << "'" << telefono << "'" << ROJO << " ya está registrado para otro usuario. Ingrese otro telefono." << RESET << std::endl;
+    std::cout << "Telefono: ";
+       std::getline(std::cin, telefono);
+       telefonoExiste = manager.buscarEmail(telefono, true);
+   }
+
    std::cout << "Direccion: ";
-   std::string direccion;
    std::getline(std::cin, direccion);
    std::cout << "Email: ";
-   std::string email;
    std::getline(std::cin, email);
+   int mailExiste = manager.buscarEmail(email, true);
+   //Validación del email: 
+   while (mailExiste >= 0) {
+       std::cout << ROJO << "El mail ingresado "<< VERDE << "'" << email << "'" << ROJO << " ya está registrado para otro usuario. Ingrese otro email." << RESET << std::endl;
+       std::cout << "Email: ";
+       std::getline(std::cin, email);
+       mailExiste = manager.buscarEmail(email, true);
+   }
+
    return Usuario(rol[0], pass, nombreUsuario, Fecha(), 0, std::stoi(telefono), 'u', nombre, direccion, email);
 }
 
-void UiConsole::tipoUsuario(std::string tipoUsuario) {
-   if (tipoUsuario == "a" || tipoUsuario == "A") {
-      std::cout << "administrador" << std::endl;
-   } else if (tipoUsuario == "u" || tipoUsuario == "U") {
-      std::cout << "usuario" << std::endl;
-   } else if (tipoUsuario == "v" || tipoUsuario == "V") {
-      std::cout << "vendedor" << std::endl;
-   } else if (tipoUsuario == "c" || tipoUsuario == "C") {
-      std::cout << "comprador" << std::endl;
+void UiConsole::listarUsuario(std::string nombreUsuario, char rolUsuario, std::string email, int telefono){
+
+    std::cout << "| " << std::left << std::setw(20) << nombreUsuario; 
+
+   
+   if (rolUsuario == 'a'|| rolUsuario == 'A') {
+      std::cout << "| " << std::left << std::setw(20) << "administrador";
    }
+   else if(rolUsuario == 'u' || rolUsuario == 'U') {
+      std::cout << "| " << std::left << std::setw(20) << "usuario";
+   }
+   else if(rolUsuario == 'v' || rolUsuario == 'V') {
+       std::cout << "| " <<std::left << std::setw(20) << "vendedor" ;
+   }
+   else if(rolUsuario == 'c' || rolUsuario == 'C') {
+       std::cout << "| " <<std::left << std::setw(20) << "comprador";
+   }
+
+   std::cout << "| " << std::left << std::setw(35) << email;
+   std::cout << "| " << std::left << std::setw(20) << telefono << "|" << std::endl;
+ 
 }
+
+int UiConsole::mostrarMenuModificacionUsuario() {
+    limpiarConsola();
+    std::cout << BOLD << "Usuario: " << VERDE << _nombreUsuario << RESET;
+    std::cout << MODIFICAR_USUARIO << std::endl;
+
+
+
+    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Nombre usuario" << std::endl;
+    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Password" << std::endl;
+    std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Nombre completo" << std::endl;
+    std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Dirección" << std::endl;
+    std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Telefono" << std::endl;
+    std::cout << RESET << ROJO << "6. " << RESET << SUBRAYADO << BOLD << "Rol" << std::endl;
+    std::cout << RESET << ROJO << "7. " << RESET << SUBRAYADO << BOLD << "Email" << std::endl;
+    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
+    std::cout << "Opción elegida: ";
+
+    std::string op;
+    std::getline(std::cin, op);
+    if (op == "0") {
+        return 0;
+    }
+    else if (op == "1") {
+        return 1;
+    }
+    else if (op == "2") {
+        return 2;
+    }
+    else {
+        return -1;
+    }
+
+
+    return 1; 
+}
+
+
+
 
 // funcionalidades insumo
 
