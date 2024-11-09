@@ -3,6 +3,7 @@
 #include <direct.h>
 
 Manager::Manager() {
+   this->_cacheListadoUsuarios = nullptr;
    this->archivoCliente = ArchivoCliente();
    this->archivoComposicionFactura = ArchivoComposicionFactura();
    this->archivoComposicionMovimientos = ArchivoComposicionMovimientos();
