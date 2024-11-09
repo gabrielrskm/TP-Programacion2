@@ -16,7 +16,8 @@ class Recurso {
    void setStock(int futuro);
    int getFuturo();
    void setFuturo(int futuro);
-   bool getOrigen();
+   bool isInsumo();
+   bool isProducto();
    void setOrigen(bool origen);
 
    //funcionalidase insumo  

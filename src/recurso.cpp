@@ -60,7 +60,10 @@ void Recurso::setFuturo(int futuro){
    this->_futuro = futuro;
 }
 
-bool Recurso::getOrigen(){
+bool Recurso::isInsumo(){
+   return !(this->_origenInterno);
+}
+bool Recurso::isProducto(){
    return this->_origenInterno;
 }
 

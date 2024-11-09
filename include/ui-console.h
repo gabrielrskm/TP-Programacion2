@@ -46,12 +46,13 @@ class UiConsole {
    void mostrarRoles(std::string& nombreUsuario);
    void listarUsuario(std::string nombreUsuario,char tipoUsuario, std::string email, int telefono);
    void tipoUsuario(std::string tipoUsuario);
-//funcionalidades insumo-producto  (le mandava Leontief jaja)
+//funcionalidades insumo-producto  (le mandaba Leontief jaja)
    std::string pedirCodigo();
-   Recurso agregarInsumo(std::string codigo);
+   Recurso agregarRecurso(std::string codigo,bool isInsumo);
    void mostrarRecursos(Recurso* insumos,int cantidad);
    int stockRecurso();
    bool mostrarComposicion(Recurso* insumos,int cantidad,Recurso*& producto);
+
   private:
    std::string _nombreUsuario;
 };

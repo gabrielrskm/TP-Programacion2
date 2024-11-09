@@ -67,7 +67,7 @@ class Manager {
    bool modificarStockInsumo(int stock, int pos);
 
    Recurso getRecurso(int pos);
-   bool listaRecursos(int pos,int cantidad,bool interno,bool borrado,Recurso*& vector,int& vectorSize);
+   bool listaRecursos(int pos,int cantidad,bool isProducto,bool borrado,Recurso*& vector,int& vectorSize);
    //funcionalidades productos
    int buscarProducto(std::string codigo);
    int agregarProducto(Recurso producto);

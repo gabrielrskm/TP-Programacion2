@@ -202,14 +202,17 @@ bool Manager::borrarInsumo(int pos) {
 }
 int Manager::buscarInsumo(std::string codigo) {
    if (codigo.length() > 20 || codigo.length() == 0) {
-      return -2;
+      return -2;//ingreso mal el codigo por teclado
    }
    int pos = this->archivoRecurso.Buscar(codigo);
-   if (this->archivoRecurso.Leer(pos).getOrigen()) {
-      return -3;//codigo que existe pero es otra categoria
+   if(pos== -1){
+      return pos;//no existe el insumo, devuelve -1
    }
    if(this->archivoRecurso.Leer(pos).getEstaBorrado()){
       return -4;//el recurso esta borrado
+   }
+   if (this->archivoRecurso.Leer(pos).isProducto()) {
+      return -3;//codigo que existe pero es un producto
    }
    return pos;
 }
@@ -220,7 +223,7 @@ bool Manager::modificarInsumo(Recurso insumo, int pos) {
    return this->archivoRecurso.Guardar(insumo, pos);
 }
 
-bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recurso*& vector, int &vectorSize) {
+bool Manager::listaRecursos(int pos, int cant, bool isProducto, bool borrado, Recurso*& vector, int &vectorSize) {
    
    int cantRegistros = this->archivoRecurso.CantidadRegistros();
    if(cantRegistros == 0){
@@ -235,9 +238,9 @@ bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recur
       return false;
    }
    int counter = 0;
-   if(interno && !borrado){//producto no borrado
+   if(isProducto && !borrado){//producto no borrado
       for (int i = 0; i<cantRegistros; i++){
-         if(vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+         if(vectorTemp[i].isProducto() && !vectorTemp[i].getEstaBorrado()){
             counter++;
          }
       }
@@ -250,15 +253,15 @@ bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recur
       vectorSize = counter;
       counter = 0;
       for(int i = 0; i < cantRegistros; i++){
-         if(vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+         if(vectorTemp[i].isProducto() && !vectorTemp[i].getEstaBorrado()){
             vector[counter] = vectorTemp[i];
             counter++;
          }
       }
    } 
-   else if (interno && borrado) {//producto borrado
+   else if (isProducto && borrado) {//producto borrado
       for (int i = 0; i<cantRegistros; i++){
-         if(vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
+         if(vectorTemp[i].isProducto() && vectorTemp[i].getEstaBorrado()){
             counter++;
          }
       }
@@ -271,15 +274,15 @@ bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recur
       vectorSize = counter;
       counter = 0;
       for(int i = 0; i < cantRegistros; i++){
-         if(vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
+         if(vectorTemp[i].isProducto() && vectorTemp[i].getEstaBorrado()){
             vector[counter] = vectorTemp[i];
             counter++;
          }
       }
    }
-   else if(!interno && !borrado){//insumo no borrado
+   else if(!isProducto && !borrado){//insumo no borrado
       for (int i = 0; i<cantRegistros; i++){
-         if(!vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+         if(vectorTemp[i].isInsumo() && !vectorTemp[i].getEstaBorrado()){
             counter++;
          }
       }
@@ -292,15 +295,15 @@ bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recur
       vectorSize = counter;
       counter = 0;
       for(int i = 0; i < cantRegistros; i++){
-         if(!vectorTemp[i].getOrigen() && !vectorTemp[i].getEstaBorrado()){
+         if(vectorTemp[i].isInsumo() && !vectorTemp[i].getEstaBorrado()){
             vector[counter] = vectorTemp[i];
             counter++;
          }
       }
    }
-   else if(!interno && borrado){//insumo borrado
+   else if(!isProducto && borrado){//insumo borrado
       for (int i = 0; i<cantRegistros; i++){
-         if(!vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
+         if(vectorTemp[i].isInsumo() && vectorTemp[i].getEstaBorrado()){
             counter++;
          }
       }
@@ -313,7 +316,7 @@ bool Manager::listaRecursos(int pos, int cant, bool interno, bool borrado, Recur
       vectorSize = counter;
       counter = 0;
       for(int i = 0; i < cantRegistros; i++){
-         if(!vectorTemp[i].getOrigen() && vectorTemp[i].getEstaBorrado()){
+         if(vectorTemp[i].isInsumo() && vectorTemp[i].getEstaBorrado()){
             vector[counter] = vectorTemp[i];
             counter++;
          }
@@ -340,15 +343,21 @@ int Manager::buscarProducto(std::string codigo) {
       return -2;
    }
    int pos = this->archivoRecurso.Buscar(codigo);
-   if (!this->archivoRecurso.Leer(pos).getOrigen()) {
-      return -3;//codigo que existe pero es otra categoria
+   if(pos== -1){
+      return pos;
+   }
+   Recurso producto = this->archivoRecurso.Leer(pos);
+   if (!producto.isProducto()) {
+      return -3;//el codigo existe pero es un insumo
+   }
+   if(producto.getEstaBorrado()){
+      return -4;//el producto fue borrado previamente
    }
    return pos;
 }
 
 int Manager::agregarProducto(Recurso producto) {
    producto.setOrigen(true);
-   std::cout << producto.getOrigen() << std::endl;
    return this->archivoRecurso.Guardar(producto);
 }
 
