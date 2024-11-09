@@ -36,7 +36,9 @@
 class Manager {
 
   public:
-  //Funcionalidades Usuario
+   Manager();
+	~Manager();
+   // Funcionalidades Usuario
    bool login(std::string user, std::string pass);
 	bool agregarUsuario(Usuario usuario);
 	Usuario* listaUsuarios();
@@ -55,7 +57,6 @@ class Manager {
   bool esAdmin();
    bool esComprador();
    bool esVendedor();
-	~Manager();
 
   //funcionalidades insumos
    int buscarInsumo(std::string codigo);

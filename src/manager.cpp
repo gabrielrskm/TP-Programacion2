@@ -110,7 +110,9 @@ bool Manager::getPrivilegios() {
 }
 
 Manager::~Manager() {
-	delete[] _cacheListadoUsuarios;
+   if(_cacheListadoUsuarios!= nullptr){
+	   delete[] _cacheListadoUsuarios;
+   }
 }
 
 void Manager::actualizarCacheUsuarios() {
