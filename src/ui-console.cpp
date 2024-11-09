@@ -227,8 +227,8 @@ int UiConsole::mostrarMenuInsumos() {
    std::cout << MENU_INSUMOS << std::endl;
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Dar de alta insumo" << std::endl;
    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Dar de baja insumo" << std::endl;
-   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de insumo" << std::endl;
-   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Consultar stock de insumo" << std::endl;
+   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Modificar Insumo" << std::endl;
+   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Stock de insumo" << std::endl;
    std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Listar insumos" << std::endl;
    std::cout << RESET << ROJO << "6. " << RESET << SUBRAYADO << BOLD << "Buscar insumo" << std::endl;
    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
@@ -262,10 +262,12 @@ int UiConsole::mostrarMenuProductos() {
 
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Dar de alta producto" << std::endl;
    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Dar de baja producto" << std::endl;
-   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de producto" << std::endl;
-   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Consultar stock de producto" << std::endl;
+   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Modificar Producto" << std::endl;
+   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Actualizar stock de producto" << std::endl;
    std::cout << RESET << ROJO << "5. " << RESET << SUBRAYADO << BOLD << "Listar productos" << std::endl;
    std::cout << RESET << ROJO << "6. " << RESET << SUBRAYADO << BOLD << "Buscar producto" << std::endl;
+   std::cout << RESET << ROJO << "7. " << RESET << SUBRAYADO << BOLD << "ver Composicion de producto" << std::endl;
+   std::cout << RESET << ROJO << "8. " << RESET << SUBRAYADO << BOLD << "editar Composicion de Producto" << std::endl;
    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
    std::cout << "Opción elegida: ";
 
@@ -285,10 +287,15 @@ int UiConsole::mostrarMenuProductos() {
       return 5;
    } else if (op == "6") {
       return 6;
+   } else if (op == "7") {
+      return 7;
+   } else if (op == "8") {
+      return 8;
    } else {
       return -1;
    }
 }
+
 
 int UiConsole::mostrarMenuProveedores() {
    limpiarConsola();
