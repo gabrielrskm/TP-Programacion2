@@ -671,22 +671,29 @@ Recurso UiConsole::agregarRecurso(std::string codigo, bool isInsumo) {
 
 void UiConsole::mostrarRecursos(Recurso* recursos, int cantidad) {
    std::cout << std::left;
-   std::cout << std::setw(23) << "║ codigo";
-   std::cout << std::setw(23) << "║ descripcion";
-   std::cout << std::setw(23) << "║ tipo de medicion";
-   std::cout << std::setw(23) << "║ cantidad" << std::endl;
-   std::cout << "════════════════════════════════════════════════════════════════════════════════";
+   std::cout << "┌────────────────────┬────────────────────┬────────────────────┬────────────────────┐";
+   std::cout << std::endl;
+   std::cout << std::setw(23) << "│ codigo";
+   std::cout << std::setw(23) << "│ descripcion";
+   std::cout << std::setw(23) << "│ tipo de medicion";
+   std::cout << std::setw(23) << "│ stock";
+   std::cout << std::setw(23) << "│";
+   std::cout << std::endl;
+   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
    std::cout << std::endl;
 
    for (int i = 0; i < cantidad; i++) {
       if (!recursos[i].getEstaBorrado()) {
-         std::cout << std::setw(23) << "║ " + recursos[i].getCodigo();
-         std::cout << std::setw(23) << "║ " + recursos[i].getDescripcion();
-         std::cout << std::setw(23) << "║ " + recursos[i].getTipoMedicion();
-         std::cout << std::setw(23) << "║ " + std::to_string(recursos[i].getStock());
+         std::cout << std::setw(23) << "│ " + recursos[i].getCodigo();
+         std::cout << std::setw(23) << "│ " + recursos[i].getDescripcion();
+         std::cout << std::setw(23) << "│ " + recursos[i].getTipoMedicion();
+         std::cout << std::setw(23) << "│ " + std::to_string(recursos[i].getStock());
+         std::cout << "│";
          std::cout << std::endl;
       }
    }
+   std::cout << "└────────────────────┴────────────────────┴────────────────────┴────────────────────┘";
+   std::cout << std::endl;
    std::cout << std::endl;
 }
 
@@ -698,58 +705,71 @@ int UiConsole::stockRecurso() {
       return -1;
    }
    std::cout << "Ingrese el nuevo stock : ";
-   std::string stock;
-   std::getline(std::cin, stock);
-   // the next code is from GeeksforGeeks
-   // https://www.geeksforgeeks.org/convert-string-to-int-in-cpp/
-   const char* str = stock.c_str();
-   char* endptr;
-   long int value = strtol(str, &endptr, 10);
-   if (endptr == str) {
-      std::cout << "no se encontraron numeros" << std::endl;
-      return -1;
-   } else if (*endptr != '\0') {
-      std::cout << "formato numerico no valido" << std::endl;
-      return -1;
-   } else {
-      return value;
+   int numero = 0;
+   if(pedirNumero(numero)){
+      return numero;
    }
    return -1;
 }
 
-bool UiConsole::mostrarComposicion(Recurso* insumos, int cantidad, Recurso*& producto) {
+bool UiConsole::mostrarComposicion(Recurso* insumos,int cantidad,Recurso* producto) {
    std::cout << std::left;
-   std::cout << "Producto " << std::endl;
-   std::cout << std::setw(23) << "║ codigo";
-   std::cout << std::setw(23) << "║ descripcion";
-   std::cout << std::setw(23) << "║ tipo de medicion";
-   std::cout << "════════════════════════════════════════════════════════════════════════════════";
    std::cout << std::endl;
-
-   std::cout << std::setw(23) << "║ " + producto->getCodigo();
-   std::cout << std::setw(23) << "║ " + producto->getDescripcion();
-   std::cout << std::setw(23) << "║ " + producto->getTipoMedicion();
+   std::cout << "Tabla de composicion: " << std::endl<<std::endl;
+   std::cout << "┌────────────────────┬────────────────────┬────────────────────┬────────────────────┬────────────────────┐";
    std::cout << std::endl;
-
-   std::cout << std::left;
-   std::cout << "Producto " << std::endl;
-   std::cout << std::setw(23) << "║ codigo";
-   std::cout << std::setw(23) << "║ descripcion";
-   std::cout << std::setw(23) << "║ tipo de medicion";
-   std::cout << std::setw(23) << "║ cantidad necesaria" << std::endl;
-   std::cout << "════════════════════════════════════════════════════════════════════════════════";
-
+   std::cout << std::setw(23) << "│ codigo";
+   std::cout << std::setw(23) << "│ descripcion";
+   std::cout << std::setw(23) << "│ tipo de medicion";
+   std::cout << std::setw(23) << "│ stock";
+   std::cout << std::setw(23) << "│ cantidad x unidad";
+   std::cout << "│";
    std::cout << std::endl;
-   std::cout << "Composicion" << std::endl;
+   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
+   std::cout << std::endl;
+   
+
+   std::cout << std::setw(23) << "│ " + producto->getCodigo();
+   std::cout << std::setw(23) << "│ " + producto->getDescripcion();
+   std::cout << std::setw(23) << "│ " + producto->getTipoMedicion();
+   std::cout << std::setw(23) << "│ " + std::to_string(producto->getStock());
+   std::cout << std::setw(23) << "│▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒";
+   std::cout << std::setw(23) << "│ ";
+   std::cout << std::endl;
+   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
+   std::cout << std::endl;
 
    for (int i = 0; i < cantidad; i++) {
-      std::cout << std::setw(23) << "║ " + insumos[i].getCodigo();
-      std::cout << std::setw(23) << "║ " + insumos[i].getDescripcion();
-      std::cout << std::setw(23) << "║ " + insumos[i].getTipoMedicion();
-      std::cout << std::setw(23) << "║ " + std::to_string(insumos[i].getStock()) << std::endl;
+      std::cout << std::setw(23) << "│ " + insumos[i].getCodigo();
+      std::cout << std::setw(23) << "│ " + insumos[i].getDescripcion();
+      std::cout << std::setw(23) << "│ " + insumos[i].getTipoMedicion();
+      std::cout << std::setw(23) << "│ " + std::to_string(insumos[i].getStock());
+      std::cout << std::setw(23) << "│ " + std::to_string(insumos[i].getFuturo());
+      std::cout << std::setw(23) << "│";
       std::cout << std::endl;
    }
+   std::cout << "└────────────────────┴────────────────────┴────────────────────┴────────────────────┴────────────────────┘";
+   std::cout << std::endl;
    std::cout << std::endl;
    return true;
 }
+
+bool UiConsole::pedirNumero(int &numResult){
+   std::string numero;
+   std::getline(std::cin, numero);
+   const char* str = numero.c_str();
+   char* endptr;
+   long int value = strtol(str, &endptr, 10);
+   if (endptr == str) {
+      std::cout << "no se encontraron numeros" << std::endl;
+   } else if (*endptr != '\0') {
+      std::cout << "formato numerico no valido" << std::endl;
+   } else {
+      numResult = value;
+      return true;
+   }
+   return false;
+}
+
+
 

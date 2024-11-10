@@ -376,22 +376,32 @@ bool Manager::getComposicionProducto(int pos,Recurso*& vector,int& composicionSi
       return false;
    }
    int counter = 0;
+   //verifico que exista composiciones con el codigo del producto solicitado
    for(int i = 0; i < totalSize; i++){
       if(allComposicion[i].getIdProducto()== codigo){
          counter++;
       }
    }
+   if(counter == 0){
+      composicionSize = 0;
+      delete[] allComposicion;
+      return false;
+   }
    std::string* codigos = new std::string[counter];
+   int* cantidades = new int[counter];
    if(codigos == nullptr){
       composicionSize = 0;
       delete[] allComposicion;
       return false;
    }
-   composicionSize = counter;
    counter = 0;
+   //como hay composiciones que tienen el codigo solicitado los copio los codigos de los insumos en
+   //una matriz de string de codigos
+   //el contador en este caso me cuenta solo los insumos
    for(int i = 0; i < totalSize; i++){
       if(allComposicion[i].getIdProducto()== codigo){
          codigos[counter] = allComposicion[i].getIdInsumo();
+         cantidades[counter] = allComposicion[i].getCantidad();
          counter++;
       }
    }
@@ -405,17 +415,22 @@ bool Manager::getComposicionProducto(int pos,Recurso*& vector,int& composicionSi
    }
    composicionSize = counter;
    counter = 0;
-   int posTemp = 0;
+   int posInsumo = 0;
+   //ahora en base al vector de codigos de insumo armo un vector de 
+   //objetos recursos con todos los codigos de los insumos que lleva la cosa
    for(int i = 0; i < composicionSize; i++){
-      posTemp = this->buscarInsumo(codigos[i]);
-      vector[i] = this->getRecurso(pos);
-      vector[i].setStock(allComposicion[pos].getCantidad());
+      posInsumo = this->buscarInsumo(codigos[i]);
+      vector[i] = this->getRecurso(posInsumo);
+      vector[i].setFuturo(cantidades[i]);
    }
    delete[] codigos;
    delete[] allComposicion;
    return true;
 }
 bool Manager::setComposicionProducto(std::string idProducto, std::string idInsumo, int cantidad) {
-   ComposicionProducto composicion(idInsumo,idProducto,cantidad);
-   return this->archivoComposicionProducto.Guardar(composicion);
+   ComposicionProducto composicion(idProducto,idInsumo,cantidad);
+   if(this->archivoComposicionProducto.Buscar(composicion.getId())<0){
+      return this->archivoComposicionProducto.Guardar(composicion);
+   }
+   return false;
 }

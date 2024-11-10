@@ -31,6 +31,7 @@ class UiConsole {
    void limpiarConsola();
    void opcionIncorrecta();
    void pausa();
+   bool pedirNumero(int& numResult);
 
    //funcionalidades del menu usuarios
    Usuario agregarUsuario(std::string nombreUsuario, Manager& manager);
@@ -51,7 +52,7 @@ class UiConsole {
    Recurso agregarRecurso(std::string codigo,bool isInsumo);
    void mostrarRecursos(Recurso* insumos,int cantidad);
    int stockRecurso();
-   bool mostrarComposicion(Recurso* insumos,int cantidad,Recurso*& producto);
+   bool mostrarComposicion(Recurso* insumos,int cantidad,Recurso* producto);
 
   private:
    std::string _nombreUsuario;
