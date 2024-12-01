@@ -10,9 +10,11 @@ class OrdenProduccion:public Orden{
    
    std::string getIdProducto();
    void setIdProducto(std::string id);
+   int getCantidad();
+   void setCantidad(int cantidad);
 
 
   private:
    char _idProducto[30];
-
+   int cantidad;
 };

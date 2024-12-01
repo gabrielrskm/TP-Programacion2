@@ -4,7 +4,7 @@
 class Recurso {
   public:
    Recurso();
-   Recurso(std::string codigo, std::string descripcion, std::string tipoMedicion, int stock, int futuro,
+   Recurso(std::string codigo, std::string descripcion, std::string tipoMedicion, int stock, int reserva,
            bool origenInterno);
    std::string getCodigo();
    void setCodigo(std::string codigo);
@@ -13,9 +13,9 @@ class Recurso {
    std::string getTipoMedicion();
    void setTipoMedicion(std::string medicion);
    int getStock();
-   void setStock(int futuro);
-   int getFuturo();
-   void setFuturo(int futuro);
+   void setStock(int reserva);
+   int getReserva();
+   void setReserva(int reserva);
    bool isInsumo();
    bool isProducto();
    void setOrigen(bool origen);
@@ -30,7 +30,7 @@ class Recurso {
    char _descripcion[50];
    char _tipoMedicion[10];
    int _stock;
-   int _futuro;
+   int _reserva;
    bool _origenInterno;
    bool _estaBorrado;
 };

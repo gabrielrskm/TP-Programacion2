@@ -52,7 +52,10 @@ class UiConsole {
    Recurso agregarRecurso(std::string codigo,bool isInsumo);
    void mostrarRecursos(Recurso* insumos,int cantidad);
    int stockRecurso();
-   bool mostrarComposicion(Recurso* insumos,int cantidad,Recurso* producto);
+   bool mostrarComposicion(Recurso* insumos,int cantidad,Recurso* producto,int* composicion);
+
+   //funcionalidades produccion
+   void mostrarProduccion(OrdenProduccion* vector,int composicionSize);
 
   private:
    std::string _nombreUsuario;

@@ -378,8 +378,7 @@ int UiConsole::mostrarMenuProduccion() {
    std::cout << ROJO << "1. " << RESET << SUBRAYADO << BOLD << "Generar orden de producción" << std::endl;
    std::cout << RESET << ROJO << "2. " << RESET << SUBRAYADO << BOLD << "Actualizar estado de orden de producción"
              << std::endl;
-   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Asignar recursos a producción" << std::endl;
-   std::cout << RESET << ROJO << "4. " << RESET << SUBRAYADO << BOLD << "Historial de producción" << std::endl;
+   std::cout << RESET << ROJO << "3. " << RESET << SUBRAYADO << BOLD << "Historial de producción" << std::endl;
    std::cout << RESET << "0. " << SUBRAYADO << BOLD << "Volver al menú principal" << RESET << std::endl << std::endl;
    std::cout << "Opción elegida: ";
 
@@ -671,15 +670,16 @@ Recurso UiConsole::agregarRecurso(std::string codigo, bool isInsumo) {
 
 void UiConsole::mostrarRecursos(Recurso* recursos, int cantidad) {
    std::cout << std::left;
-   std::cout << "┌────────────────────┬────────────────────┬────────────────────┬────────────────────┐";
+   std::cout << "┌────────────────────┬────────────────────┬────────────────────┬────────────────────┬────────────────────┐";
    std::cout << std::endl;
    std::cout << std::setw(23) << "│ codigo";
    std::cout << std::setw(23) << "│ descripcion";
    std::cout << std::setw(23) << "│ tipo de medicion";
    std::cout << std::setw(23) << "│ stock";
+   std::cout << std::setw(23) << "│ reserva";
    std::cout << std::setw(23) << "│";
    std::cout << std::endl;
-   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
+   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
    std::cout << std::endl;
 
    for (int i = 0; i < cantidad; i++) {
@@ -688,11 +688,12 @@ void UiConsole::mostrarRecursos(Recurso* recursos, int cantidad) {
          std::cout << std::setw(23) << "│ " + recursos[i].getDescripcion();
          std::cout << std::setw(23) << "│ " + recursos[i].getTipoMedicion();
          std::cout << std::setw(23) << "│ " + std::to_string(recursos[i].getStock());
+         std::cout << std::setw(23) << "│ " + std::to_string(recursos[i].getReserva());
          std::cout << "│";
          std::cout << std::endl;
       }
    }
-   std::cout << "└────────────────────┴────────────────────┴────────────────────┴────────────────────┘";
+   std::cout << "└────────────────────┴────────────────────┴────────────────────┴────────────────────┴────────────────────┘";
    std::cout << std::endl;
    std::cout << std::endl;
 }
@@ -712,20 +713,21 @@ int UiConsole::stockRecurso() {
    return -1;
 }
 
-bool UiConsole::mostrarComposicion(Recurso* insumos,int cantidad,Recurso* producto) {
+bool UiConsole::mostrarComposicion(Recurso* insumos,int cantidad,Recurso* producto,int* composicion) {
    std::cout << std::left;
    std::cout << std::endl;
    std::cout << "Tabla de composicion: " << std::endl<<std::endl;
-   std::cout << "┌────────────────────┬────────────────────┬────────────────────┬────────────────────┬────────────────────┐";
+   std::cout << "┌────────────────────┬────────────────────┬────────────────────┬────────────────────┬────────────────────┬────────────────────┐";
    std::cout << std::endl;
    std::cout << std::setw(23) << "│ codigo";
    std::cout << std::setw(23) << "│ descripcion";
    std::cout << std::setw(23) << "│ tipo de medicion";
    std::cout << std::setw(23) << "│ stock";
+   std::cout << std::setw(23) << "│ reservado";
    std::cout << std::setw(23) << "│ cantidad x unidad";
    std::cout << "│";
    std::cout << std::endl;
-   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
+   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
    std::cout << std::endl;
    
 
@@ -733,10 +735,11 @@ bool UiConsole::mostrarComposicion(Recurso* insumos,int cantidad,Recurso* produc
    std::cout << std::setw(23) << "│ " + producto->getDescripcion();
    std::cout << std::setw(23) << "│ " + producto->getTipoMedicion();
    std::cout << std::setw(23) << "│ " + std::to_string(producto->getStock());
+   std::cout << std::setw(23) << "│ " + std::to_string(producto->getReserva());
    std::cout << std::setw(23) << "│▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒";
    std::cout << std::setw(23) << "│ ";
    std::cout << std::endl;
-   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
+   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
    std::cout << std::endl;
 
    for (int i = 0; i < cantidad; i++) {
@@ -744,11 +747,11 @@ bool UiConsole::mostrarComposicion(Recurso* insumos,int cantidad,Recurso* produc
       std::cout << std::setw(23) << "│ " + insumos[i].getDescripcion();
       std::cout << std::setw(23) << "│ " + insumos[i].getTipoMedicion();
       std::cout << std::setw(23) << "│ " + std::to_string(insumos[i].getStock());
-      std::cout << std::setw(23) << "│ " + std::to_string(insumos[i].getFuturo());
+      std::cout << std::setw(23) << "│ " + std::to_string(composicion[i]);
       std::cout << std::setw(23) << "│";
       std::cout << std::endl;
    }
-   std::cout << "└────────────────────┴────────────────────┴────────────────────┴────────────────────┴────────────────────┘";
+   std::cout << "└────────────────────┴────────────────────┴────────────────────┴────────────────────┴────────────────────┴────────────────────┘";
    std::cout << std::endl;
    std::cout << std::endl;
    return true;
@@ -771,5 +774,35 @@ bool UiConsole::pedirNumero(int &numResult){
    return false;
 }
 
-
-
+void UiConsole::mostrarProduccion(OrdenProduccion* composiciones, int cantidad) {
+   std::cout << std::left;
+   std::cout << std::endl;
+   std::cout << "Tabla de ordenes de produccion: " << std::endl<<std::endl;
+   std::cout << "┌────────────────────┬────────────────────┬────────────────────┬────────────────────┬────────────────────┐";
+   std::cout << std::endl;
+   std::cout << std::setw(23) << "│ Nro de orden";
+   std::cout << std::setw(23) << "│ Producto asociado";
+   std::cout << std::setw(23) << "│ Cantidad a producir";
+   std::cout << std::setw(23) << "│ Fecha de creacion";
+   std::cout << std::setw(23) << "│ Estado de la orden";
+   std::cout << "│";
+   std::cout << std::endl;
+   std::cout << "├────────────────────┼────────────────────┼────────────────────┼────────────────────┼────────────────────┤";
+   std::cout << std::endl;
+   for (int i = 0; i < cantidad; i++){
+      std::string estado;
+      if (composiciones[i].getEstado() == "I") estado = "Iniciado";
+      else if (composiciones[i].getEstado() == "T") estado = "Terminado";
+      else estado = "Cancelado";
+      std::cout << std::setw(23) << "│ " + std::to_string(composiciones[i].getId());
+      std::cout << std::setw(23) << "│ " + composiciones[i].getIdProducto();
+      std::cout << std::setw(23) << "│ " + std::to_string(composiciones[i].getCantidad());
+      std::cout << std::setw(23) << "│ " + composiciones[i].getFecha().toString();
+      std::cout << std::setw(23) << "│ " + estado;
+      std::cout << std::setw(23) << "│";
+      std::cout << std::endl;
+   }
+   std::cout << "└────────────────────┴────────────────────┴────────────────────┴────────────────────┴────────────────────┘";
+   std::cout << std::endl;
+   std::cout << std::endl;
+}

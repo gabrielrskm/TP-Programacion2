@@ -11,7 +11,7 @@ class Orden{
    
    int getId();
    void setId(int id);
-   char getEstado();
+   std::string getEstado();
    void setEstado(char estado);
    Fecha getFecha();
    void setFecha(Fecha fecha);

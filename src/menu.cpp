@@ -350,8 +350,9 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
       }
       int cantidadInsumos = 0;
       Recurso* insumos = nullptr;
-      if (manager.getComposicionProducto(pos, insumos, cantidadInsumos, codigoProducto)) {
-         ui.mostrarComposicion(insumos, cantidadInsumos, producto);
+      int* vectorComposicion = nullptr;
+      if (manager.getComposicionProducto(pos, insumos, cantidadInsumos, vectorComposicion,codigoProducto)) {
+         ui.mostrarComposicion(insumos, cantidadInsumos, producto,vectorComposicion);
          delete[] insumos;
       } else {
          std::cout << "No hay composicion" << std::endl;
@@ -401,8 +402,9 @@ void Menu::menuProductos(Manager& manager, UiConsole& ui) {
          }
          int cantidadInsumos = 0;
          Recurso* insumos = nullptr;
-         if (manager.getComposicionProducto(pos, insumos, cantidadInsumos, codigoProducto)) {
-            ui.mostrarComposicion(insumos, cantidadInsumos, producto);
+         int* vectorComposicion = nullptr;
+         if (manager.getComposicionProducto(pos, insumos, cantidadInsumos,vectorComposicion, codigoProducto)) {
+            ui.mostrarComposicion(insumos, cantidadInsumos, producto,vectorComposicion);
             delete[] insumos;
          } else {
             ui.mostrarRecursos(producto,1);
@@ -759,17 +761,115 @@ void Menu::menuClientes(Manager& manager, UiConsole& ui) {
 }
 
 void Menu::menuProduccion(Manager& manager, UiConsole& ui) {
+   auto generarProduccion = [&]() -> void {
+      ui.limpiarConsola();
+      if (!manager.esAdmin()) {
+         std::cout << "No tiene permisos para generar ordenes de produccion" << std::endl;
+         ui.pausa();
+         return;
+      }
+      std::string codigoProducto = ui.pedirCodigo();
+      if (codigoProducto == "") {
+         ui.pausa();
+         return;
+      }
+      int pos = manager.buscarProducto(codigoProducto);
+      if (pos == -1) {
+         std::cout << "El Producto no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+      if (pos == -3) {
+         std::cout << "El codigo se esta usando como insumo" << std::endl;
+         ui.pausa();
+         return;
+      }
+      if (pos == -2) {
+         std::cout << "El codigo esta mal escrito y no cumple con los criterios" << std::endl;
+         ui.pausa();
+         return;
+      }
+      if (pos == -4) {
+         std::cout << "El producto esta borrado" << std::endl;
+         ui.pausa();
+         return;
+      }
+      std::cout << std::endl;
+      std::cout << "Indique la cantidad a producir : ";
+      int cantidad;
+      if(!ui.pedirNumero(cantidad)){
+         ui.pausa();
+         return;
+      }
+
+      if (manager.agregarOrdenProduccion(codigoProducto, cantidad)>=0) {
+         std::cout << "Orden de produccion generada correctamente" << std::endl;
+      } else {
+         std::cout << "No se pudo generar la orden de produccion" << std::endl;
+      }
+      ui.pausa();
+      return;
+
+
+   };
+   auto modificarEstado = [&]() -> void {
+      ui.limpiarConsola();
+      std::cout << "Ingrese el codigo de la orden de produccion a modificar: ";
+      int codigo;
+      if(!ui.pedirNumero(codigo)){
+         std::cout << "Numero invalido" << std::endl;
+         ui.pausa();
+         return;
+      }
+      if(manager.buscarOrdenProduccion(codigo)<0){
+         std::cout << "La orden de produccion no existe" << std::endl;
+         ui.pausa();
+         return;
+      }
+
+      std::cout << "Ingrese el nuevo estado de la orden de produccion: ";
+      std::string estado;
+      std::getline(std::cin, estado);
+      if(estado != "C" && estado != "c" && estado != "T" && estado != "t" && estado != "terminado" && estado != "cancelado"){
+         std::cout << "Estado invalido" << std::endl;
+         ui.pausa();
+         return;
+      }
+      if (manager.modificarEstadoProduccion(codigo, estado)) {
+         std::cout << "Orden de produccion modificada correctamente" << std::endl;
+      } else {
+         std::cout << "No se pudo modificar la orden de produccion" << std::endl;
+      }
+      ui.pausa();
+      return;
+   };
+   auto historialProduccion = [&]() -> void {
+      ui.limpiarConsola();
+      OrdenProduccion* ordenes = nullptr;
+      int sizeComp = 0;
+      manager.historialProduccion(ordenes, sizeComp);
+      if (sizeComp == 0) {
+         std::cout << "No hay ordenes de produccion" << std::endl;
+         ui.pausa();
+         return;
+      }
+      ui.mostrarProduccion(ordenes, sizeComp);
+      delete[] ordenes;
+      ui.pausa();
+      return;
+   };
    int op;
    do {
       op = ui.mostrarMenuProduccion();
       switch (op) {
          case 1:
+            generarProduccion();
             break;
          case 2:
+            modificarEstado();
             break;
          case 3:
-            break;
-         case 4:
+            historialProduccion();
             break;
          case 0:
             break;
@@ -913,6 +1013,7 @@ void Menu::menuUsuarios(Manager& manager, UiConsole& ui) {
          std::getline(std::cin, nombreUsuario);
 
          int posicionUsuario = manager.buscarUsuario(nombreUsuario, true);
+         
 
          if (posicionUsuario < 0) {
             std::cout << UiConsole::ROJO << "El usuario" << UiConsole::VERDE << "'" << nombreUsuario << "'"
@@ -1045,7 +1146,6 @@ void Menu::menuUsuarios(Manager& manager, UiConsole& ui) {
 
    } while (op);
 }
-
 
 void Menu::menuEstadisticas(Manager& manager, UiConsole& ui) {
    int op;

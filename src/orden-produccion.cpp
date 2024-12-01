@@ -4,7 +4,7 @@
 OrdenProduccion::OrdenProduccion() {
    this->_id = 0;
    this->_fecha = Fecha();
-   this->_estado = 'I';
+   this->_estado = 'I'; //i: iniciado, f: finalizado, c: cancelado
 }
 
 
@@ -15,11 +15,21 @@ OrdenProduccion::OrdenProduccion(int id, Fecha fecha, char estado) : Orden(id, f
 }
 
 std::string OrdenProduccion::getIdProducto() {
-   return _idProducto;
+   std::string id = _idProducto;
+   return id;
 }
 
 void OrdenProduccion::setIdProducto(std::string id) {
    strcpy(this->_idProducto, id.c_str());
 }
 
+int OrdenProduccion::getCantidad() {
+   return this->cantidad;
+}
+void OrdenProduccion::setCantidad(int cantidad) {
+   if(cantidad <= 0){
+      return;
+   }
+   this->cantidad = cantidad;
+}
 

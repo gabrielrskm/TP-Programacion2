@@ -18,10 +18,11 @@ int Orden::getId(){
 
 void Orden::setId(int id){
    this->_id = id;
-}
+}                     
 
-char Orden::getEstado(){
-   return this->_estado;
+std::string Orden::getEstado(){
+   std::string s(1, this->_estado);
+   return s;
 }
 
 void Orden::setEstado(char estado){

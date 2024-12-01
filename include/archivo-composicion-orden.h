@@ -4,7 +4,7 @@
 
 class ArchivoComposicionOrden {
 private:
-    const char* _nombreArchivo = "db/composicion-producto.dat";
+    const char* _nombreArchivo = "db/composicion-orden.dat";
 
 public:
     ArchivoComposicionOrden();

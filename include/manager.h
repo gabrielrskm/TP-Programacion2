@@ -73,27 +73,33 @@ class Manager {
    int agregarProducto(Recurso producto);
    bool borrarProducto(int pos);
    bool modificarStockRecurso(int stock, int pos);
-   bool getComposicionProducto(int pos,Recurso*& vector,int& composicionSize,std::string codigo);
+   bool getComposicionProducto(int pos,Recurso*& vector,int& composicionSize,int*& vectorComposicion,std::string codigo);
    bool setComposicionProducto(std::string idProducto, std::string idInsumo, int cantidad);
- 
+   
+   //funcionalidades produccio
+   int agregarOrdenProduccion(std::string codigo, int cantidad);
+   void historialProduccion(OrdenProduccion*& vector, int& composicionSize);
+   int buscarOrdenProduccion(int codigo);
+   bool modificarEstadoProduccion(int pos, std::string estado);
 
-private:
-	ArchivoCliente archivoCliente;
-	ArchivoComposicionFactura archivoComposicionFactura;
-	ArchivoComposicionMovimientos archivoComposicionMovimientos;
-	ArchivoComposicionOrden archivoComposicionOrden;
-	ArchivoComposicionProducto archivoComposicionProducto;
-	ArchivoFactura archivoFactura;
-	ArchivoMovimientos archivoMovimientos;
-	ArchivoOrdenCompra archivoOrdenCompra;
-	ArchivoOrdenProduccion archivoOrdenProduccion;
-	ArchivoOrdenVenta archivoOrdenVenta;
-	ArchivoProveedor archivoProveedor;
-	ArchivoRecurso archivoRecurso;
-	ArchivoUsuario archivoUsuario;
-	char _rolUsuario;
-	bool _tienePrivilegios;
-	std::string _nombreUsuario;
-	Usuario* _cacheListadoUsuarios;
-	Usuario _usuarioLoggeado; 
+
+  private:
+   ArchivoCliente archivoCliente;
+   ArchivoComposicionFactura archivoComposicionFactura;
+   ArchivoComposicionMovimientos archivoComposicionMovimientos;
+   ArchivoComposicionOrden archivoComposicionOrden;
+   ArchivoComposicionProducto archivoComposicionProducto;
+   ArchivoFactura archivoFactura;
+   ArchivoMovimientos archivoMovimientos;
+   ArchivoOrdenCompra archivoOrdenCompra;
+   ArchivoOrdenProduccion archivoOrdenProduccion;
+   ArchivoOrdenVenta archivoOrdenVenta;
+   ArchivoProveedor archivoProveedor;
+   ArchivoRecurso archivoRecurso;
+   ArchivoUsuario archivoUsuario;
+   char _rolUsuario;
+   bool _tienePrivilegios;
+   std::string _nombreUsuario;
+   Usuario* _cacheListadoUsuarios;
+   Usuario _usuarioLoggeado; 
 };

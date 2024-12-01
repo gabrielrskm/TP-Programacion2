@@ -6,17 +6,17 @@ Recurso::Recurso(){
    strcpy(this->_descripcion,"");
    strcpy(this->_tipoMedicion,"");
    this->_stock = 0;
-   this->_futuro = 0;
+   this->_reserva = 0;
    this->_origenInterno = false;
 }
 
 Recurso::Recurso(std::string codigo, std::string descripcion,
-                 std::string tipoMedicion, int stock, int futuro, bool origenInterno){
+                 std::string tipoMedicion, int stock, int reserva, bool origenInterno){
    strcpy(this->_codigo,codigo.c_str());
    strcpy(this->_descripcion,descripcion.c_str());
    strcpy(this->_tipoMedicion,tipoMedicion.c_str());
    this->_stock = 0;
-   this->_futuro = futuro;
+   this->_reserva = reserva;
    this->_origenInterno = origenInterno;
 }
 
@@ -48,16 +48,16 @@ int Recurso::getStock(){
    return this->_stock;
 }
 
-void Recurso::setStock(int futuro){
-   this->_stock = futuro;
+void Recurso::setStock(int reserva){
+   this->_stock = reserva;
 }
 
-int Recurso::getFuturo(){
-   return this->_futuro;
+int Recurso::getReserva(){
+   return this->_reserva;
 }
 
-void Recurso::setFuturo(int futuro){
-   this->_futuro = futuro;
+void Recurso::setReserva(int reserva){
+   this->_reserva = reserva;
 }
 
 bool Recurso::isInsumo(){
